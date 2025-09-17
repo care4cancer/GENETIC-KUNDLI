@@ -433,28 +433,39 @@
       <div class="rounded-3xl border border-gray-200 bg-white/90 p-6">
         <h2 class="text-3xl font-extrabold">Contact & Onboarding</h2>
         <p class="mt-3 text-gray-600">Ready to begin? Share your details and our team will coordinate sample logistics and consent.</p>
-        <form class="mt-6 grid md:grid-cols-2 gap-4" name="contact" netlify>
-          <input type="text" name="name" placeholder="Full name" class="px-4 py-3 rounded-xl bg-white border border-gray-200" required>
-          <input type="email" name="email" placeholder="Email" class="px-4 py-3 rounded-xl bg-white border border-gray-200" required>
-          <input type="tel" name="phone" placeholder="Phone / WhatsApp" class="px-4 py-3 rounded-xl bg-white border border-gray-200 md:col-span-2" required>
-          <select name="indication" class="px-4 py-3 rounded-xl bg-white border border-gray-200 md:col-span-2">
-            <option value="">Select indication</option>
-            <option>Oncology – Solid</option>
-            <option>Oncology – Hematologic</option>
-            <option>Hereditary Cancer</option>
-            <option>Cardiogenetics</option>
-            <option>Neurogenetics</option>
-            <option>Reproductive/Prenatal</option>
-            <option>Rare Disease (Exome/Genome)</option>
-            <option>Pharmacogenomics</option>
-          </select>
-          <textarea name="message" rows="4" placeholder="Tell us briefly about the case/need (no personal identifiers)" class="px-4 py-3 rounded-xl bg-white border border-gray-200 md:col-span-2"></textarea>
-          <div class="md:col-span-2 flex items-center justify-between">
-            <button type="submit" class="px-5 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 transition shadow-glow font-semibold text-white">Request a callback</button>
-            <div class="text-sm text-gray-500">Or write to <a href="mailto:info@genetickundli.in" class="underline decoration-dotted">info@genetickundli.in</a></div>
-          </div>
-        </form>
-      </div>
+        <form name="contact" method="POST" netlify data-netlify-honeypot="bot-field" class="mt-6 grid md:grid-cols-2 gap-4">
+  <input type="hidden" name="form-name" value="contact" />
+
+  <p class="hidden">
+    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+  </p>
+
+  <input type="text" name="name" placeholder="Full name" class="px-4 py-3 rounded-xl bg-white border border-gray-200" required>
+
+  <input type="email" name="email" placeholder="Email" class="px-4 py-3 rounded-xl bg-white border border-gray-200" required>
+
+  <input type="tel" name="phone" placeholder="Phone / WhatsApp" class="px-4 py-3 rounded-xl bg-white border border-gray-200 md:col-span-2" required>
+
+  <select name="indication" class="px-4 py-3 rounded-xl bg-white border border-gray-200 md:col-span-2">
+    <option value="">Select indication</option>
+    <option>Oncology – Solid</option>
+    <option>Oncology – Hematologic</option>
+    <option>Hereditary Cancer</option>
+    <option>Cardiogenetics</option>
+    <option>Neurogenetics</option>
+    <option>Reproductive/Prenatal</option>
+    <option>Rare Disease (Exome/Genome)</option>
+    <option>Pharmacogenomics</option>
+  </select>
+
+  <textarea name="message" rows="4" placeholder="Tell us briefly about the case/need (no personal identifiers)" class="px-4 py-3 rounded-xl bg-white border border-gray-200 md:col-span-2"></textarea>
+
+  <div class="md:col-span-2 flex items-center justify-between">
+    <button type="submit" class="px-5 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 transition shadow-glow font-semibold text-white">Request a callback</button>
+    <div class="text-sm text-gray-500">Or write to <a href="mailto:info@genetickundli.in" class="underline decoration-dotted">info@genetickundli.in</a></div>
+  </div>
+</form>
+</div>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
         <a href="https://wa.me/" class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">WhatsApp</a>
         <a href="#" class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">Download TRF</a>
