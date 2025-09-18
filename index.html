@@ -39,38 +39,48 @@
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans">
   <!-- Sticky Header -->
-  <header class="fixed inset-x-0 top-0 z-50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mt-4 rounded-2xl bg-white/80 backdrop-blur-8 border border-gray-200 shadow-glow">
-        <div class="flex items-center justify-between px-4 sm:px-6 py-3">
-          <a href="#top" class="flex items-center gap-3 group">
-            <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-500 to-purple-500 grid place-items-center shadow-glow">
-              <img src="LOGO1.png" alt="Logo" class="h-8 w-8 object-cover rounded-xl">
-            </div>
-            <div>
-              <p class="text-lg font-bold tracking-tight">Genetic Kundli</p>
-              <p class="text-xs text-gray-500 leading-none">A step towards personalised care.</p>
-            </div>
-          </a>
-          <nav class="hidden md:flex items-center gap-6 text-sm text-gray-600">
-            <a href="#how" class="hover:text-gray-900">How it works</a>
-            <a href="#panels" class="hover:text-gray-900">Disease Panels</a>
-            <a href="#reports" class="hover:text-gray-900">Genetic Kundli</a>
-            <a href="#pricing" class="hover:text-gray-900">Pricing</a>
-            <a href="#ethics" class="hover:text-gray-900">Consent & Ethics</a>
-            <a href="#contact" class="hover:text-gray-900">Contact</a>
-          </nav>
-          <div class="flex items-center gap-3">
-            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 transition shadow-glow text-sm font-semibold text-white">Get Started</a>
-            <button id="themeToggle" class="p-2 rounded-xl bg-gray-100/80 hover:bg-gray-200 border border-gray-200" title="Toggle contrast">
-              <svg id="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5"><path fill="currentColor" d="M12 18a6 6 0 1 0 0-12a6 6 0 0 0 0 12m0 4a1 1 0 0 1-1-1v-1h2v1a1 1 0 0 1-1 1M5 13H4a1 1 0 0 1 0-2h1v2m15 0h-1v-2h1a1 1 0 0 1 0 2M6.22 19.78a1 1 0 0 1-1.41-1.41l.71-.71l1.41 1.41l-.71.71M18.48 7.05l-.71.71l-1.41-1.41l.71-.71a1 1 0 1 1 1.41 1.41M4.81 7.76a1 1 0 0 1 1.41-1.41l.71.71L5.52 8.47l-.71-.71M17.78 19.78l-.71-.71l1.41-1.41l.71.71a1 1 0 0 1-1.41 1.41"/></svg>
-            </button>
+<header id="siteHeader" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mt-4 rounded-2xl bg-white/60 backdrop-blur-md border border-gray-200 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3">
+        
+        <!-- Logo + Title -->
+        <a href="#top" class="flex items-center gap-3 group">
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 grid place-items-center shadow-md group-hover:scale-110 transition-transform">
+            <img src="LOGO1.png" alt="Logo" class="h-8 w-8 object-cover rounded-xl">
           </div>
+          <div>
+            <p class="text-lg font-bold tracking-tight text-gray-800 group-hover:text-indigo-600 transition-colors">Genetic Kundli</p>
+            <p class="text-xs text-gray-500 leading-none">A step towards personalised care.</p>
+          </div>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#how" class="text-gray-600 hover:text-indigo-600 transition-colors">How it works</a>
+          <a href="#panels" class="text-gray-600 hover:text-indigo-600 transition-colors">Disease Panels</a>
+          <a href="#reports" class="text-gray-600 hover:text-indigo-600 transition-colors">Genetic Kundli</a>
+          <a href="#pricing" class="text-gray-600 hover:text-indigo-600 transition-colors">Pricing</a>
+          <a href="#ethics" class="text-gray-600 hover:text-indigo-600 transition-colors">Consent & Ethics</a>
+          <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Buttons -->
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">
+            Get Started
+          </a>
+          <button id="themeToggle" class="p-2 rounded-xl bg-gray-100/80 hover:bg-gray-200 border border-gray-200 transition-colors" title="Toggle contrast">
+            <svg id="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-gray-600">
+              <path fill="currentColor" d="M12 18a6 6 0 1 0 0-12a6 6 0 0 0 0 12m0 4a1 1 0 0 1-1-1v-1h2v1a1 1 0 0 1-1 1M5 13H4a1 1 0 0 1 0-2h1v2m15 0h-1v-2h1a1 1 0 0 1 0 2M6.22 19.78a1 1 0 0 1-1.41-1.41l.71-.71l1.41 1.41l-.71.71M18.48 7.05l-.71.71l-1.41-1.41l.71-.71a1 1 0 1 1 1.41 1.41M4.81 7.76a1 1 0 0 1 1.41-1.41l.71.71L5.52 8.47l-.71-.71M17.78 19.78l-.71-.71l1.41-1.41l.71.71a1 1 0 0 1-1.41 1.41"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
-  </header>
-
+  </div>
+</header>
+  
   <!-- Hero -->
   <section id="top" class="relative pt-32 pb-20 bg-grid">
     <div class="absolute inset-0 bg-gradient-to-b from-brand-800/10 via-gray-50 to-gray-50 pointer-events-none"></div>
