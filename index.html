@@ -4,13 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Genetic Kundli – A Step Towards Personalised Care.</title>
-  <meta name="description" content="Genetic Kundli: We collect your sample, sequence it using NGS, detect clinically relevant variants, and craft your personalised Genetic Kundli to guide care discussions with your clinician." />
+  <!-- ✅ Basic SEO -->
+<meta name="description" content="Genetic Kundli uses advanced DNA testing to reveal your genetic risks for cancer, heart disease, diabetes, and more — empowering you with personalized health insights and prevention strategies.">
+<meta name="keywords" content="Genetic Kundli, DNA test India, genetic testing, preventive genomics, health risk report, cancer screening, personalized medicine">
+<meta name="author" content="Genetic Kundli">
+
+<!-- ✅ Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:title" content="Genetic Kundli – A Step Towards Personalised Care.">
+<meta property="og:description" content="Discover your unique genetic profile and uncover risks for cancer, heart disease, diabetes, and more. Get a personalized DNA-based health report.">
+<meta property="og:image" content="https://genetickundli.in/images/preview.png">
+<meta property="og:url" content="https://genetickundli.in/">
+<meta property="og:type" content="website">
+
+<!-- ✅ Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Genetic Kundli - Your DNA-Based Health Blueprint">
+<meta name="twitter:description" content="Uncover your genetic risks and receive actionable health recommendations with Genetic Kundli.">
+<meta name="twitter:image" content="https://genetickundli.in/images/preview.png">
+
+<!-- ✅ Canonical URL -->
+<link rel="canonical" href="https://genetickundli.in/">
+
+<!-- ✅ Schema Markup (Structured Data for Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Genetic Kundli",
+  "url": "https://genetickundli.in",
+  "logo": "https://genetickundli.in/images/logo.png",
+  "slogan": "A step towards personalised care",
+  "description": "Genetic Kundli provides personalized DNA-based health insights, including cancer risk assessment, cardiovascular predispositions, pharmacogenomics, and metabolic health recommendations. NGS-based panels and personalised genomic reporting (Genetic Kundli) supporting clinician-guided care.",
+  "email": "info@genetickundli.in",
+  "sameAs": [
+    "https://www.facebook.com/genetickundli",
+    "https://www.instagram.com/genetickundli",
+    "https://www.linkedin.com/company/genetickundli"
+  ],
+  "medicalSpecialty": ["Oncologic", "Cardiovascular", "Neurologic", "Genetic"],
+  "areaServed": "IN",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "email": "info@genetickundli.in"
+  }
+}
+</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
@@ -47,7 +99,7 @@
         <!-- Logo + Title -->
         <a href="#top" class="flex items-center gap-3 group">
           <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 grid place-items-center shadow-md group-hover:scale-110 transition-transform">
-            <img src="LOGO1.png" alt="Logo" class="h-10 w-10 object-cover rounded-xl">
+            <img src="LOGO1.png" alt="Logo" class="h-10 w-10 object-cover rounded-xl" loading="lazy">
           </div>
           <div>
             <p class="text-lg font-bold tracking-tight text-gray-800 group-hover:text-indigo-600 transition-colors">Genetic Kundli</p>
@@ -435,21 +487,21 @@
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold">Frequently asked questions</h2>
       <div class="mt-6 space-y-3" id="faqList">
-        <details class="group rounded-xl border border-gray-200 bg-white p-5">
+        <details class="group rounded-xl border border-gray-200 bg-white p-5" aria-expanded="false">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">Is this a diagnostic test?
             <span class="ml-4 text-gray-500 group-open:hidden">+</span>
             <span class="ml-4 text-gray-500 hidden group-open:inline">−</span>
           </summary>
           <p class="mt-3 text-sm text-gray-600">Reports are informational and designed to support clinical conversations. Clinical correlation and confirmatory testing may be required as per guidelines.</p>
         </details>
-        <details class="group rounded-xl border border-gray-200 bg-white p-5">
+        <details class="group rounded-xl border border-gray-200 bg-white p-5" aria-expanded="false">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">Which sample types are accepted?
             <span class="ml-4 text-gray-500 group-open:hidden">+</span>
             <span class="ml-4 text-gray-500 hidden group-open:inline">−</span>
           </summary>
           <p class="mt-3 text-sm text-gray-600">Saliva and blood for germline; FFPE tissue or plasma for tumour/ctDNA depending on the assay.</p>
         </details>
-        <details class="group rounded-xl border border-gray-200 bg-white p-5">
+        <details class="group rounded-xl border border-gray-200 bg-white p-5" aria-expanded="false">
           <summary class="cursor-pointer font-semibold flex items-center justify-between">Do you offer re‑analysis?
             <span class="ml-4 text-gray-500 group-open:hidden">+</span>
             <span class="ml-4 text-gray-500 hidden group-open:inline">−</span>
@@ -479,7 +531,7 @@
 
     <!-- Buttons -->
     <div class="mt-6 flex flex-wrap gap-3 text-sm">
-      <a href="https://wa.me/" class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">
+      <a href="https://wa.me/+919876543210" class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">
         WhatsApp
       </a>
       <a href="#" class="px-4 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">
@@ -504,22 +556,6 @@
     </div>
   </footer>
 
-  <!-- JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "Genetic Kundli",
-    "url": "https://genetickundli.in",
-    "slogan": "A step towards personalised care",
-    "description": "NGS-based panels and personalised genomic reporting (Genetic Kundli) supporting clinician-guided care.",
-    "email": "info@genetickundli.in",
-    "sameAs": [],
-    "medicalSpecialty": ["Oncologic", "Cardiovascular", "Neurologic", "Genetic"],
-    "areaServed": "IN"
-  }
-  </script>
-
   <!-- Interactivity: search filter & theme toggle -->
   <script>
     // Year
@@ -528,12 +564,16 @@
     // Panel search filter
     const input = document.getElementById('panelSearch');
     const cards = Array.from(document.querySelectorAll('.panel-card'));
+    let timeout;
     input?.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      cards.forEach(card => {
-        const hay = (card.textContent + ' ' + (card.dataset.keys||'')).toLowerCase();
-        card.style.display = hay.includes(q) ? '' : 'none';
-      });
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const q = e.target.value.toLowerCase();
+        cards.forEach(card => {
+          const hay = (card.textContent + ' ' + (card.dataset.keys||'')).toLowerCase();
+          card.style.display = hay.includes(q) ? '' : 'none';
+        });
+      }, 300);
     });
 
     // Theme toggle (simple high-contrast switch)
@@ -541,7 +581,7 @@
     let dark = false;
     toggle?.addEventListener('click', () => {
       dark = !dark;
-      document.documentElement.classList.toggle('invert');
+      document.documentElement.classList.toggle('dark');
       document.body.classList.toggle('bg-gray-900');
     });
   </script>
