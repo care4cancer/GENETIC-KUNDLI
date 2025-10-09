@@ -162,7 +162,7 @@
 </header>
   
   <!-- Hero -->
-  <section id="top" class="relative pt-20 pb-14 bg-grid">
+    <section id="top" class="relative pt-20 pb-14 bg-grid">
   <div class="absolute inset-0 bg-gradient-to-b from-brand-800/10 via-gray-50 dark:via-gray-800 to-gray-50 dark:to-gray-800 pointer-events-none"></div>
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-8 items-center">
@@ -207,42 +207,49 @@
     </div>
   </div>
 </section>
-
+  
   <!-- How it works -->
   <section id="how" class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-1">
-          <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">How it works</h2>
-          <p class="mt-4 text-gray-600 dark:text-gray-400">A clear, compliant workflow from kit to report.</p>
-          <ul class="mt-6 space-y-3 text-gray-600 dark:text-gray-400 text-sm list-disc pl-5">
-            <li>Assay selection matched to indication (panel/exome/genome).</li>
-            <li>Validated library prep, sequencers (≥150× target depth for panels).</li>
-            <li>Pipeline: QC → Alignment → Variant Calling → Annotation → Review.</li>
-            <li>Interpretation per ACMG/AMP & ClinGen; pharmacogenomics CPIC‑aligned.</li>
-          </ul>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">How it works</h2>
+    <p class="mt-4 text-gray-600 dark:text-gray-400">A clear, compliant workflow from kit to report.</p>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6 shadow-md">
+          <div class="flex justify-start mb-2">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-500 text-white text-xs font-bold">1</span>
+          </div>
+          <img src="https://www.dnagenotek.com/images/product-images/OGR-575-US.jpg" alt="DNA sample collection kit for genetic testing saliva or blood" class="mb-4 rounded-lg w-full h-48 object-cover" loading="lazy">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Sample & Logistics</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Saliva (2 ml) / EDTA blood (3–5 ml). Smart tracking, cold‑chain where required, consent + TRF. We provide easy-to-use collection kits for at-home or clinic-based sampling. Samples are securely transported to our partner labs with full chain-of-custody documentation to ensure integrity and privacy throughout the process.</p>
         </div>
-        <div class="lg:col-span-2 grid md:grid-cols-2 gap-6">
-          <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6">
-            <h3 class="font-semibold text-gray-900 dark:text-white">Sample & Logistics</h3>
-            <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Saliva (2 ml) / EDTA blood (3–5 ml). Smart tracking, cold‑chain where required, consent + TRF.</p>
+        <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6 shadow-md">
+          <div class="flex justify-start mb-2">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-500 text-white text-xs font-bold">2</span>
           </div>
-          <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6">
-            <h3 class="font-semibold text-gray-900 dark:text-white">Sequencing & QC</h3>
-            <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Targeted panels (hybrid‑capture/amplicon) or exome; uniformity ≥90%, on‑target ≥70%.</p>
+          <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP2.png" alt="Illumina Next Generation Sequencing machine in lab" class="mb-4 rounded-lg w-full h-48 object-cover" loading="lazy">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Sequencing & QC</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Targeted panels (hybrid‑capture/amplicon) or exome; uniformity ≥90%, on‑target ≥70%. Using state-of-the-art NGS platforms like Illumina, we ensure high-quality data generation with rigorous quality checks at every step to minimize errors and achieve reliable sequencing results.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6 shadow-md">
+          <div class="flex justify-start mb-2">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-500 text-white text-xs font-bold">3</span>
           </div>
-          <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6">
-            <h3 class="font-semibold text-gray-900 dark:text-white">Bioinformatics</h3>
-            <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">BWA/GATK‑class pipeline, CNV/SV support, HGVS nomenclature, transcript selection best‑practice.</p>
+          <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP3.png" alt="Bioinformatics pipeline diagram for genomic variant analysis" class="mb-4 rounded-lg w-full h-48 object-cover" loading="lazy">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Bioinformatics</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">BWA/GATK‑class pipeline, CNV/SV support, HGVS nomenclature, transcript selection best‑practice. Our automated yet expert-reviewed pipeline processes raw data into meaningful variants, incorporating the latest databases like ClinVar and gnomAD for accurate annotation and classification.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6 shadow-md">
+          <div class="flex justify-start mb-2">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-brand-500 text-white text-xs font-bold">4</span>
           </div>
-          <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-6">
-            <h3 class="font-semibold text-gray-900 dark:text-white">Reporting</h3>
-            <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Tiered variants, actionability notes, therapy/clinical trial pointers (informational), and re‑analysis option.</p>
-          </div>
+          <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP4.png" alt="Sample genetic test report PDF preview" class="mb-4 rounded-lg w-full h-48 object-cover" loading="lazy">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Reporting</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Tiered variants, actionability notes, therapy/clinical trial pointers (informational), and re‑analysis option. The final Genetic Kundli report is delivered digitally in PDF format, with clear visualizations, evidence-based references, and actionable insights to empower clinicians in making informed, personalized care decisions.</p>
         </div>
       </div>
-    </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Disease Panels -->
   <section id="panels" class="py-20 bg-gray-50 dark:bg-gray-800">
