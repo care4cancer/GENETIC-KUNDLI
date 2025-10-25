@@ -140,10 +140,17 @@
   </a>
 
   <!-- Theme Toggle Button -->
-  <button id="themeToggle" class="p-2 rounded-xl bg-gray-100/80 dark:bg-gray-700/80 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-700 transition-colors" aria-label="Toggle theme">
-    <img id="sunIcon" src="SUN.png" alt="Light Mode" class="h-10 w-10 block dark:hidden transition-all duration-300" />
-    <img id="moonIcon" src="MOON.png" alt="Dark Mode" class="h-10 w-10 hidden dark:block transition-all duration-300" />
-  </button>
+<button id="themeToggle" 
+  class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md 
+         hover:scale-110 hover:rotate-6 transition-transform duration-300 p-0"
+  aria-label="Toggle theme">
+  
+  <img id="sunIcon" src="SUN.png" alt="Light Mode" 
+       class="h-10 w-10 object-cover rounded-xl block dark:hidden transition-all duration-300" />
+  <img id="moonIcon" src="MOON.png" alt="Dark Mode" 
+       class="h-10 w-10 object-cover rounded-xl hidden dark:block transition-all duration-300" />
+</button>
+
 
   <!-- Hamburger Menu -->
   <button id="hamburger" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
