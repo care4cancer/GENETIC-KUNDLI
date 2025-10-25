@@ -145,10 +145,9 @@
          hover:scale-110 hover:rotate-6 transition-transform duration-300 p-0"
   aria-label="Toggle theme">
   
-  <img id="sunIcon" src="SUN.png" alt="Light Mode" 
-       class="h-10 w-10 object-cover rounded-xl block dark:hidden transition-all duration-300" />
-  <img id="moonIcon" src="MOON.png" alt="Dark Mode" 
-       class="h-10 w-10 object-cover rounded-xl hidden dark:block transition-all duration-300" />
+  <img id="sunIcon" src="SUN.png" alt="Light Mode" class="h-10 w-10 object-cover rounded-xl block transition-all duration-300" />
+<img id="moonIcon" src="MOON.png" alt="Dark Mode" class="h-10 w-10 object-cover rounded-xl hidden transition-all duration-300" />
+
 </button>
 
 
@@ -602,11 +601,11 @@
       const sunIcon = document.getElementById('sunIcon');
       const moonIcon = document.getElementById('moonIcon');
       toggle?.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-        localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        sunIcon.classList.toggle('hidden');
-        moonIcon.classList.toggle('hidden');
-      });
+  document.documentElement.classList.toggle('dark');
+  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  sunIcon.classList.toggle('hidden');
+  moonIcon.classList.toggle('hidden');
+});
 
       // Mobile Menu
       const hamburger = document.getElementById('hamburger');
