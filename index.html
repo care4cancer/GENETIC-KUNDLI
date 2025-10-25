@@ -135,22 +135,24 @@
 
           <!-- Buttons -->
           <div class="flex items-center gap-3">
-            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">Get Started</a>
-            <button id="themeToggle" class="p-2 rounded-xl bg-gray-100/80 dark:bg-gray-700/80 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-700 transition-colors" aria-label="Toggle theme">
-              <svg id="sunIcon" class="h-5 w-5 text-gray-600 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 18a6 6 0 1 0 0-12a6 6 0 0 0 0 12m0 4a1 1 0 0 1-1-1v-1h2v1a1 1 0 0 1-1 1M5 13H4a1 1 0 0 1 0-2h1v2m15 0h-1v-2h1a1 1 0 0 1 0 2M6.22 19.78a1 1 0 0 1-1.41-1.41l.71-.71l1.41 1.41l-.71.71M18.48 7.05l-.71.71l-1.41-1.41l.71-.71a1 1 1 0 1 1 1.41 1.41M4.81 7.76a1 1 0 0 1 1.41-1.41l.71.71L5.52 8.47l-.71-.71M17.78 19.78l-.71-.71l1.41-1.41l.71.71a1 1 0 0 1-1.41 1.41"/>
-              </svg>
-              <svg id="moonIcon" class="h-5 w-5 text-gray-600 dark:text-gray-300 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3a9 9 0 0 0 9 9c0 .74-.1 1.46-.27 2.15-.17.69-.78 1.2-1.48 1.2H4.75c-.7 0-1.31-.51-1.48-1.2C3.1 13.46 3 12.74 3 12a9 9 0 0 1 9-9z"/>
-              </svg>
-            </button>
-            <button id="hamburger" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-              </svg>
-            </button>
-          </div>
-        </div>
+  <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">
+    Get Started
+  </a>
+
+  <!-- Theme Toggle Button -->
+  <button id="themeToggle" class="p-2 rounded-xl bg-gray-100/80 dark:bg-gray-700/80 hover:bg-gray-200 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-700 transition-colors" aria-label="Toggle theme">
+    <img id="sunIcon" src="images/sun.png" alt="Light Mode" class="h-5 w-5 block dark:hidden transition-all duration-300" />
+    <img id="moonIcon" src="images/moon.png" alt="Dark Mode" class="h-5 w-5 hidden dark:block transition-all duration-300" />
+  </button>
+
+  <!-- Hamburger Menu -->
+  <button id="hamburger" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+    <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+    </svg>
+  </button>
+</div>
+
         <!-- Mobile Navigation -->
         <nav id="mobile-menu" class="hidden md:hidden flex flex-col gap-0 text-base font-medium border-t border-gray-200 dark:border-gray-700">
     <a href="#how" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">How it works</a>
