@@ -13,7 +13,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Genetic Kundli – A Step Towards Personalised Care">
-  <meta property="og:description" content="Discover your unique genetic profile and uncover risks for cancer, heart disease, diabetes, and more. Get a personalized DNA-based health report.">
+  <meta property="og:description" content="Discover your unique genetic profile and uncover risks for cancer, heart, diabetes, and more. Get a personalized DNA-based health report.">
   <meta property="og:image" content="https://genetickundli.in/images/preview.png">
   <meta property="og:url" content="https://genetickundli.in/">
   <meta property="og:type" content="website">
@@ -64,7 +64,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -96,7 +96,7 @@
       background-size: 24px 24px;
     }
     .backdrop-blur-8 { backdrop-filter: blur(8px); }
-}
+    .new-badge { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200; }
   </style>
 
   <!-- Theme Persistence -->
@@ -107,6 +107,7 @@
   </script>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+
   <!-- Header -->
   <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -135,769 +136,585 @@
 
           <!-- Buttons -->
           <div class="flex items-center gap-3">
-  <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">
-    Get Started
-  </a>
+            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">
+              Get Started
+            </a>
 
-  <!-- Theme Toggle Button -->
-<button id="themeToggle" 
-  class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md 
-         hover:scale-110 hover:rotate-6 transition-transform duration-300 p-0"
-  aria-label="Toggle theme">
-  
-  <img id="sunIcon" src="SUN.png" alt="Light Mode" class="h-10 w-10 object-cover rounded-xl block transition-all duration-300" />
-<img id="moonIcon" src="MOON.png" alt="Dark Mode" class="h-10 w-10 object-cover rounded-xl hidden transition-all duration-300" />
+            <!-- Theme Toggle Button -->
+            <button id="themeToggle" 
+              class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md 
+                     hover:scale-110 hover:rotate-6 transition-transform duration-300 p-0"
+              aria-label="Toggle theme">
+              <img id="sunIcon" src="SUN.png" alt="Light Mode" class="h-10 w-10 object-cover rounded-xl block transition-all duration-300" />
+              <img id="moonIcon" src="MOON.png" alt="Dark Mode" class="h-10 w-10 object-cover rounded-xl hidden transition-all duration-300" />
+            </button>
 
-</button>
+            <!-- Hamburger Menu -->
+            <button id="hamburger" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+            </button>
+          </div>
 
-
-  <!-- Hamburger Menu -->
-  <button id="hamburger" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
-    <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-    </svg>
-  </button>
-</div>
-
-        <!-- Mobile Navigation -->
-        <nav id="mobile-menu" class="hidden md:hidden flex flex-col gap-0 text-base font-medium border-t border-gray-200 dark:border-gray-700">
-    <a href="#how" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">How it works</a>
-    <a href="#panels" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Disease Panels</a>
-    <a href="#reports" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Genetic Kundli</a>
-    <a href="#pricing" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Pricing</a>
-    <a href="#ethics" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Consent & Ethics</a>
-    <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Contact</a>
-</nav>
+          <!-- Mobile Navigation -->
+          <nav id="mobile-menu" class="hidden md:hidden flex flex-col gap-0 text-base font-medium border-t border-gray-200 dark:border-gray-700">
+            <a href="#how" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">How it works</a>
+            <a href="#panels" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Disease Panels</a>
+            <a href="#reports" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Genetic Kundli</a>
+            <a href="#pricing" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Pricing</a>
+            <a href="#ethics" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Consent & Ethics</a>
+            <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Contact</a>
+          </nav>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
   <section id="top" class="relative pt-32 pb-20 bg-cover bg-center overflow-hidden" style="background-image: url('GK1.png');">
-    
     <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div> 
-    
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-        <div class="max-w-5xl mx-auto space-y-6"> 
-            
-            <h1 class="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-tight text-white drop-shadow-lg">
-                Decode your DNA, <br class="inline-block"><span class="text-red-400">Design your care.</span>
-            </h1>
-            
-            <div class="pt-6 flex flex-wrap gap-4 justify-center">
-                <a href="#how" class="px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-xl font-bold text-white uppercase tracking-wider">
-                    See how it works
-                </a>
-                <a href="#panels" class="px-7 py-3 rounded-full border-2 border-red-500 hover:bg-red-500 hover:text-white transition duration-300 transform hover:scale-105 shadow-md font-bold text-white uppercase tracking-wider">
-                    Explore Disease Panels
-                </a>
-            </div>
-            
-            <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm text-gray-300 justify-center pt-4 border-t border-white/10">
-                <div class="flex items-center gap-2 font-medium">
-                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span> NABL-ready lab partners
-                </div>
-                <div class="flex items-center gap-2 font-medium">
-                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span> HIPAA/GDPR-aligned data handling
-                </div>
-            </div>
+      <div class="max-w-5xl mx-auto space-y-6"> 
+        <h1 class="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-tight text-white drop-shadow-lg">
+          Decode your DNA, <br class="inline-block"><span class="text-red-400">Design your care.</span>
+        </h1>
+        <div class="pt-6 flex flex-wrap gap-4 justify-center">
+          <a href="#how" class="px-7 py-3 rounded-full bg-red-600 hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-xl font-bold text-white uppercase tracking-wider">
+            See how it works
+          </a>
+          <a href="#panels" class="px-7 py-3 rounded-full border-2 border-red-500 hover:bg-red-500 hover:text-white transition duration-300 transform hover:scale-105 shadow-md font-bold text-white uppercase tracking-wider">
+            Explore Disease Panels
+          </a>
         </div>
-    </div>
-</section>
-
-  
-    <!-- How It Works -->
-<section id="how" class="py-20 bg-gray-50 dark:bg-gray-800">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">
-      How Your Genetic Kundli Is Created.
-    </h2>
-    <p class="mt-4 text-gray-600 dark:text-gray-400">
-      Decoding your DNA in 4 Seamless Steps.
-    </p>
-
-    <!-- Accordion container -->
-    <div class="mt-8 space-y-4">
-     
-<!-- ==== STEP 1 ==== -->
-<details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
-  <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
-    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
-      1
-    </span>
-    Sample & Logistics
-    <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </summary>
-
-  <div class="border-t border-gray-200 dark:border-gray-700 p-6">
-    <!-- IMAGE LEFT | TEXT RIGHT -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-      <!-- IMAGE – stretches to full column height -->
-      <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP1.png"
-           alt="DNA sample collection kit for genetic testing saliva or blood"
-           class="w-full h-full min-h-48 rounded-lg object-cover md:min-h-0">
-
-      <!-- SIMPLE LITERATURE -->
-      <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-        <h4 class="font-semibold text-base text-gray-900 dark:text-white">Sample & Logistics – Simple Guide</h4>
-
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">1. Types of Sample</h5>
-          <ul class="mt-1 space-y-1 list-disc list-inside">
-            <li><strong>Saliva:</strong> 2 ml (simple spit in a tube)</li>
-            <li><strong>Blood:</strong> 3–5 ml in EDTA tube (drawn by a nurse or phlebotomist)</li>
-          </ul>
-        </div>
-
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">2. How to Submit Sample</h5>
-          <ul class="mt-1 space-y-1 list-disc list-inside">
-            <li>Use the <strong>easy collection kit</strong> we send you</li>
-            <li>Collect at <strong>home</strong> or at a <strong>clinic</strong></li>
-            <li>Seal, label, and drop in the <strong>pre-paid courier bag</strong></li>
-            <li>Smart tracking + cold-chain (if needed) keeps sample safe</li>
-          </ul>
-        </div>
-
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">3. Privacy & Safety</h5>
-          <ul class="mt-1 space-y-1 list-disc list-inside">
-            <li>Your <strong>consent form (TRF)</strong> is mandatory</li>
-            <li>Full <strong>chain-of-custody</strong> from you to the lab</li>
-            <li>Samples are <strong>coded</strong>, not named</li>
-            <li>Data protected under strict privacy laws</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</details>
-      <!-- ==== STEP 2 ==== -->
-<details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
-  <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
-    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
-      2
-    </span>
-    Sequencing & QC
-    <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </summary>
-
-  <div class="border-t border-gray-200 dark:border-gray-700 p-6">
-    <!-- IMAGE LEFT | TEXT RIGHT – matches Step 1 -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-      <!-- IMAGE – stretches to full column height -->
-      <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP2.png"
-           alt="Illumina Next Generation Sequencing machine in lab"
-           class="w-full h-full min-h-48 rounded-lg object-cover md:min-h-0">
-
-            <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-        <h4 class="font-semibold text-base text-gray-900 dark:text-white">Sequencing & QC – Detailed Guide</h4>
-
-        <!-- What is Sequencing? -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">What is Sequencing?</h5>
-          <p class="mt-1">
-            Sequencing means <strong>reading the exact order of the DNA letters (A, T, C, G)</strong> in your sample — just like reading a book, one word at a time.</p>
-        </div>
-
-        <!-- What is QC? -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">What is QC (Quality Control)?</h5>
-          <p class="mt-1">
-            QC = <strong>Quality Checks</strong>. It’s like a <strong>double-check system</strong> at every step to make sure the DNA reading is <strong>accurate, complete, and trustworthy</strong> before sending results to your doctor.
-          </p>
-        </div>
-
-        <!-- Step-by-Step -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Step-by-Step: How It Works</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Step</th>
-                  <th class="px-2 py-1 text-left font-medium">What Happens</th>
-                  <th class="px-2 py-1 text-left font-medium">Why It Matters</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">1. DNA Preparation</td>
-                  <td class="px-2 py-1">Your sample arrives. DNA is extracted and broken into tiny pieces.</td>
-                  <td class="px-2 py-1">Clean DNA = accurate reading.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">2. Library Preparation</td>
-                  <td class="px-2 py-1">Tags (adapters) added so machines can read DNA.</td>
-                  <td class="px-2 py-1">Allows millions of pieces to be read at once.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">3. Target Capture</td>
-                  <td class="px-2 py-1">Magnetic beads grab only key genes (e.g., BRCA1, TP53).</td>
-                  <td class="px-2 py-1">Saves time — skips junk DNA.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">4. Sequencing</td>
-                  <td class="px-2 py-1">DNA flows in a flow cell. Camera reads colored lights (A=green, etc.).</td>
-                  <td class="px-2 py-1">Generates billions of 150-letter reads.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">5. QC Checks</td>
-                  <td class="px-2 py-1">Computers check clarity, balance, accuracy.</td>
-                  <td class="px-2 py-1">Catches errors early.</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm text-gray-300 justify-center pt-4 border-t border-white/10">
+          <div class="flex items-center gap-2 font-medium">
+            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span> NABL-ready lab partners
           </div>
-        </div>
-
-        <!-- Key Metrics -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Key Quality Metrics (We Promise!)</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Metric</th>
-                  <th class="px-2 py-1 text-left font-medium">Target</th>
-                  <th class="px-2 py-1 text-left font-medium">What It Means</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">Uniformity</td>
-                  <td class="px-2 py-1">≥90%</td>
-                  <td class="px-2 py-1">All genes read evenly — no missed spots.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">On-Target Rate</td>
-                  <td class="px-2 py-1">≥70%</td>
-                  <td class="px-2 py-1">Most reads are from intended genes.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Coverage Depth</td>
-                  <td class="px-2 py-1">100x–1000x</td>
-                  <td class="px-2 py-1">Each letter read 100–1000 times.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Error Rate</td>
-                  <td class="px-2 py-1">&lt;1 in 10,000</td>
-                  <td class="px-2 py-1">Extremely low error chance.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Example -->
-        <p class="text-xs italic">
-          <strong>Example:</strong> If a gene has a mutation, we need to see it <strong>clearly and repeatedly</strong> — not just once by chance.
-        </p>
-
-        <!-- Types -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Types of Sequencing We Use</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Type</th>
-                  <th class="px-2 py-1 text-left font-medium">What It Covers</th>
-                  <th class="px-2 py-1 text-left font-medium">Best For</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">Targeted Gene Panel</td>
-                  <td class="px-2 py-1">50–500 cancer genes</td>
-                  <td class="px-2 py-1">Fast, affordable, focused</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Whole Exome</td>
-                  <td class="px-2 py-1">~22,000 protein-coding genes</td>
-                  <td class="px-2 py-1">Broader screening</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Hybrid-Capture / Amplicon</td>
-                  <td class="px-2 py-1">Two DNA capture methods</td>
-                  <td class="px-2 py-1">Both highly accurate</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="flex items-center gap-2 font-medium">
+            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span> HIPAA/GDPR-aligned data handling
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</details>
-
-<!-- ==== STEP 3 ==== -->
-<details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
-  <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
-    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
-      3
-    </span>
-    Bioinformatics
-    <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </summary>
-
-  <div class="border-t border-gray-200 dark:border-gray-700 p-6">
-    <!-- IMAGE LEFT | TEXT RIGHT – matches Step 1 & 2 -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-      <!-- IMAGE – stretches to full column height -->
-      <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP3.png"
-           alt="Bioinformatics pipeline diagram for genomic variant analysis"
-           class="w-full h-full min-h-48 rounded-lg object-cover md:min-h-0">
-
-      <!-- FULL DETAILED LITERATURE -->
-      <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-        <h4 class="font-semibold text-base text-gray-900 dark:text-white">Bioinformatics – Detailed, Patient-Friendly Guide</h4>
-
-        <!-- What is Bioinformatics? -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">What is Bioinformatics?</h5>
-          <p class="mt-1">
-            <strong>Bioinformatics = Turning raw DNA data into meaningful health insights.</strong>
-          </p>
-          <p class="mt-1">
-            Think of it like this:<br>
-            <strong>Step 2</strong> gave us billions of DNA “words”<br>
-            <strong>Step 3</strong> reads them, finds <strong>spelling mistakes (mutations)</strong>, and tells us <strong>what they mean for your health</strong>.
-          </p>
-          <p class="mt-1">
-            We use <strong>smart computers + expert scientists</strong> to do this <strong>accurately and fast</strong>.
-          </p>
-        </div>
-
-        <!-- Pipeline -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">What Does the Pipeline Do?</h5>
-          <p class="mt-1">
-            Our <strong>BWA/GATK-class pipeline</strong> is the <strong>gold standard</strong> in clinical genomics — used by top labs worldwide. It’s <strong>automated but never fully automatic</strong> — every result is <strong>reviewed by a human expert</strong>.
-          </p>
-        </div>
-
-        <!-- Step-by-Step -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Step-by-Step: How It Works</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Step</th>
-                  <th class="px-2 py-1 text-left font-medium">What Happens</th>
-                  <th class="px-2 py-1 text-left font-medium">Why It Matters</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">1. Align DNA Reads</td>
-                  <td class="px-2 py-1">Billions of short DNA pieces are lined up to the human genome map using <strong>BWA</strong> (like putting puzzle pieces in place).</td>
-                  <td class="px-2 py-1">Ensures we know <em>exactly where</em> each DNA letter belongs.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">2. Clean & Refine</td>
-                  <td class="px-2 py-1">Fix errors from the machine (e.g., duplicates, misreads) using <strong>GATK</strong> tools.</td>
-                  <td class="px-2 py-1">Removes noise so only <em>real changes</em> remain.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">3. Find Variants</td>
-                  <td class="px-2 py-1">Look for spelling mistakes (SNPs, indels), missing chunks (CNVs), and rearrangements (SVs).</td>
-                  <td class="px-2 py-1">Catches <em>all types</em> of DNA changes, not just small ones.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">4. Name Changes Correctly</td>
-                  <td class="px-2 py-1">Use <strong>HGVS nomenclature</strong> — the universal language of genetics (e.g., <code>c.123A>G</code>).</td>
-                  <td class="px-2 py-1">Doctors worldwide understand the <em>exact mutation</em>.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">5. Pick the Right Transcript</td>
-                  <td class="px-2 py-1">Genes have multiple “versions” — we pick the <strong>most trusted one</strong> (e.g., MANE) using best practices.</td>
-                  <td class="px-2 py-1">Avoids confusion — same gene, same meaning.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">6. Add Meaning (Annotation)</td>
-                  <td class="px-2 py-1">Compare variants to <strong>ClinVar</strong> (known diseases) and <strong>gnomAD</strong> (normal population).</td>
-                  <td class="px-2 py-1">Tells us: <em>“Is this dangerous, harmless, or unknown?”</em></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Key Features -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Key Features of Our Pipeline</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Feature</th>
-                  <th class="px-2 py-1 text-left font-medium">What It Means for You</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">BWA/GATK-class</td>
-                  <td class="px-2 py-1">Same tech as Harvard, Broad Institute, NHS — <strong>clinically proven</strong>.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">CNV/SV Support</td>
-                  <td class="px-2 py-1">Detects large deletions, duplications, inversions — <strong>critical in cancer</strong>.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">HGVS Nomenclature</td>
-                  <td class="px-2 py-1">Your mutation is written in <strong>standard medical code</strong> — no ambiguity.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Best-Practice Transcripts</td>
-                  <td class="px-2 py-1">We use <strong>MANE/RefSeq</strong> — the most reliable gene versions.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">ClinVar + gnomAD</td>
-                  <td class="px-2 py-1">Backed by <strong>millions of real patient & healthy DNA samples</strong>.</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Expert Review</td>
-                  <td class="px-2 py-1">A <strong>PhD bioinformatician + geneticist</strong> checks every report.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Example -->
-        <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg text-xs">
-          <p class="font-medium text-blue-900 dark:text-blue-200">Example: From Data to Diagnosis</p>
-          <p class="mt-1">
-            <code>A instead of G</code> at position 17,234,567 → 
-            <strong>HGVS: c.35G>A in BRCA1</strong> → 
-            <span class="font-medium text-red-600 dark:text-red-400">Pathogenic (per ClinVar) → High breast cancer risk</span>
-          </p>
-        </div>
-
-        <!-- Types of Variants -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Types of Variants We Detect</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Type</th>
-                  <th class="px-2 py-1 text-left font-medium">Example</th>
-                  <th class="px-2 py-1 text-left font-medium">Health Impact</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">SNV</td>
-                  <td class="px-2 py-1">Single letter change</td>
-                  <td class="px-2 py-1">Can turn a gene on/off</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Indel</td>
-                  <td class="px-2 py-1">Small insert/delete</td>
-                  <td class="px-2 py-1">May break a protein</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">CNV</td>
-                  <td class="px-2 py-1">Whole gene duplicated/deleted</td>
-                  <td class="px-2 py-1">Often linked to cancer</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">SV</td>
-                  <td class="px-2 py-1">Large rearrangement</td>
-                  <td class="px-2 py-1">Can fuse two genes</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</details>
-
-      <!-- ==== STEP 4 ==== -->
-<details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
-  <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
-    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
-      4
-    </span>
-    Reporting & Genetic Counseling
-    <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </summary>
-
-  <div class="border-t border-gray-200 dark:border-gray-700 p-6">
-    <!-- IMAGE LEFT | TEXT RIGHT – matches all steps -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-      <!-- IMAGE – stretches to full column height -->
-      <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP4.png"
-           alt="Sample genetic test report PDF preview"
-           class="w-full h-full min-h-48 rounded-lg object-cover md:min-h-0">
-
-      <!-- FULL DETAILED LITERATURE -->
-      <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-        <h4 class="font-semibold text-base text-gray-900 dark:text-white">Reporting & Genetic Counseling – Your Final Step</h4>
-
-        <!-- What is Reporting? -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">What is Reporting?</h5>
-          <p class="mt-1">
-            <strong>Reporting = Turning complex DNA results into a clear, actionable health report</strong> — your <strong>Genetic Kundli</strong>.
-          </p>
-          <p class="mt-1">It’s the <strong>final step</strong> where science meets care.</p>
-        </div>
-
-        <!-- What You Get -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">What You Get in Your Report</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">Feature</th>
-                  <th class="px-2 py-1 text-left font-medium">What It Means for You</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1 font-medium">Tiered Variants</td>
-                  <td class="px-2 py-1">Ranked by importance: Tier 1 (high risk) to Tier 4 (benign)</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Actionability Notes</td>
-                  <td class="px-2 py-1">Clear next steps (e.g., “start screening”)</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Therapy Pointers</td>
-                  <td class="px-2 py-1">Personalized drugs (e.g., PARP inhibitors)</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Clinical Trials</td>
-                  <td class="px-2 py-1">Eligible studies near you (informational)</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1 font-medium">Re-analysis</td>
-                  <td class="px-2 py-1">Free update if science changes meaning</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Report Format -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Your Final Report: Genetic Kundli PDF</h5>
-          <ul class="mt-1 space-y-1 list-disc list-inside">
-            <li><strong>Digital & Secure</strong> – Encrypted email</li>
-            <li><strong>Easy to Read</strong> – Charts, colors, simple words</li>
-            <li><strong>Evidence-Based</strong> – Backed by ClinVar, PubMed, FDA</li>
-            <li><strong>Actionable</strong> – Helps your doctor decide</li>
-          </ul>
-        </div>
-
-        <!-- Genetic Counseling -->
-        <div>
-          <h5 class="font-medium text-gray-900 dark:text-white">Genetic Counseling – Your Human Guide</h5>
-          <div class="mt-2 overflow-x-auto">
-            <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
-              <thead class="bg-gray-100 dark:bg-gray-700">
-                <tr>
-                  <th class="px-2 py-1 text-left font-medium">What It Is</th>
-                  <th class="px-2 py-1 text-left font-medium">Why It Matters</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
-                <tr>
-                  <td class="px-2 py-1">Pre-Test Counseling</td>
-                  <td class="px-2 py-1">Understand risks, benefits, family impact</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1">Post-Test Counseling</td>
-                  <td class="px-2 py-1">Explain results, answer fears</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1">Family Planning</td>
-                  <td class="px-2 py-1">Implications for children/siblings</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1">Emotional Support</td>
-                  <td class="px-2 py-1">Process anxiety, guilt, or relief</td>
-                </tr>
-                <tr>
-                  <td class="px-2 py-1">Follow-Up Plan</td>
-                  <td class="px-2 py-1">Schedule screenings or referrals</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mt-2 text-xs italic">
-            <strong>Included Free:</strong> 1-hour video call with a <strong>certified genetic counselor (CGC)</strong>.
-          </p>
-        </div>
-
-        <!-- Example -->
-        <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg text-xs">
-          <p class="font-medium text-green-900 dark:text-green-200">Example: From Variant to Action</p>
-          <p class="mt-1">
-            <strong>BRCA1 pathogenic</strong> → 
-            <strong>Tier 1 – High Risk</strong> → 
-            <span class="font-medium text-blue-600 dark:text-blue-400">Mammogram every 6 months + consider preventive options</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</details>
-      
-  <!-- Disease Panels -->
-  <section id="panels" class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">Comprehensive Disease Panels</h2>
-          <p class="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl">Indicative catalogue across oncology, cardiogenetics, neurogenetics, rare disease, pharmacogenomics, and reproductive health. Panels evolve with guidelines; custom panels available.</p>
-        </div>
-        <div class="w-full sm:w-auto">
-          <label for="panelSearch" class="sr-only">Search panels or genes</label>
-          <input id="panelSearch" type="text" placeholder="Search panels or genes..." class="w-full sm:w-80 px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500" aria-label="Search panels or genes">
-        </div>
-      </div>
-      <div id="panelContainer" class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Oncology: Solid Tumours -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="oncology solid tumor breast brca ovarian lung egfr alk ros1 braf kras nras her2 erbb2 colorectal apc msi mlh1 msh2 msh6 pms2 prostate brca1 brca2 atm chek2 pten idh1 idh2 melanoma braf kit">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Oncology – Solid Tumour Panels</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Site‑specific and pan‑cancer options for therapy selection & hereditary risk.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Breast/Ovarian:</span> BRCA1, BRCA2, PALB2, CHEK2, ATM, PTEN, TP53, CDH1, RAD51C/D.</li>
-            <li><span class="font-medium">Lung (NSCLC):</span> EGFR, ALK, ROS1, BRAF, KRAS (incl. G12C), MET exon14, RET, NTRK1‑3, HER2/ERBB2.</li>
-            <li><span class="font-medium">Colorectal:</span> KRAS/NRAS, BRAF, MSI/dMMR (MLH1, MSH2, MSH6, PMS2), APC, PIK3CA.</li>
-            <li><span class="font-medium">Prostate:</span> BRCA1/2, ATM, CHEK2, HOXB13, PTEN, MSH2, CDK12.</li>
-            <li><span class="font-medium">Melanoma:</span> BRAF, NRAS, KIT, NF1.</li>
-            <li><span class="font-medium">Glioma:</span> IDH1/2, 1p/19q codeletion (CNV), TERT, ATRX, TP53.</li>
-            <li><span class="font-medium">Pan‑Cancer (50–500 genes):</span> Actionable SNVs/indels, CNVs, fusions.</li>
-          </ul>
-        </div>
-        <!-- Oncology: Hematologic -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="oncology hematology aml myeloid myeloproliferative cll lymphoma mds mpn all">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Oncology – Hematologic</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Myeloid/lymphoid neoplasms for diagnosis, prognosis, minimal residual disease (MRD) support.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">AML/MDS:</span> FLT3, NPM1, DNMT3A, IDH1/2, RUNX1, ASXL1, TP53, TET2, SF3B1, SRSF2.</li>
-            <li><span class="font-medium">MPN:</span> JAK2, CALR, MPL, CSF3R.</li>
-            <li><span class="font-medium">CLL:</span> TP53, NOTCH1, SF3B1, BIRC3, MYD88; IGHV status (separate assay).</li>
-            <li><span class="font-medium">ALL:</span> IKZF1, CRLF2, JAK1/2, ABL1/2; key fusions (ETV6‑RUNX1, BCR‑ABL1).</li>
-            <li><span class="font-medium">Lymphoma:</span> MYD88, CD79B, EZH2, CARD11, BCL2/6 rearrangements.</li>
-          </ul>
-        </div>
-        <!-- Hereditary Cancer Risk -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="hereditary cancer lynch brca polyposis endocrine pheo paraganglioma men1 men2 ret tp53 li fraumeni">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Hereditary Cancer Predisposition</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Germline risk assessment panels.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Breast/Ovarian:</span> BRCA1/2, PALB2, CHEK2, ATM, PTEN, TP53, RAD51C/D, BRIP1.</li>
-            <li><span class="font-medium">Lynch Syndrome:</span> MLH1, MSH2, MSH6, PMS2, EPCAM.</li>
-            <li><span class="font-medium">Polyposis:</span> APC, MUTYH (biallelic), STK11, SMAD4, BMPR1A, POLE/POLD1.</li>
-            <li><span class="font-medium">Endocrine:</span> RET (MEN2), MEN1, VHL, SDHx (SDHB, SDHC, SDHD).</li>
-            <li><span class="font-medium">Li‑Fraumeni:</span> TP53 comprehensive.</li>
-          </ul>
-        </div>
-        <!-- Diabetes Panel -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="diabetes t1d t2d mody neonatal hla drb1 dqb1 ptpn22 ctla4 tcf7l2 fto kcnj11 abcc8 pparg gck hnf1a hnf4a hnf1b ins">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Diabetes Panel</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Covers common polygenic risk for T2D and rare monogenic forms.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Type 1 Diabetes (T1D):</span> HLA-DRB1, HLA-DQB1, PTPN22, CTLA4</li>
-            <li><span class="font-medium">Type 2 Diabetes (T2D):</span> TCF7L2, FTO, KCNJ11, ABCC8, PPARG</li>
-            <li><span class="font-medium">MODY:</span> GCK, HNF1A, HNF4A, HNF1B</li>
-            <li><span class="font-medium">Neonatal Diabetes:</span> KCNJ11, ABCC8, INS</li>
-          </ul>
-        </div>
-        <!-- Hypertension Panel -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="hypertension ace agt agtr1 nos3 liddle syndrome scnn1a scnn1b scnn1g cyp11b1 cyp11b2 kcnj5">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Hypertension Panel</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Risk assessment for essential and monogenic hypertension.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Essential Hypertension:</span> ACE, AGT, AGTR1, NOS3</li>
-            <li><span class="font-medium">Liddle Syndrome:</span> SCNN1A, SCNN1B, SCNN1G</li>
-            <li><span class="font-medium">Glucocorticoid-Remediable Aldosteronism:</span> CYP11B1, CYP11B2</li>
-            <li><span class="font-medium">Familial Hyperaldosteronism:</span> KCNJ5</li>
-          </ul>
-        </div>
-        <!-- Cardiogenetics -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="cardio cardiomyopathy hcm dcm arrhythmia long qt brugada arvc scd aortopathy marfan loeys dietz">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Cardiogenetics</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Inherited cardiomyopathy, arrhythmia, and aortopathy.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">HCM/DCM/ARVC:</span> MYH7, MYBPC3, TTN, DSP, PKP2, LMNA, TNNI3, TNNT2.</li>
-            <li><span class="font-medium">Channelopathies:</span> KCNQ1, KCNH2, SCN5A (LQTS, Brugada).</li>
-            <li><span class="font-medium">Aortopathy:</span> FBN1 (Marfan), TGFBR1/2, SMAD3, ACTA2.</li>
-          </ul>
-        </div>
-        <!-- Neurogenetics -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="neuro epilepsy neuropathy ataxia muscular dystrophy neurodegeneration alzheimer parkinson leukodystrophy">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Neurogenetics</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Epilepsy, neuromuscular, and neurodegenerative disorders.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Epilepsy:</span> SCN1A, SCN2A, KCNQ2/3, CDKL5, PCDH19, STXBP1.</li>
-            <li><span class="font-medium">Neuromuscular:</span> DMD, SMN1/2 (copy number), RYR1, COL6A1‑3.</li>
-            <li><span class="font-medium">Ataxia/Leukodystrophy:</span> FXN (FRDA), ATXN1/2/3, ABCD1, EIF2B genes.</li>
-            <li><span class="font-medium">Neurodegeneration (selected):</span> APP, PSEN1/2, MAPT, GRN, LRRK2, GBA.</li>
-          </ul>
-        </div>
-        <!-- Reproductive & Prenatal -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="carrier screening reproductive prenatal nipt aneuploidy thalassemia cftr sma fragile x">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Reproductive & Prenatal</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Carrier screening, prenatal (diagnostic), and NIPT*.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Expanded Carrier Screen:</span> CFTR, HBB/HBA (thalassemia), SMN1 (SMA), GJB2, PAH, G6PD and more (100–500 genes).</li>
-            <li><span class="font-medium">Prenatal Diagnostic (invasive):</span> Aneuploidy + microdeletions (CMA) and targeted single‑gene panels.</li>
-            <li><span class="font-medium">NIPT*:</span> Trisomy 21/18/13; sex chromosome aneuploidy (lab‑policy dependent). <span class="text-xs text-gray-500 dark:text-gray-400">*Screening, not diagnostic.</span></li>
-          </ul>
-        </div>
-        <!-- Rare Disease / Exome -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="rare disease exome genome trio mitochondrial mtDNA cnv sv metabolic inborn errors">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Rare Disease – Exome/Genome</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Undiagnosed disorders, developmental delay, metabolic disease.</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li><span class="font-medium">Clinical Exome (solo/duo/trio):</span> SNV/indel + clinically significant CNV.</li>
-            <li><span class="font-medium">Genome (selected):</span> SVs, non‑coding hotspots; mitochondrial add‑on.</li>
-            <li><span class="font-medium">Mitochondrial:</span> Full mtDNA with heteroplasmy estimation.</li>
-          </ul>
-        </div>
-        <!-- Pharmacogenomics -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="pharmacogenomics pgx cyp2d6 cyp2c19 cyp2c9 slco1b1 dpyd ugt1a1 ifnl3 hla b*15:02 b*57:01 cpic">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Pharmacogenomics (PGx)</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">Medication response & safety (CPIC‑aligned reporting).</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li>CYP2D6, CYP2C19, CYP2C9, VKORC1 (psych, PPI, anticoagulants).</li>
-            <li>SLCO1B1 (statin myopathy risk).</li>
-            <li>DPYD, UGT1A1 (oncology dosing safety).</li>
-            <li>HLA‑B*15:02 (carbamazepine), HLA‑B*57:01 (abacavir).</li>
-          </ul>
-        </div>
-        <!-- Liquid Biopsy / MRD -->
-        <div class="panel-card rounded-2xl border border-brand-500/40 bg-brand-50/50 dark:bg-brand-900/20 p-5" data-keys="liquid biopsy mrd ctDNA minimal residual disease tumor mutational burden tmb msi">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Liquid Biopsy & MRD (Oncology)</h3>
-          <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">ctDNA for actionable variants, tumour dynamics, and MSI/TMB (lab‑dependent).</p>
-          <ul class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc pl-5">
-            <li>Actionable hotspot panel (20–100 genes).</li>
-            <li>Personalised MRD (tumour‑informed) where applicable.</li>
-          </ul>
-        </div>
-      </div>
-      <p class="mt-6 text-xs text-gray-500 dark:text-gray-400">This catalogue is representative and updated as guidelines evolve (ACMG/AMP, NCCN/ESMO, CPIC). Gene lists may be tailored to clinical context and local regulations.</p>
     </div>
   </section>
+
+  <!-- How It Works -->
+  <section id="how" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">
+        How Your Genetic Kundli Is Created.
+      </h2>
+      <p class="mt-4 text-gray-600 dark:text-gray-400">
+        Decoding your DNA in 4 Seamless Steps.
+      </p>
+
+      <!-- Accordion container -->
+      <div class="mt-8 space-y-4">
+
+        <!-- STEP 1 -->
+        <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
+          <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">1</span>
+            Sample & Logistics
+            <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP1.png" alt="Sample collection" class="w-full h-full min-h-48 rounded-lg object-cover">
+              <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                <h4 class="font-semibold text-base text-gray-900 dark:text-white">Sample & Logistics – Simple Guide</h4>
+                <div><h5 class="font-medium">1. Types of Sample</h5><ul class="mt-1 space-y-1 list-disc list-inside"><li><strong>Saliva:</strong> 2 ml (simple spit in a tube)</li><li><strong>Blood:</strong> 3–5 ml in EDTA tube</li></ul></div>
+                <div><h5 class="font-medium">2. How to Submit Sample</h5><ul class="mt-1 space-y-1 list-disc list-inside"><li>Use the <strong>easy collection kit</strong> we send you</li><li>Collect at <strong>home</strong> or <strong>clinic</strong></li><li>Seal, label, drop in <strong>pre-paid courier bag</strong></li><li>Smart tracking + cold-chain</li></ul></div>
+                <div><h5 class="font-medium">3. Privacy & Safety</h5><ul class="mt-1 space-y-1 list-disc list-inside"><li><strong>Consent form (TRF)</strong> mandatory</li><li>Full <strong>chain-of-custody</strong></li><li>Samples <strong>coded</strong>, not named</li></ul></div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- STEP 2 -->
+        <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
+          <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">2</span>
+            Sequencing & QC
+            <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP2.png" alt="Sequencing machine" class="w-full h-full min-h-48 rounded-lg object-cover">
+              <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                <h4 class="font-semibold text-base text-gray-900 dark:text-white">Sequencing & QC – Detailed Guide</h4>
+                <div><h5 class="font-medium">What is Sequencing?</h5><p class="mt-1">Reading the exact order of DNA letters (A, T, C, G).</p></div>
+                <div><h5 class="font-medium">Step-by-Step</h5><div class="mt-2 overflow-x-auto"><table class="min-w-full text-xs border border-gray-300 dark:border-gray-600"><thead class="bg-gray-100 dark:bg-gray-700"><tr><th class="px-2 py-1 text-left font-medium">Step</th><th class="px-2 py-1 text-left font-medium">What Happens</th></tr></thead><tbody class="divide-y divide-gray-300 dark:divide-gray-600"><tr><td class="px-2 py-1 font-medium">1. DNA Prep</td><td class="px-2 py-1">Extract & break into pieces</td></tr><tr><td class="px-2 py-1 font-medium">2. Library</td><td class="px-2 py-1">Add tags</td></tr><tr><td class="px-2 py-1 font-medium">3. Capture</td><td class="px-2 py-1">Grab key genes</td></tr><tr><td class="px-2 py-1 font-medium">4. Sequencing</td><td class="px-2 py-1">Camera reads colors</td></tr></tbody></table></div></div>
+                <div><h5 class="font-medium">Key Metrics</h5><div class="mt-2 overflow-x-auto"><table class="min-w-full text-xs border border-gray-300 dark:border-gray-600"><thead class="bg-gray-100 dark:bg-gray-700"><tr><th class="px-2 py-1 text-left font-medium">Metric</th><th class="px-2 py-1 text-left font-medium">Target</th></tr></thead><tbody class="divide-y divide-gray-300 dark:divide-gray-600"><tr><td class="px-2 py-1 font-medium">Uniformity</td><td class="px-2 py-1">≥90%</td></tr><tr><td class="px-2 py-1 font-medium">Coverage</td><td class="px-2 py-1">100x–1000x</td></tr></tbody></table></div></div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- STEP 3 -->
+        <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
+          <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">3</span>
+            Bioinformatics
+            <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP3.png" alt="Bioinformatics pipeline" class="w-full h-full min-h-48 rounded-lg object-cover">
+              <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                <h4 class="font-semibold text-base text-gray-900 dark:text-white">Bioinformatics – Patient-Friendly Guide</h4>
+                <div><h5 class="font-medium">What is Bioinformatics?</h5><p class="mt-1">Turning raw DNA into health insights using BWA/GATK pipeline.</p></div>
+                <div><h5 class="font-medium">Step-by-Step</h5><div class="mt-2 overflow-x-auto"><table class="min-w-full text-xs border border-gray-300 dark:border-gray-600"><thead class="bg-gray-100 dark:bg-gray-700"><tr><th class="px-2 py-1 text-left font-medium">Step</th><th class="px-2 py-1 text-left font-medium">Action</th></tr></thead><tbody class="divide-y divide-gray-300 dark:divide-gray-600"><tr><td class="px-2 py-1 font-medium">1. Align</td><td class="px-2 py-1">Map to genome</td></tr><tr><td class="px-2 py-1 font-medium">2. Clean</td><td class="px-2 py-1">Remove errors</td></tr><tr><td class="px-2 py-1 font-medium">3. Variants</td><td class="px-2 py-1">Find SNVs, CNVs</td></tr><tr><td class="px-2 py-1 font-medium">4. Annotate</td><td class="px-2 py-1">ClinVar/gnomAD</td></tr></tbody></table></div></div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- STEP 4 -->
+        <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden">
+          <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold text-gray-900 dark:text-white">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">4</span>
+            Reporting & Genetic Counseling
+            <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/STEP4.png" alt="Report preview" class="w-full h-full min-h-48 rounded-lg object-cover">
+              <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                <h4 class="font-semibold text-base text-gray-900 dark:text-white">Reporting & Counseling</h4>
+                <div><h5 class="font-medium">What You Get</h5><ul class="mt-1 space-y-1 list-disc list-inside"><li>Tiered variants</li><li>Therapy pointers</li><li>PGx card</li><li>Free re-analysis</li></ul></div>
+                <div><h5 class="font-medium">Genetic Counseling</h5><p class="mt-1">1-hour video call with certified counselor.</p></div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DISEASE PANELS (Fixed ID) -->
+  <section id="panels" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-center mb-4">Comprehensive Disease Panels</h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+        Indicative catalogue with <strong>enhanced gene coverage & variant detection</strong> (2025 Edition). Panels evolve with NCCN, ELN, ACMG, CPIC guidelines. Custom panels available.
+        <span class="block mt-2 text-sm font-semibold text-green-600 dark:text-green-400">
+          All panels are 100% DNA-based & NGS-detectable — no IHC required.
+        </span>
+      </p>
+
+      <!-- Search Bar -->
+      <div class="flex justify-center mb-10">
+        <div class="w-full sm:w-auto">
+          <label for="panelSearch" class="sr-only">Search panels or genes</label>
+          <input id="panelSearch" type="text" placeholder="Search panels or genes..." 
+                 class="w-full sm:w-80 px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500" 
+                 aria-label="Search panels or genes">
+        </div>
+      </div>
+
+      <!-- Panels Accordion -->
+      <div id="panelsContainer" class="space-y-4">
+
+        <!-- 1. ONCOLOGY – SOLID TUMORS -->
+        <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                 data-keywords="oncology solid tumor breast ovarian lung nsclc colorectal prostate melanoma glioma pan-cancer tmb msi her2 brca">
+          <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">1</span>
+            Oncology – Solid Tumour Panels
+            <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+            <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+              <p>Site-specific and pan-cancer options for <strong>therapy selection & hereditary risk</strong>. Detects actionable SNVs/indels, CNVs, fusions, <strong>TMB, MSI</strong>.</p>
+              <p>Enhanced with <strong>deep intronic coverage & RNA fusion analysis</strong>. NCCN/ESMO 2025 compliant.</p>
+              <div class="overflow-x-auto">
+                <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                  <thead class="bg-gray-100 dark:bg-gray-700">
+                    <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Genes / Biomarkers</th></tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                    <tr><td class="px-3 py-2 font-medium">Breast/Ovarian</td><td class="px-3 py-2">BRCA1, BRCA2, PALB2, CHEK2, ATM, PTEN, TP53, CDH1, RAD51C/D, <strong>BRIP1</strong> <span class="new-badge">NEW</span></td></tr>
+                    <tr><td class="px-3 py-2 font-medium">Lung (NSCLC)</td><td class="px-3 py-2">EGFR, ALK, ROS1, BRAF, KRAS (G12C), MET exon14, RET, NTRK1-3, HER2/ERBB2, <strong>TMB ≥10 mut/Mb</strong> <span class="new-badge">NEW</span></td></tr>
+                    <tr><td class="px-3 py-2 font-medium">Colorectal</td><td class="px-3 py-2">KRAS/NRAS, BRAF, MSI/dMMR (MLH1, MSH2, MSH6, PMS2), APC, PIK3CA, <strong>HER2 (CNV)</strong> <span class="new-badge">NEW</span></td></tr>
+                    <tr><td class="px-3 py-2 font-medium">Prostate</td><td class="px-3 py-2">BRCA1/2, ATM, CHEK2, HOXB13, PTEN, MSH2, CDK12, <strong>MSI</strong> <span class="new-badge">NEW</span></td></tr>
+                    <tr><td class="px-3 py-2 font-medium">Melanoma</td><td class="px-3 py-2">BRAF, NRAS, KIT, NF1</td></tr>
+                    <tr><td class="px-3 py-2 font-medium">Glioma</td><td class="px-3 py-2">IDH1/2, 1p/19q (CNV), TERT, ATRX, TP53</td></tr>
+                    <tr><td class="px-3 py-2 font-medium">Pan-Cancer</td><td class="px-3 py-2">50–500 genes: SNVs/indels, CNVs, fusions, <strong>TMB, MSI-H</strong> <span class="new-badge">NEW</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="oncology hematologic aml mds mpn cll all lymphoma cebpa bcor btk">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">2</span>
+          Oncology – Hematologic
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Myeloid/lymphoid neoplasms for <strong>diagnosis, prognosis, and MRD support</strong>.
+            </p>
+            <p>
+              Aligned with <strong>ELN 2025</strong> and enhanced CNV detection.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Genes / Features</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">AML/MDS</td><td class="px-3 py-2">FLT3, NPM1, DNMT3A, IDH1/2, RUNX1, ASXL1, TP53, TET2, SF3B1, SRSF2, <strong>CEBPA, BCOR, ETV6</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">MPN</td><td class="px-3 py-2">JAK2, CALR, MPL, CSF3R</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">CLL</td><td class="px-3 py-2">TP53, NOTCH1, SF3B1, BIRC3, MYD88; IGHV, <strong>BTK, PLCG2</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">ALL</td><td class="px-3 py-2">IKZF1, CRLF2, JAK1/2, ABL1/2; fusions (ETV6-RUNX1, BCR-ABL1)</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Lymphoma</td><td class="px-3 py-2">MYD88, CD79B, EZH2, CARD11, BCL2/6 rearrangements</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 3. HEREDITARY CANCER -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="hereditary cancer breast ovarian lynch polyposis endocrine li-fraumeni acmg sf">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">3</span>
+          Hereditary Cancer Predisposition
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Germline risk assessment panels for inherited cancer syndromes. Includes <strong>ACMG SF v3.2 (81 genes)</strong>.
+            </p>
+            <p>
+              Full intron coverage and secondary findings reporting.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Genes</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">Breast/Ovarian</td><td class="px-3 py-2">BRCA1/2, PALB2, CHEK2, ATM, PTEN, TP53, RAD51C/D, BRIP1, <strong>ACMG SF v3.2</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Lynch Syndrome</td><td class="px-3 py-2">MLH1, MSH2, MSH6, PMS2, EPCAM</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Polyposis</td><td class="px-3 py-2">APC, MUTYH (biallelic), STK11, SMAD4, BMPR1A, POLE/POLD1</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Endocrine</td><td class="px-3 py-2">RET (MEN2), MEN1, VHL, SDHx (SDHB, SDHC, SDHD)</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Li-Fraumeni</td><td class="px-3 py-2">TP53 comprehensive, <strong>ACMG SF v3.2</strong> <span class="new-badge">NEW</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 4. DIABETES & HYPERTENSION -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="diabetes hypertension t1d t2d mody prs">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">4</span>
+          Diabetes & Hypertension Panels
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Covers polygenic risk for T2D and rare monogenic forms; essential & monogenic hypertension.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Genes</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">T1D</td><td class="px-3 py-2">HLA-DRB1/DQB1, PTPN22, CTLA4</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">T2D</td><td class="px-3 py-2">TCF7L2, FTO, KCNJ11, ABCC8, PPARG, <strong>PRS</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">MODY</td><td class="px-3 py-2">GCK, HNF1A, HNF4A, HNF1B</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Neonatal</td><td class="px-3 py-2">KCNJ11, ABCC8, INS</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Essential Hypertension</td><td class="px-3 py-2">ACE, AGT, AGTR1, NOS3</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Liddle</td><td class="px-3 py-2">SCNN1A/B/G</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 5. CARDIOGENETICS -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="cardiogenetics hcm dcm arvc flnc ttr dsg2">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">5</span>
+          Cardiogenetics
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Inherited cardiomyopathy, arrhythmia, and aortopathy. Guides ICD placement and family screening.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Genes</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">HCM/DCM/ARVC</td><td class="px-3 py-2">MYH7, MYBPC3, TTN, DSP, PKP2, LMNA, TNNI3, TNNT2, <strong>FLNC, TTR</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Channelopathies</td><td class="px-3 py-2">KCNQ1, KCNH2, SCN5A (LQTS, Brugada)</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Aortopathy</td><td class="px-3 py-2">FBN1 (Marfan), TGFBR1/2, SMAD3, ACTA2, <strong>DSG2, TMEM43</strong> <span class="new-badge">NEW</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 6. NEUROGENETICS -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="neurogenetics epilepsy neuromuscular ataxia kcns1 slc2a1 gaa">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">6</span>
+          Neurogenetics
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Epilepsy, neuromuscular, ataxia/leukodystrophy, and selected neurodegenerative diseases.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Genes</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">Epilepsy</td><td class="px-3 py-2">SCN1A, SCN2A, KCNQ2/3, CDKL5, PCDH19, STXBP1, <strong>KCNT1, SLC2A1, PRRT2</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Neuromuscular</td><td class="px-3 py-2">DMD, SMN1/2 (CNV), RYR1, COL6A1-3, <strong>GAA repeat (FXN)</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Ataxia/Leukodystrophy</td><td class="px-3 py-2">FXN (FRDA), ATXN1/2/3, ABCD1, EIF2B</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Neurodegeneration</td><td class="px-3 py-2">APP, PSEN1/2, MAPT, GRN, LRRK2, GBA</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 7. REPRODUCTIVE & PRENATAL -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="reproductive prenatal carrier nipt acmg tier fmr1">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">7</span>
+          Reproductive & Prenatal
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Carrier screening, invasive prenatal diagnostics, and NIPT (screening only).
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Features</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">Expanded Carrier</td><td class="px-3 py-2">CFTR, HBB/HBA, SMN1, GJB2, PAH, G6PD (100–500 genes), <strong>FMR1 repeats</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Prenatal Diagnostic</td><td class="px-3 py-2">Aneuploidy + microdeletions (CMA), single-gene, <strong>22q11, 1p36</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">NIPT*</td><td class="px-3 py-2">Trisomy 21/18/13; sex chromosomes, <strong>microdeletion panel</strong> <span class="new-badge">NEW</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 8. RARE DISEASE -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="rare disease exome genome re-analysis">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">8</span>
+          Rare Disease – Exome/Genome
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              For undiagnosed developmental delay, metabolic, and mitochondrial disorders.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Features</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">Clinical Exome</td><td class="px-3 py-2">SNV/indel + CNV (trio), <strong>annual re-analysis</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Genome</td><td class="px-3 py-2">SVs, non-coding, mtDNA, <strong>regulatory variants</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Mitochondrial</td><td class="px-3 py-2">Full mtDNA + heteroplasmy</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 9. PHARMACOGENOMICS -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="pgx cyp tpmt nudt15 cyp3a5">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">9</span>
+          Pharmacogenomics (PGx)
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              Medication response & safety. CPIC-aligned reporting.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Gene</th><th class="px-3 py-2 text-left font-medium">Clinical Use</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">CYP2D6/2C19/2C9, VKORC1</td><td class="px-3 py-2">Psych, PPI, anticoagulants</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">SLCO1B1</td><td class="px-3 py-2">Statin myopathy</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">DPYD, UGT1A1</td><td class="px-3 py-2">Oncology dosing</td></tr>
+                  <tr><td class="px-3 py-2 font-medium">HLA-B*15:02/*57:01</td><td class="px-3 py-2">Carbamazepine, abacavir</td></tr>
+                  <tr><td class="px-3 py-2 font-medium"><strong>TPMT, NUDT15</strong></td><td class="px-3 py-2">Thiopurines <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium"><strong>CYP3A5</strong></td><td class="px-3 py-2">Tacrolimus <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium"><strong>IFNL3/4</strong></td><td class="px-3 py-2">Hepatitis C <span class="new-badge">NEW</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 10. LIQUID BIOPSY & MRD -->
+      <details class="group rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+               data-keywords="liquid biopsy mrd ctdna rna fusion">
+        <summary class="flex cursor-pointer items-center gap-3 p-6 font-semibold">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">10</span>
+          Liquid Biopsy & MRD (Oncology)
+          <svg class="ml-auto h-5 w-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+
+        <div class="border-t border-gray-200 dark:border-gray-700 p-6">
+          <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+            <p>
+              ctDNA for actionable variants, tumor dynamics, MSI/TMB, and personalized MRD tracking.
+            </p>
+
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs border border-gray-300 dark:border-gray-600">
+                <thead class="bg-gray-100 dark:bg-gray-700">
+                  <tr><th class="px-3 py-2 text-left font-medium">Panel</th><th class="px-3 py-2 text-left font-medium">Key Features</th></tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 dark:divide-gray-600">
+                  <tr><td class="px-3 py-2 font-medium">Hotspot Panel</td><td class="px-3 py-2">20–100 genes, <strong>&lt;1 ppm LOD</strong> <span class="new-badge">NEW</span></td></tr>
+                  <tr><td class="px-3 py-2 font-medium">Personalised MRD</td><td class="px-3 py-2">Tumor-informed, <strong>RNA fusions (ALK, ROS1)</strong> <span class="new-badge">NEW</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Search & Accordion Logic -->
+<script>
+  // Only one open at a time
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) {
+        document.querySelectorAll('details').forEach(other => {
+          if (other !== d) other.open = false;
+        });
+      }
+    });
+  });
+
+  // Live search
+  const searchInput = document.getElementById('panelSearch');
+  const container   = document.getElementById('panelsContainer');
+  const panels      = container.querySelectorAll('details');
+
+  searchInput.addEventListener('input', () => {
+    const term = searchInput.value.trim().toLowerCase();
+
+    panels.forEach(panel => {
+      const keywords = panel.dataset.keywords.toLowerCase();
+      const text     = panel.textContent.toLowerCase();
+
+      if (term === '' || keywords.includes(term) || text.includes(term)) {
+        panel.style.display = '';
+      } else {
+        panel.style.display = 'none';
+        panel.open = false;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
 
   <!-- Genetic Kundli Report -->
   <section id="reports" class="py-20 bg-gray-50 dark:bg-gray-800">
@@ -1100,19 +917,20 @@
     </div>
   </footer>
 
+
   <!-- Scripts -->
   <script defer>
     const initApp = () => {
       // Theme Toggle
       const toggle = document.getElementById('themeToggle');
-      const sunIcon = document.getElementById('sunIcon');
-      const moonIcon = document.getElementById('moonIcon');
+      const sun = document.getElementById('sunIcon');
+      const moon = document.getElementById('moonIcon');
       toggle?.addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark');
-  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-  sunIcon.classList.toggle('hidden');
-  moonIcon.classList.toggle('hidden');
-});
+        document.documentElement.classList.toggle('dark');
+        localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        sun.classList.toggle('hidden');
+        moon.classList.toggle('hidden');
+      });
 
       // Mobile Menu
       const hamburger = document.getElementById('hamburger');
@@ -1124,22 +942,32 @@
 
       // Panel Search
       const input = document.getElementById('panelSearch');
-      const cards = Array.from(document.querySelectorAll('.panel-card'));
-      let timeout;
-      input?.addEventListener('input', (e) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          const query = e.target.value.toLowerCase();
-          cards.forEach(card => {
-            const content = (card.textContent + ' ' + (card.dataset.keys || '')).toLowerCase();
-            card.style.display = content.includes(query) ? '' : 'none';
-          });
-        }, 300);
+      const container = document.getElementById('panelsContainer');
+      const panels = container?.querySelectorAll('details') || [];
+      input?.addEventListener('input', () => {
+        const term = input.value.trim().toLowerCase();
+        panels.forEach(p => {
+          const kw = (p.dataset.keywords || '').toLowerCase();
+          const txt = p.textContent.toLowerCase();
+          p.style.display = (term === '' || kw.includes(term) || txt.includes(term)) ? '' : 'none';
+          if (p.style.display === 'none') p.open = false;
+        });
       });
 
-      // Set Year
-      document.getElementById('year').textContent = new Date().getFullYear();
-    };
+      // One accordion open at a time
+      document.querySelectorAll('details').forEach(d => {
+        d.addEventListener('toggle', () => {
+          if (d.open) {
+            document.querySelectorAll('details').forEach(o => { if (o !== d) o.open = false; });
+          }
+        });
+      });
 
+      // Year
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullいたい
+    };
     document.addEventListener('DOMContentLoaded', initApp);
   </script>
+</body>
+</html>
