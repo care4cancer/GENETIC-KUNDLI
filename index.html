@@ -750,7 +750,19 @@
 </div>
 </details>
 
+<!-- Placeholder for panel.html -->
+  <div id="panel-container"></div>
 
+  <script>
+    // Load panel.html dynamically
+    fetch("panel.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("panel-container").innerHTML = data;
+      })
+      .catch(err => console.error("Error loading panel:", err));
+  </script>
+  
   <!-- DISEASE PANELS (Fixed ID) -->
   <section id="panels" class="py-20 bg-gray-50 dark:bg-gray-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
