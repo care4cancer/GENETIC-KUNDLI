@@ -1,1576 +1,232 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-
-  <meta charset="utf-8" />
-
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>Light-Futuristic Zodiac — Genetic Kundli</title>
-
-  <style>
-
-    :root{
-
-      --bg-1: #f7fbff;
-
-      --bg-2: #eef6ff;
-
-      --card-bg: rgba(255,255,255,0.75);
-
-      --glass-border: rgba(255,255,255,0.6);
-
-      --accent-1: #00aaff;
-
-      --accent-2: #6dd3ff;
-
-      --muted: #6b7280;
-
-      --drop: rgba(13,60,90,0.06);
-
-      --shadow-1: 0 10px 30px rgba(16,24,40,0.08);
-
-      --glass-blur: 10px;
-
-      --max-width: 1100px;
-
-      --orbit-size: 640px; /* changed in media queries */
-
-    }
-
-
-
-    *{box-sizing:border-box}
-
-    html,body{height:100%}
-
-    body{
-
-      margin:0;
-
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-
-      background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 100%);
-
-      color: #0f172a;
-
-      display:flex;
-
-      align-items:flex-start;
-
-      justify-content:center;
-
-      padding:36px 20px;
-
-      -webkit-font-smoothing:antialiased;
-
-      -moz-osx-font-smoothing:grayscale;
-
-    }
-
-
-
-    .page {
-
-      width:100%;
-
-      max-width: var(--max-width);
-
-      margin: 0 auto;
-
-    }
-
-
-
-    .header {
-
-      text-align:center;
-
-      margin-bottom:22px;
-
-    }
-
-
-
-    .intro {
-
-      max-width: 900px;
-
-      margin: 0 auto 18px auto;
-
-      color: var(--muted);
-
-      font-size:15px;
-
-      line-height:1.45;
-
-    }
-
-
-
-    h1 {
-
-      margin: 6px 0 18px 0;
-
-      font-size:22px;
-
-      letter-spacing:-0.2px;
-
-      color:#04263a;
-
-    }
-
-
-
-    .controls {
-
-      display:flex;
-
-      gap:10px;
-
-      justify-content:center;
-
-      align-items:center;
-
-      margin-bottom:18px;
-
-    }
-
-
-
-    .btn {
-
-      background: linear-gradient(180deg,var(--card-bg), rgba(255,255,255,0.9));
-
-      border:1px solid var(--glass-border);
-
-      padding:8px 12px;
-
-      border-radius:10px;
-
-      box-shadow: var(--shadow-1);
-
-      cursor:pointer;
-
-      font-weight:600;
-
-      color:#06324a;
-
-      display:inline-flex;
-
-      gap:8px;
-
-      align-items:center;
-
-    }
-
-    .btn:active{transform:translateY(1px)}
-
-    .muted { color: var(--muted); font-size:13px }
-
-
-
-    .layout {
-
-      display:flex;
-
-      gap:28px;
-
-      align-items:flex-start;
-
-      justify-content:center;
-
-      flex-wrap:wrap;
-
-    }
-
-
-
-    /* Zodiac container */
-
-    .zodiac-container {
-
-      width: var(--orbit-size);
-
-      height: var(--orbit-size);
-
-      position: relative;
-
-      border-radius: 24px;
-
-      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(245,250,255,0.6));
-
-      border: 1px solid rgba(6,41,63,0.04);
-
-      padding: 30px;
-
-      box-shadow: 0 10px 30px rgba(4,22,37,0.06);
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      min-width:320px;
-
-    }
-
-
-
-    /* Central hub */
-
-    .hub {
-
-      position:absolute;
-
-      left:50%;
-
-      top:50%;
-
-      transform:translate(-50%,-50%);
-
-      width:140px;
-
-      height:140px;
-
-      border-radius:999px;
-
-      background: linear-gradient(180deg,#ffffff, #f0f8ff);
-
-      border:1px solid rgba(6,41,63,0.06);
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      flex-direction:column;
-
-      box-shadow: 0 12px 30px rgba(3,37,65,0.06), 0 0 30px rgba(13,122,204,0.06) inset;
-
-      cursor:pointer;
-
-      transition: transform .28s ease, box-shadow .28s ease;
-
-      user-select:none;
-
-      font-weight:700;
-
-      color:#052033;
-
-      text-align:center;
-
-      padding:12px;
-
-    }
-
-    .hub:focus { outline:3px solid rgba(0,170,255,0.12); }
-
-    .hub:hover { transform:translate(-50%,-50%) scale(1.03); box-shadow:0 20px 40px rgba(3,37,65,0.08); }
-
-
-
-    .hub small { display:block; font-weight:600; color:var(--muted); font-size:12px; margin-top:6px }
-
-
-
-    /* orbit wrapper (rotating ring) */
-
-    .orbit {
-
-      position:absolute;
-
-      top:50%;
-
-      left:50%;
-
-      width: calc(var(--orbit-size) - 120px);
-
-      height: calc(var(--orbit-size) - 120px);
-
-      transform: translate(-50%,-50%);
-
-      border-radius:50%;
-
-      pointer-events:none;
-
-      transition: filter .3s ease;
-
-      /* subtle ring decoration */
-
-      background: radial-gradient(circle at 30% 20%, rgba(109,211,255,0.06), transparent 8%),
-
-                  radial-gradient(circle at 70% 80%, rgba(0,170,255,0.04), transparent 6%);
-
-    }
-
-
-
-    /* rotation animation */
-
-    @keyframes orbit-rotate { from { transform: translate(-50%,-50%) rotate(0deg) } to { transform: translate(-50%,-50%) rotate(360deg) } }
-
-    .orbit.play { animation: orbit-rotate 36s linear infinite; animation-play-state: running; pointer-events:auto; }
-
-
-
-    /* Panels */
-
-    .panel-segment {
-
-      position:absolute;
-
-      width:120px;
-
-      height:120px;
-
-      border-radius:14px;
-
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,255,255,0.86));
-
-      border:1px solid rgba(6,41,63,0.06);
-
-      backdrop-filter: blur(var(--glass-blur));
-
-      display:flex;
-
-      flex-direction:column;
-
-      align-items:center;
-
-      justify-content:center;
-
-      text-align:center;
-
-      box-shadow: 0 8px 24px rgba(12,32,56,0.06);
-
-      transition: transform .26s cubic-bezier(.2,.9,.2,1), box-shadow .26s ease, z-index .01s;
-
-      cursor:pointer;
-
-      padding:10px;
-
-      pointer-events:auto;
-
-    }
-
-
-
-    .panel-segment .panel-number{
-
-      position:absolute;
-
-      top:8px;
-
-      left:50%;
-
-      transform:translateX(-50%);
-
-      width:28px;
-
-      height:28px;
-
-      display:grid;
-
-      place-items:center;
-
-      font-size:12px;
-
-      border-radius:999px;
-
-      color:white;
-
-      font-weight:700;
-
-      border:2px solid rgba(255,255,255,0.8);
-
-      background:linear-gradient(180deg,var(--accent-1), var(--accent-2));
-
-      box-shadow: 0 6px 18px rgba(6,122,204,0.16);
-
-    }
-
-
-
-    .panel-name {
-
-      font-size:13px;
-
-      font-weight:700;
-
-      color:#042b3b;
-
-      line-height:1.05;
-
-      margin-top:18px;
-
-      padding: 0 6px;
-
-    }
-
-
-
-    /* Hover glow */
-
-    .panel-segment:hover{
-
-      transform: scale(1.14) translateY(-6px);
-
-      z-index:50;
-
-      box-shadow: 0 22px 60px rgba(0,130,200,0.12);
-
-    }
-
-
-
-    /* small accent underline */
-
-    .panel-segment::after {
-
-      content:"";
-
-      position:absolute;
-
-      bottom:10px;
-
-      left:50%;
-
-      transform:translateX(-50%);
-
-      width:40%;
-
-      height:4px;
-
-      border-radius:3px;
-
-      background: linear-gradient(90deg,var(--accent-1), var(--accent-2));
-
-      opacity:0.95;
-
-    }
-
-
-
-    /* Modal */
-
-    .modal {
-
-      display:none;
-
-      position:fixed;
-
-      inset:0;
-
-      background: rgba(2,6,23,0.45);
-
-      backdrop-filter: blur(6px);
-
-      z-index:999;
-
-      align-items:center;
-
-      justify-content:center;
-
-      padding:28px;
-
-    }
-
-    .modal.open { display:flex; }
-
-
-
-    .modal-content{
-
-      width:100%;
-
-      max-width:880px;
-
-      background: linear-gradient(180deg, #ffffff, #f7fbff);
-
-      border-radius:12px;
-
-      border:1px solid rgba(6,41,63,0.06);
-
-      padding:22px;
-
-      box-shadow: 0 24px 60px rgba(6,41,63,0.12);
-
-      max-height:80vh;
-
-      overflow:auto;
-
-    }
-
-
-
-    .close {
-
-      position:absolute;
-
-      top:18px;
-
-      right:22px;
-
-      background:transparent;
-
-      border:none;
-
-      font-size:22px;
-
-      cursor:pointer;
-
-      color:#073047;
-
-      font-weight:700;
-
-    }
-
-
-
-    .modal h2 { margin:4px 0 10px 0; color:#042b3b }
-
-    .modal .desc { color: var(--muted); margin-bottom:14px; line-height:1.45; }
-
-
-
-    .table-container { overflow-x:auto; margin-top:12px; }
-
-    table.panel-table {
-
-      width:100%;
-
-      border-collapse:collapse;
-
-      font-size:13px;
-
-      color:#042b3b;
-
-    }
-
-    table.panel-table th, table.panel-table td{
-
-      padding:10px 12px;
-
-      border:1px solid rgba(6,41,63,0.06);
-
-      text-align:left;
-
-      vertical-align:top;
-
-    }
-
-    thead th { background:linear-gradient(180deg, #f0f6ff, #effaff); font-weight:700; }
-
-
-
-    /* Panels list for mobile fallback */
-
-    .panel-grid {
-
-      display:grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap:12px;
-
-      width:360px;
-
-    }
-
-    .panel-grid .panel-segment { width:100%; height:110px; position:relative; transform:none }
-
-
-
-    /* Accessibility focus */
-
-    .panel-segment:focus { outline:3px solid rgba(0,170,255,0.12); }
-
-
-
-    /* Responsive */
-
-    @media (max-width:1100px){
-
-      :root{ --orbit-size:600px; }
-
-      .zodiac-container{ width:620px; height:620px }
-
-    }
-
-    @media (max-width:880px){
-
-      .layout{ flex-direction:column; align-items:center }
-
-      .zodiac-container{ width:88vw; height:88vw; border-radius:16px; padding:18px }
-
-      .panel-grid { width:100%; grid-template-columns: repeat(2, 1fr) }
-
-      .header h1{ font-size:20px }
-
-    }
-
-    @media (max-width:560px){
-
-      .intro { padding:0 6px; font-size:14px; }
-
-      .zodiac-container{ width:100vw; height:100vw; padding:14px; border-radius:10px }
-
-      .panel-grid { grid-template-columns: repeat(1,1fr); gap:10px; width:100%;}
-
-      .panel-segment { height:90px }
-
-      .hub { width:92px; height:92px; font-size:13px; padding:8px }
-
-    }
-
-
-
-  </style>
-
-</head>
-
-<body>
-
-  <div class="page" role="main">
-
-    <div class="header" aria-hidden="false">
-
-      <h1>Comprehensive Genetic Panels — Light-Futuristic Zodiac</h1>
-
-      <div class="intro">
-
-        Explore the same 10 comprehensive genetic test panels in a clean, futuristic interface. Click the central hub to start/stop rotation. Tap a panel to view details, browse tables, and copy content for your site or docs.
-
-      </div>
-
-
-
-      <div class="controls" aria-hidden="false">
-
-        <button id="hubBtn" class="btn" title="Toggle rotation (also click the hub)">
-
-          ▶︎ Auto-Rotate
-
-        </button>
-
-        <span class="muted">Tip: Hover a panel for a preview; press ESC to close modals.</span>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="layout">
-
-      <div class="zodiac-container" id="zodiacContainer" aria-label="Genetic panels zodiac">
-
-        <div class="hub" id="hub" tabindex="0" role="button" aria-pressed="false" aria-label="Toggle zodiac rotation">
-
-          GENETIC<br>KUNDLI
-
-          <small>click to toggle</small>
-
-        </div>
-
-
-
-        <div class="orbit" id="orbit" aria-hidden="true"></div>
-
-      </div>
-
-
-
-      <!-- Mobile grid fallback/list (hidden on large screens via JS if desired) -->
-
-      <div id="panelList" class="panel-grid" aria-hidden="true" style="display:none;"></div>
-
-    </div>
-
-  </div>
-
-
-    
-    <section id="comprehensive-content">
-    </section>
-
-  
-
-
-
-  <!-- Modal -->
-
-  <div id="panelModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-
-    <div class="modal-content" role="document">
-
-      <button class="close" id="modalClose" aria-label="Close panel details">&times;</button>
-
-      <h2 id="modalTitle"></h2>
-
-      <div id="modalDesc" class="desc"></div>
-
-      <div id="modalTableContainer" class="table-container"></div>
-
-    </div>
-
-  </div>
-
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Genetics in Action | Genetic Kundli</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Latest genetics and genomics breakthroughs including cancer vaccines, liquid biopsy, AI in genomics, and early cancer detection. Curated by Genetic Kundli.">
+  <meta name="keywords" content="genetics news, genomics updates, cancer genetics, liquid biopsy, mRNA vaccine, precision medicine">
+  <meta name="author" content="Genetic Kundli">
+  <link rel="canonical" href="https://genetickundli.in/genetics-news.html">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-
-    /* Panels data preserved verbatim from user's original content (10 panels) */
-
-    const panelsData = [
-
-      { 
-
-        name: "Oncology – Solid Tumour Panels", 
-
-        number: 1,
-
-        color: "#FF4500", 
-
-        description: `
-
-          <p>Site-specific and pan-cancer options for <strong>therapy selection & hereditary risk</strong>. Detects actionable SNVs/indels, CNVs, fusions, <strong>TMB, MSI</strong>.</p>
-
-          <p>Enhanced with <strong>deep intronic coverage & RNA fusion analysis</strong>. NCCN/ESMO 2025 compliant.</p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead>
-
-              <tr><th>Panel</th><th>Key Genes / Biomarkers</th></tr>
-
-            </thead>
-
-            <tbody>
-
-              <tr><td>Breast/Ovarian</td><td>BRCA1, BRCA2, PALB2, CHEK2, ATM, PTEN, TP53, CDH1, RAD51C/D, <strong>BRIP1</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Lung (NSCLC)</td><td>EGFR, ALK, ROS1, BRAF, KRAS (G12C), MET exon14, RET, NTRK1-3, HER2/ERBB2, <strong>TMB ≥10 mut/Mb</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Colorectal</td><td>KRAS/NRAS, BRAF, MSI/dMMR (MLH1, MSH2, MSH6, PMS2), APC, PIK3CA, <strong>HER2 (CNV)</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Prostate</td><td>BRCA1/2, ATM, CHEK2, HOXB13, PTEN, MSH2, CDK12, <strong>MSI</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Melanoma</td><td>BRAF, NRAS, KIT, NF1</td></tr>
-
-              <tr><td>Glioma</td><td>IDH1/2, 1p/19q (CNV), TERT, ATRX, TP53</td></tr>
-
-              <tr><td>Pan-Cancer</td><td>50–500 genes: SNVs/indels, CNVs, fusions, <strong>TMB, MSI-H</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Oncology – Hematologic", 
-
-        number: 2,
-
-        color: "#DC2626", 
-
-        description: `
-
-          <p>
-
-            Myeloid/lymphoid neoplasms for <strong>diagnosis, prognosis, and MRD support</strong>.
-
-          </p>
-
-          <p>
-
-            Aligned with <strong>ELN 2025</strong> and enhanced CNV detection.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Genes / Features</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>AML/MDS</td><td>FLT3, NPM1, DNMT3A, IDH1/2, RUNX1, ASXL1, TP53, TET2, SF3B1, SRSF2, <strong>CEBPA, BCOR, ETV6</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>MPN</td><td>JAK2, CALR, MPL, CSF3R</td></tr>
-
-              <tr><td>CLL</td><td>TP53, NOTCH1, SF3B1, BIRC3, MYD88; IGHV, <strong>BTK, PLCG2</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>ALL</td><td>IKZF1, CRLF2, JAK1/2, ABL1/2; fusions (ETV6-RUNX1, BCR-ABL1)</td></tr>
-
-              <tr><td>Lymphoma</td><td>MYD88, CD79B, EZH2, CARD11, BCL2/6 rearrangements</td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Hereditary Cancer Predisposition", 
-
-        number: 3,
-
-        color: "#B91C1C", 
-
-        description: `
-
-          <p>
-
-            Germline risk assessment panels for inherited cancer syndromes. Includes <strong>ACMG SF v3.2 (81 genes)</strong>.
-
-          </p>
-
-          <p>
-
-            Full intron coverage and secondary findings reporting.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Genes</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>Breast/Ovarian</td><td>BRCA1/2, PALB2, CHEK2, ATM, PTEN, TP53, RAD51C/D, BRIP1, <strong>ACMG SF v3.2</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Lynch Syndrome</td><td>MLH1, MSH2, MSH6, PMS2, EPCAM</td></tr>
-
-              <tr><td>Polyposis</td><td>APC, MUTYH (biallelic), STK11, SMAD4, BMPR1A, POLE/POLD1</td></tr>
-
-              <tr><td>Endocrine</td><td>RET (MEN2), MEN1, VHL, SDHx (SDHB, SDHC, SDHD)</td></tr>
-
-              <tr><td>Li-Fraumeni</td><td>TP53 comprehensive, <strong>ACMG SF v3.2</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Diabetes & Hypertension Panels", 
-
-        number: 4,
-
-        color: "#EF4444", 
-
-        description: `
-
-          <p>
-
-            Covers polygenic risk for T2D and rare monogenic forms; essential & monogenic hypertension.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Genes</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>T1D</td><td>HLA-DRB1/DQB1, PTPN22, CTLA4</td></tr>
-
-              <tr><td>T2D</td><td>TCF7L2, FTO, KCNJ11, ABCC8, PPARG, <strong>PRS</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>MODY</td><td>GCK, HNF1A, HNF4A, HNF1B</td></tr>
-
-              <tr><td>Neonatal</td><td>KCNJ11, ABCC8, INS</td></tr>
-
-              <tr><td>Essential Hypertension</td><td>ACE, AGT, AGTR1, NOS3</td></tr>
-
-              <tr><td>Liddle</td><td>SCNN1A/B/G</td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Cardiogenetics", 
-
-        number: 5,
-
-        color: "#F97316", 
-
-        description: `
-
-          <p>
-
-            Inherited cardiomyopathy, arrhythmia, and aortopathy. Guides ICD placement and family screening.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Genes</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>HCM/DCM/ARVC</td><td>MYH7, MYBPC3, TTN, DSP, PKP2, LMNA, TNNI3, TNNT2, <strong>FLNC, TTR</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Channelopathies</td><td>KCNQ1, KCNH2, SCN5A (LQTS, Brugada)</td></tr>
-
-              <tr><td>Aortopathy</td><td>FBN1 (Marfan), TGFBR1/2, SMAD3, ACTA2, <strong>DSG2, TMEM43</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Neurogenetics", 
-
-        number: 6,
-
-        color: "#EAB308", 
-
-        description: `
-
-          <p>
-
-            Epilepsy, neuromuscular, ataxia/leukodystrophy, and selected neurodegenerative diseases.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Genes</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>Epilepsy</td><td>SCN1A, SCN2A, KCNQ2/3, CDKL5, PCDH19, STXBP1, <strong>KCNT1, SLC2A1, PRRT2</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Neuromuscular</td><td>DMD, SMN1/2 (CNV), RYR1, COL6A1-3, <strong>GAA repeat (FXN)</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Ataxia/Leukodystrophy</td><td>FXN (FRDA), ATXN1/2/3, ABCD1, EIF2B</td></tr>
-
-              <tr><td>Neurodegeneration</td><td>APP, PSEN1/2, MAPT, GRN, LRRK2, GBA</td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Reproductive & Prenatal", 
-
-        number: 7,
-
-        color: "#84CC16", 
-
-        description: `
-
-          <p>
-
-            Carrier screening, invasive prenatal diagnostics, and NIPT (screening only).
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Features</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>Expanded Carrier</td><td>CFTR, HBB/HBA, SMN1, GJB2, PAH, G6PD (100–500 genes), <strong>FMR1 repeats</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Prenatal Diagnostic</td><td>Aneuploidy + microdeletions (CMA), single-gene, <strong>22q11, 1p36</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>NIPT*</td><td>Trisomy 21/18/13; sex chromosomes, <strong>microdeletion panel</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Rare Disease – Exome/Genome", 
-
-        number: 8,
-
-        color: "#3B82F6", 
-
-        description: `
-
-          <p>
-
-            For undiagnosed developmental delay, metabolic, and mitochondrial disorders.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Features</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>Clinical Exome</td><td>SNV/indel + CNV (trio), <strong>annual re-analysis</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Genome</td><td>SVs, non-coding, mtDNA, <strong>regulatory variants</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Mitochondrial</td><td>Full mtDNA + heteroplasmy</td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Pharmacogenomics (PGx)", 
-
-        number: 9,
-
-        color: "#8B5CF6", 
-
-        description: `
-
-          <p>
-
-            Medication response & safety. CPIC-aligned reporting.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Gene</th><th>Clinical Use</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>CYP2D6/2C19/2C9, VKORC1</td><td>Psych, PPI, anticoagulants</td></tr>
-
-              <tr><td>SLCO1B1</td><td>Statin myopathy</td></tr>
-
-              <tr><td>DPYD, UGT1A1</td><td>Oncology dosing</td></tr>
-
-              <tr><td>HLA-B*15:02/*57:01</td><td>Carbamazepine, abacavir</td></tr>
-
-              <tr><td><strong>TPMT, NUDT15</strong></td><td>Thiopurines <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td><strong>CYP3A5</strong></td><td>Tacrolimus <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td><strong>IFNL3/4</strong></td><td>Hepatitis C <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      },
-
-      { 
-
-        name: "Liquid Biopsy & MRD (Oncology)", 
-
-        number: 10,
-
-        color: "#06B6D4", 
-
-        description: `
-
-          <p>
-
-            ctDNA for actionable variants, tumor dynamics, MSI/TMB, and personalized MRD tracking.
-
-          </p>
-
-        `,
-
-        table: `
-
-          <table class="panel-table">
-
-            <thead><tr><th>Panel</th><th>Key Features</th></tr></thead>
-
-            <tbody>
-
-              <tr><td>Hotspot Panel</td><td>20–100 genes, <strong>&lt;1 ppm LOD</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-              <tr><td>Personalised MRD</td><td>Tumor-informed, <strong>RNA fusions (ALK, ROS1)</strong> <span style="display:inline-block;background:#10b981;color:white;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px">NEW</span></td></tr>
-
-            </tbody>
-
-          </table>
-
-        `
-
-      }
-
-    ];
-
-
-
-    const orbit = document.getElementById('orbit');
-
-    const modal = document.getElementById('panelModal');
-
-    const modalTitle = document.getElementById('modalTitle');
-
-    const modalDesc = document.getElementById('modalDesc');
-
-    const modalTableContainer = document.getElementById('modalTableContainer');
-
-    const panelList = document.getElementById('panelList');
-
-    const hub = document.getElementById('hub');
-
-    const hubBtn = document.getElementById('hubBtn');
-
-    const closeBtn = document.getElementById('modalClose');
-
-    let isRotating = false;
-
-
-
-    // Set orbit size variable to match CSS value for radius calculation
-
-    function getOrbitRadius() {
-
-      const style = getComputedStyle(document.documentElement);
-
-      // orbit element is circle within container; compute from its rendered size
-
-      const rect = orbit.getBoundingClientRect();
-
-      return Math.min(rect.width, rect.height) / 2;
-
-    }
-
-
-
-    function createPanels() {
-
-      const numPanels = panelsData.length;
-
-      const angleStep = 360 / numPanels;
-
-      const orbitRect = orbit.getBoundingClientRect();
-
-      const centerOffset = 0; // because we'll place relative to orbit center
-
-
-
-      panelsData.forEach((panel, index) => {
-
-        const segment = document.createElement('button');
-
-        segment.className = 'panel-segment';
-
-        segment.setAttribute('type','button');
-
-        segment.setAttribute('aria-label', panel.name);
-
-        segment.tabIndex = 0;
-
-
-
-        // inner content
-
-        segment.innerHTML = `
-
-          <div class="panel-number">${panel.number}</div>
-
-          <div class="panel-name">${panel.name}</div>
-
-        `;
-
-
-
-        // calculate position around circle
-
-        // Use orbit's center as origin; radius slightly smaller than orbit for spacing
-
-        const orbitBox = orbit.getBoundingClientRect();
-
-        const radius = (Math.min(orbitBox.width, orbitBox.height) / 2) - 70;
-
-        const angleDeg = (angleStep * index) - 90;
-
-        const angleRad = angleDeg * Math.PI / 180;
-
-        const x = Math.cos(angleRad) * radius;
-
-        const y = Math.sin(angleRad) * radius;
-
-
-
-        segment.style.left = `calc(50% + ${x}px)`;
-
-        segment.style.top = `calc(50% + ${y}px)`;
-
-        segment.style.transform = `translate(-50%,-50%)`;
-
-
-
-        // color accent: subtle border/glow based on provided color
-
-        const accent = panel.color;
-
-        segment.style.border = `1px solid ${hexToRgba(accent,0.08)}`;
-
-        segment.style.boxShadow = `0 8px 26px ${hexToRgba(accent,0.06)}`;
-
-
-
-        // click opens modal
-
-        segment.addEventListener('click', (e) => {
-
-          e.stopPropagation();
-
-          openModal(panel);
-
-        });
-
-
-
-        // keyboard: enter / space open modal
-
-        segment.addEventListener('keydown', (e) => {
-
-          if (e.key === 'Enter' || e.key === ' ') {
-
-            e.preventDefault();
-
-            openModal(panel);
-
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              500: '#ef4444',
+              600: '#dc2626'
+            }
           }
-
-        });
-
-
-
-        orbit.appendChild(segment);
-
-
-
-        // Also populate mobile list
-
-        const listItem = segment.cloneNode(true);
-
-        listItem.style.position = 'relative';
-
-        listItem.style.left = 'auto';
-
-        listItem.style.top = 'auto';
-
-        listItem.style.transform = 'none';
-
-        listItem.addEventListener('click', () => openModal(panel));
-
-        panelList.appendChild(listItem);
-
-      });
-
-    }
-
-
-
-    // Utility to convert hex color into rgba string with alpha
-
-    function hexToRgba(hex, alpha = 1) {
-
-      const h = hex.replace('#','');
-
-      const bigint = parseInt(h.length === 3 ? h.split('').map(c => c+c).join('') : h,16);
-
-      const r = (bigint >> 16) & 255;
-
-      const g = (bigint >> 8) & 255;
-
-      const b = bigint & 255;
-
-      return `rgba(${r},${g},${b},${alpha})`;
-
-    }
-
-
-
-    function openModal(panel) {
-
-      modalTitle.innerHTML = panel.name;
-
-      modalDesc.innerHTML = panel.description;
-
-      modalTableContainer.innerHTML = panel.table;
-
-      modal.classList.add('open');
-
-      modal.setAttribute('aria-hidden','false');
-
-      // add focus trap: focus close button
-
-      closeBtn.focus();
-
-    }
-
-
-
-    function closeModal() {
-
-      modal.classList.remove('open');
-
-      modal.setAttribute('aria-hidden','true');
-
-    }
-
-
-
-    // Toggle rotation
-
-    function toggleRotation() {
-
-      isRotating = !isRotating;
-
-      if (isRotating) {
-
-        orbit.classList.add('play');
-
-        hubBtn.innerText = '⏸ Pause';
-
-        hub.setAttribute('aria-pressed','true');
-
-      } else {
-
-        orbit.classList.remove('play');
-
-        hubBtn.innerText = '▶︎ Auto-Rotate';
-
-        hub.setAttribute('aria-pressed','false');
-
+        }
       }
-
     }
-
-
-
-    // Event listeners
-
-    hub.addEventListener('click', toggleRotation);
-
-    hub.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleRotation(); }});
-
-    hubBtn.addEventListener('click', toggleRotation);
-
-    closeBtn.addEventListener('click', closeModal);
-
-
-
-    // close on outside click
-
-    modal.addEventListener('click', (e) => {
-
-      if (e.target === modal) closeModal();
-
-    });
-
-
-
-    // close on Escape
-
-    window.addEventListener('keydown', (e) => {
-
-      if (e.key === 'Escape') closeModal();
-
-    });
-
-
-
-    // Build UI, responsive fallback
-
-    createPanels();
-
-    // Show mobile fallback grid when viewport narrow
-
-    function updateResponsiveList() {
-
-      if (window.innerWidth <= 880) {
-
-        panelList.style.display = 'grid';
-
-        panelList.setAttribute('aria-hidden','false');
-
-      } else {
-
-        panelList.style.display = 'none';
-
-        panelList.setAttribute('aria-hidden','true');
-
-      }
-
-      // re-position panels to account for potential width changes
-
-      positionPanels();
-
-    }
-
-    window.addEventListener('resize', updateResponsiveList);
-
-
-
-    // reposition panels (useful when container resizes)
-
-    function positionPanels() {
-
-      const segments = document.querySelectorAll('.zodiac-container .panel-segment');
-
-      const num = segments.length;
-
-      const angleStep = 360/num;
-
-      const orbitBox = orbit.getBoundingClientRect();
-
-      const radius = (Math.min(orbitBox.width, orbitBox.height) / 2) - 70;
-
-      segments.forEach((seg, i) => {
-
-        const angleDeg = (angleStep * i) - 90;
-
-        const angleRad = angleDeg * Math.PI / 180;
-
-        const x = Math.cos(angleRad) * radius;
-
-        const y = Math.sin(angleRad) * radius;
-
-        seg.style.left = `calc(50% + ${x}px)`;
-
-        seg.style.top = `calc(50% + ${y}px)`;
-
-      });
-
-    }
-
-
-
-    // initial responsive setup
-
-    updateResponsiveList();
-
-
-
-    // helpful: re-position after fonts and layout settle
-
-    setTimeout(positionPanels, 240);
-
-
-
-    // Accessibility: trap focus in modal (basic)
-
-    document.addEventListener('focus', function(event) {
-
-      if (!modal.classList.contains('open')) return;
-
-      const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-
-      const last = focusable[focusable.length - 1];
-
-      if (event.target === last && event.shiftKey === false && event.key === 'Tab') {
-
-        first.focus();
-
-      }
-
-    }, true);
-
-
-
-    // Optional: start with rotation paused (user toggles). If you want auto-start, call toggleRotation()
-
-    // toggleRotation(); // uncomment to start with rotation on load
-
-
-
-    // Clean up: ensure focus style for keyboard users
-
-    document.addEventListener('keydown', function(e){
-
-      if (e.key === 'Tab') document.documentElement.style.scrollBehavior = 'smooth';
-
-    });
-
   </script>
 
-</body>
+  <!-- Dark mode persistence -->
+  <script>
+    if (localStorage.theme === 'dark' ||
+       (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
 
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/80 dark:bg-gray-800/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="font-extrabold text-xl text-red-600">
+      Genetic Kundli
+    </a>
+    <button id="themeToggle" class="px-3 py-1 rounded-lg border text-sm">
+      Toggle Theme
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="py-20 text-center">
+  <h1 class="text-4xl sm:text-5xl font-extrabold">
+    Genetics in Action
+  </h1>
+  <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+    Curated updates on genetics & genomics shaping <strong>preventive, precision, and personalized healthcare</strong>.
+  </p>
+</section>
+
+<!-- NEWS GRID -->
+<section class="pb-20">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-4" id="newsGrid">
+
+    <!-- NEWS CARD -->
+    <div class="news-card panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md cursor-pointer"
+         data-id="news1">
+      <div class="p-6 flex items-center gap-3 font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+        <span class="h-7 w-7 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">🧬</span>
+        Personalized Cancer Vaccines (mRNA)
+      </div>
+    </div>
+
+    <div class="news-card panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md cursor-pointer"
+         data-id="news2">
+      <div class="p-6 flex items-center gap-3 font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+        <span class="h-7 w-7 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">🩸</span>
+        Multi-Cancer Early Detection (MCED)
+      </div>
+    </div>
+
+    <div class="news-card panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md cursor-pointer"
+         data-id="news3">
+      <div class="p-6 flex items-center gap-3 font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+        <span class="h-7 w-7 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">🧪</span>
+        Liquid Biopsy & ctDNA
+      </div>
+    </div>
+
+    <div class="news-card panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md cursor-pointer"
+         data-id="news4">
+      <div class="p-6 flex items-center gap-3 font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+        <span class="h-7 w-7 rounded-full bg-red-600 text-white text-xs flex items-center justify-center">🤖</span>
+        AI + Genomics in Cancer Care
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 hidden bg-black/60 z-50 flex items-center justify-center p-4">
+  <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full shadow-xl">
+    <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 p-5">
+      <h3 id="modalTitle" class="text-xl font-bold"></h3>
+      <button id="closeModal" class="text-xl">&times;</button>
+    </div>
+    <div id="modalContent" class="p-6 text-sm text-gray-600 dark:text-gray-400"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm">
+  © 2025 Genetic Kundli. All rights reserved.
+</footer>
+
+<!-- CONTENT DATA -->
+<script>
+const content = {
+  news1: {
+    title: "Personalized Cancer Vaccines (mRNA)",
+    body: `
+      <p class="font-medium text-gray-800 dark:text-gray-200 mb-3">
+        Personalized cancer vaccines use tumor-specific genetic mutations to train the immune system.
+      </p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Targets neoantigens unique to each tumor</li>
+        <li>Lower toxicity than chemotherapy</li>
+        <li>Under trials in UK & Europe</li>
+      </ul>
+      <p class="mt-3 text-xs">
+        <strong>Source:</strong>
+        <a href="https://www.england.nhs.uk/2023/10/cancer-vaccine-launch-pad/" target="_blank"
+           class="text-red-600 hover:underline">
+          NHS – Cancer Vaccine Launch Pad
+        </a>
+      </p>
+    `
+  },
+  news2: {
+    title: "Multi-Cancer Early Detection (MCED)",
+    body: `
+      <p class="font-medium text-gray-800 dark:text-gray-200 mb-3">
+        MCED blood tests detect multiple cancers before symptoms appear.
+      </p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Single blood draw</li>
+        <li>cfDNA & methylation signals</li>
+        <li>Ideal for high-risk individuals</li>
+      </ul>
+      <p class="mt-3 text-xs">
+        <strong>Source:</strong>
+        <a href="https://www.nature.com/articles/s41591-023-02610-7" target="_blank"
+           class="text-red-600 hover:underline">
+          Nature Medicine
+        </a>
+      </p>
+    `
+  },
+  news3: {
+    title: "Liquid Biopsy & ctDNA",
+    body: `
+      <p class="font-medium text-gray-800 dark:text-gray-200 mb-3">
+        Liquid biopsy detects circulating tumor DNA from blood.
+      </p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Non-invasive cancer monitoring</li>
+        <li>Tracks minimal residual disease</li>
+        <li>Useful in lung, breast, colorectal cancers</li>
+      </ul>
+      <p class="mt-3 text-xs">
+        <strong>Source:</strong>
+        <a href="https://www.cancer.gov/about-cancer/diagnosis-staging/liquid-biopsy" target="_blank"
+           class="text-red-600 hover:underline">
+          U.S. National Cancer Institute
+        </a>
+      </p>
+    `
+  },
+  news4: {
+    title: "AI + Genomics in Cancer Care",
+    body: `
+      <p class="font-medium text-gray-800 dark:text-gray-200 mb-3">
+        AI improves genomic interpretation for cancer risk prediction and therapy selection.
+      </p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Faster variant interpretation</li>
+        <li>Predicts drug response</li>
+        <li>Enables population-scale genomics</li>
+      </ul>
+      <p class="mt-3 text-xs">
+        <strong>Source:</strong>
+        <a href="https://www.weforum.org/agenda/2023/07/ai-cancer-detection/" target="_blank"
+           class="text-red-600 hover:underline">
+          World Economic Forum
+        </a>
+      </p>
+    `
+  }
+};
+
+// Modal logic
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalContent = document.getElementById("modalContent");
+
+document.querySelectorAll(".news-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const id = card.dataset.id;
+    modalTitle.innerText = content[id].title;
+    modalContent.innerHTML = content[id].body;
+    modal.classList.remove("hidden");
+  });
+});
+
+document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
+modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
+
+// Theme toggle
+document.getElementById("themeToggle").onclick = () => {
+  document.documentElement.classList.toggle("dark");
+  localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+};
+</script>
+
+</body>
 </html>
