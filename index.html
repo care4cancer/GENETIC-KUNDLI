@@ -1483,51 +1483,85 @@
 
 
 <script>
-fetch('targeted_therapy.json')
-  .then(res => res.json())
-  .then(data => {
+document.addEventListener('DOMContentLoaded', () => {
 
-    const tbody = document.getElementById('therapyTable');
-    const btn = document.getElementById('loadMoreTherapy');
+  fetch('targeted_therapy.json')
+    .then(res => res.json())
+    .then(data => {
 
-    const INITIAL_ROWS = 5;
-    let expanded = false; // false = 5 rows, true = all rows
+      const tbody = document.getElementById('therapyTable');
+      const btn = document.getElementById('loadMoreTherapy');
+      const searchInput = document.getElementById('therapySearch');
 
-    function render() {
-      tbody.innerHTML = '';
+      const INITIAL_ROWS = 5;
+      let expanded = false;
+      let searchTerm = '';
 
-      const rowsToShow = expanded ? data : data.slice(0, INITIAL_ROWS);
+      function getFilteredData() {
+        if (!searchTerm) return data;
 
-      rowsToShow.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-gray-100 dark:hover:bg-gray-700';
+        return data.filter(row =>
+          Object.values(row)
+            .join(' ')
+            .toLowerCase()
+            .includes(searchTerm)
+        );
+      }
 
-        tr.innerHTML = `
-          <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"]}</td>
-          <td class="px-4 py-3">${row["cancer_type"]}</td>
-          <td class="px-4 py-3">${row["targeted_therapy_(examples)"]}</td>
-          <td class="px-4 py-3">${row["mode_of_action"]}</td>
-          <td class="px-4 py-3">${row["status"]}</td>
-        `;
+      function render() {
+        tbody.innerHTML = '';
 
-        tbody.appendChild(tr);
+        const filtered = getFilteredData();
+        const rowsToShow = expanded
+          ? filtered
+          : filtered.slice(0, INITIAL_ROWS);
+
+        rowsToShow.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-gray-100 dark:hover:bg-gray-700';
+
+          tr.innerHTML = `
+            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
+            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
+            <td class="px-4 py-3">${row["targeted_therapy_(examples)"] || ''}</td>
+            <td class="px-4 py-3">${row["mode_of_action"] || ''}</td>
+            <td class="px-4 py-3">${row["status"] || ''}</td>
+          `;
+
+          tbody.appendChild(tr);
+        });
+
+        // Button visibility + text
+        if (filtered.length <= INITIAL_ROWS) {
+          btn.classList.add('hidden');
+        } else {
+          btn.classList.remove('hidden');
+          btn.textContent = expanded ? 'See less' : 'Load more';
+        }
+      }
+
+      // Initial render
+      render();
+
+      // Load more / See less
+      btn.addEventListener('click', () => {
+        expanded = !expanded;
+        render();
       });
 
-      // Button text toggle
-      btn.textContent = expanded ? 'See less' : 'Load more';
-    }
+      // 🔍 SEARCH (THIS WAS MISSING)
+      searchInput.addEventListener('input', () => {
+        searchTerm = searchInput.value.trim().toLowerCase();
+        expanded = false; // reset view on new search
+        render();
+      });
 
-    // Initial render → 5 rows
-    render();
+    })
+    .catch(err => console.error('Targeted therapy load error:', err));
 
-    // Toggle behavior
-    btn.addEventListener('click', () => {
-      expanded = !expanded;
-      render();
-    });
-  })
-  .catch(err => console.error('Targeted therapy load error:', err));
+});
 </script>
+
   <script>
 document.addEventListener('DOMContentLoaded', () => {
 
