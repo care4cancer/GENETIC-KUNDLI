@@ -1474,138 +1474,109 @@
   </footer>
 
 
-<script defer>
-  const initApp = () => {
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-    /* ===============================
-       Theme Toggle
-    =============================== */
-    const toggle = document.getElementById('themeToggle');
-    const sun = document.getElementById('sunIcon');
-    const moon = document.getElementById('moonIcon');
+  fetch('targeted_therapy.json')
+    .then(res => res.json())
+    .then(data => {
 
-    toggle?.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-      sun.classList.toggle('hidden');
-      moon.classList.toggle('hidden');
-    });
+      const tbody = document.getElementById('therapyTable');
+      const searchInput = document.getElementById('therapySearch');
 
-    /* ===============================
-       Mobile Menu
-    =============================== */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+      if (!tbody) return;
+      tbody.innerHTML = '';
 
-    hamburger?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      hamburger.setAttribute(
-        'aria-expanded',
-        !mobileMenu.classList.contains('hidden')
-      );
-    });
-
-    /* ===============================
-       Show / Hide Entire Therapy Table
-       (table wrapper must have id="therapyTableWrapper"
-        and button id="toggleTherapyTable")
-    =============================== */
-    const toggleBtn = document.getElementById('toggleTherapyTable');
-    const tableWrapper = document.getElementById('therapyTableWrapper');
-
-    toggleBtn?.addEventListener('click', () => {
-      tableWrapper.classList.toggle('hidden');
-      toggleBtn.textContent = tableWrapper.classList.contains('hidden')
-        ? 'View Targeted Therapy Table'
-        : 'Hide Targeted Therapy Table';
-    });
-
-    /* ===============================
-       Targeted Therapy – LOAD TABLE
-    =============================== */
-    fetch('targeted_therapy.json')
-      .then(res => res.json())
-      .then(data => {
-        const tbody = document.getElementById('therapyTable');
-        if (!tbody) return;
-
-        tbody.innerHTML = '';
-
-        data.forEach(row => {
-
-          /* ---------- Main row (collapsed) ---------- */
-          const mainRow = document.createElement('tr');
-          mainRow.className = 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
-
-          // searchable text
-          mainRow.dataset.search =
-            `${row["mutation_/_fusion"] || ''} ${row["cancer_type"] || ''} ${row["targeted_therapy_(examples)"] || ''}`.toLowerCase();
-
-          mainRow.innerHTML = `
-            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
-            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
-            <td class="px-4 py-3 italic text-gray-500">Click to view</td>
-            <td class="px-4 py-3 italic text-gray-500">Details</td>
-            <td class="px-4 py-3">
-              <span class="px-2 py-1 text-xs rounded-full ${
-                (row["status"] || '').toLowerCase().includes('approved')
-                  ? 'bg-green-100 text-green-700'
-                  : 'bg-yellow-100 text-yellow-700'
-              }">
-                ${row["status"] || '—'}
-              </span>
-            </td>
-          `;
-
-          /* ---------- Detail row (hidden) ---------- */
-          const detailRow = document.createElement('tr');
-          detailRow.className = 'hidden bg-gray-50 dark:bg-gray-800';
-
-          detailRow.innerHTML = `
-            <td colspan="5" class="px-6 py-4 text-sm">
-              <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"] || '—'}</div>
-              <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"] || '—'}</div>
-            </td>
-          `;
-
-          // toggle details
-          mainRow.addEventListener('click', () => {
-            detailRow.classList.toggle('hidden');
-          });
-
-          tbody.appendChild(mainRow);
-          tbody.appendChild(detailRow);
-        });
+      data.forEach(row => {
 
         /* ===============================
-           SEARCH (works with collapsed rows)
+           MAIN ROW (VISIBLE)
         =============================== */
-        const searchInput = document.getElementById('therapySearch');
+        const mainRow = document.createElement('tr');
+        mainRow.className =
+          'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
 
-        searchInput?.addEventListener('input', () => {
-          const term = searchInput.value.trim().toLowerCase();
-          const mainRows = document.querySelectorAll('#therapyTable tr[data-search]');
+        mainRow.dataset.search =
+          `${row["mutation_/_fusion"] || ''} 
+           ${row["cancer_type"] || ''} 
+           ${row["targeted_therapy_(examples)"] || ''}`.toLowerCase();
 
-          mainRows.forEach(mainRow => {
-            const detailRow = mainRow.nextElementSibling;
-            const match = term === '' || mainRow.dataset.search.includes(term);
+        mainRow.innerHTML = `
+          <td class="px-4 py-3 font-medium">
+            ${row["mutation_/_fusion"] || ''}
+          </td>
+          <td class="px-4 py-3">
+            ${row["cancer_type"] || ''}
+          </td>
+          <td class="px-4 py-3 italic text-gray-500">
+            Click to view
+          </td>
+          <td class="px-4 py-3 italic text-gray-500">
+            Details
+          </td>
+          <td class="px-4 py-3">
+            <span class="px-2 py-1 text-xs rounded-full ${
+              (row["status"] || '').toLowerCase().includes('approved')
+                ? 'bg-green-100 text-green-700'
+                : 'bg-yellow-100 text-yellow-700'
+            }">
+              ${row["status"] || '—'}
+            </span>
+          </td>
+        `;
 
-            mainRow.style.display = match ? '' : 'none';
-            detailRow.style.display = match ? '' : 'none';
-            detailRow.classList.add('hidden'); // collapse on search
-          });
+        /* ===============================
+           DETAIL ROW (HIDDEN)
+        =============================== */
+        const detailRow = document.createElement('tr');
+        detailRow.className = 'hidden bg-gray-50 dark:bg-gray-800';
+
+        detailRow.innerHTML = `
+          <td colspan="5" class="px-6 py-4 text-sm">
+            <div><strong>Targeted Therapy:</strong>
+              ${row["targeted_therapy_(examples)"] || '—'}
+            </div>
+            <div class="mt-2"><strong>Mode of Action:</strong>
+              ${row["mode_of_action"] || '—'}
+            </div>
+          </td>
+        `;
+
+        /* ===============================
+           CLICK TO TOGGLE DETAILS
+        =============================== */
+        mainRow.addEventListener('click', () => {
+          detailRow.classList.toggle('hidden');
         });
-      })
-      .catch(err => console.error('Targeted therapy load error:', err));
 
-    /* ===============================
-       Year
-    =============================== */
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-  };
+        tbody.appendChild(mainRow);
+        tbody.appendChild(detailRow);
+      });
 
-  document.addEventListener('DOMContentLoaded', initApp);
+      /* ===============================
+         SEARCH (COLLAPSED BY DEFAULT)
+      =============================== */
+      searchInput?.addEventListener('input', () => {
+        const term = searchInput.value.trim().toLowerCase();
+        const mainRows = tbody.querySelectorAll('tr[data-search]');
+
+        mainRows.forEach(mainRow => {
+          const detailRow = mainRow.nextElementSibling;
+          const match =
+            term === '' || mainRow.dataset.search.includes(term);
+
+          mainRow.style.display = match ? '' : 'none';
+          detailRow.style.display = match ? '' : 'none';
+          detailRow.classList.add('hidden');
+        });
+      });
+
+    })
+    .catch(err => {
+      console.error('Targeted therapy table error:', err);
+    });
+
+});
 </script>
 </body>
 </html>
