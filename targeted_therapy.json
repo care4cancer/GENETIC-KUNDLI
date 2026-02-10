@@ -1,0 +1,162 @@
+[
+  {
+    "mutation_/_fusion": "EGFR exon 19 del / L858R / T790M",
+    "cancer_type": "NSCLC",
+    "targeted_therapy_(examples)": "Osimertinib (Tagrisso)",
+    "mode_of_action": "3rd-generation EGFR TKI : mutant-selective, inhibits EGFR sensitizing and T790M mutations",
+    "status": "Approved",
+    "source": "FDA label (TAGRISSO)"
+  },
+  {
+    "mutation_/_fusion": "EML4-ALK fusion",
+    "cancer_type": "NSCLC",
+    "targeted_therapy_(examples)": "Alectinib (Alecensa)",
+    "mode_of_action": "ALK tyrosine kinase inhibitor : inhibits ALK fusion-driven signaling",
+    "status": "Approved",
+    "source": "FDA label (ALECENSA)"
+  },
+  {
+    "mutation_/_fusion": "ROS1 fusion",
+    "cancer_type": "NSCLC, various",
+    "targeted_therapy_(examples)": "Entrectinib (Rozlytrek)",
+    "mode_of_action": "Inhibits ROS1, TRK, and ALK kinases; brain-penetrant multi-kinase inhibitor",
+    "status": "Approved",
+    "source": "FDA Rozlytrek approval"
+  },
+  {
+    "mutation_/_fusion": "BRAF V600E",
+    "cancer_type": "Melanoma, CRC, NSCLC, various",
+    "targeted_therapy_(examples)": "Dabrafenib + Trametinib",
+    "mode_of_action": "BRAF inhibitor (dabrafenib) + MEK inhibitor (trametinib) : MAPK pathway blockade",
+    "status": "Approved (various indications)",
+    "source": "FDA announcement"
+  },
+  {
+    "mutation_/_fusion": "KRAS G12C",
+    "cancer_type": "NSCLC, CRC",
+    "targeted_therapy_(examples)": "Sotorasib (Lumakras), Adagrasib",
+    "mode_of_action": "Covalent inhibitor targeting KRAS G12C mutant, locks protein in inactive GDP-bound state",
+    "status": "Approved (sotorasib) / In trials (others)",
+    "source": "FDA label (Lumakras)"
+  },
+  {
+    "mutation_/_fusion": "HER2 (ERBB2) amplification / mutation",
+    "cancer_type": "Breast, Gastric, NSCLC",
+    "targeted_therapy_(examples)": "Trastuzumab, Pertuzumab, Trastuzumab deruxtecan (Enhertu)",
+    "mode_of_action": "HER2-directed antibodies/ADC : HER2 receptor targeting and payload delivery (ADC)",
+    "status": "Approved (depending on agent/indication)",
+    "source": "ENHERTU label"
+  },
+  {
+    "mutation_/_fusion": "MET exon 14 skipping / amplification",
+    "cancer_type": "NSCLC",
+    "targeted_therapy_(examples)": "Capmatinib (Tabrecta), Tepotinib",
+    "mode_of_action": "MET kinase inhibitors : inhibit MET-driven signaling",
+    "status": "Approved (capmatinib)",
+    "source": "Capmatinib label"
+  },
+  {
+    "mutation_/_fusion": "RET fusion",
+    "cancer_type": "NSCLC, Thyroid",
+    "targeted_therapy_(examples)": "Selpercatinib (Retevmo), Pralsetinib",
+    "mode_of_action": "Selective RET kinase inhibitors :  block RET fusion signaling",
+    "status": "Approved (selpercatinib, pralsetinib)",
+    "source": "Retevmo label"
+  },
+  {
+    "mutation_/_fusion": "NTRK1/2/3 fusions",
+    "cancer_type": "Pan-cancer (various)",
+    "targeted_therapy_(examples)": "Larotrectinib, Entrectinib",
+    "mode_of_action": "TRK inhibitors :  block TRK fusion-driven signaling",
+    "status": "Approved (tumor-agnostic)",
+    "source": "FDA Rozlytrek approval"
+  },
+  {
+    "mutation_/_fusion": "PIK3CA activating mutation",
+    "cancer_type": "Breast (HR+)",
+    "targeted_therapy_(examples)": "Alpelisib (Piqray)",
+    "mode_of_action": "PI3Kα inhibitor :  inhibits PIK3CA-driven PI3K/AKT/mTOR pathway",
+    "status": "Approved",
+    "source": "Piqray label"
+  },
+  {
+    "mutation_/_fusion": "BRCA1/2 (germline or somatic)",
+    "cancer_type": "Breast, Ovarian, Prostate",
+    "targeted_therapy_(examples)": "Olaparib, Niraparib, Rucaparib (PARP inhibitors)",
+    "mode_of_action": "PARP inhibition :  synthetic lethality in HR-deficient tumors",
+    "status": "Approved",
+    "source": "Olaparib label"
+  },
+  {
+    "mutation_/_fusion": "IDH1 / IDH2 mutations",
+    "cancer_type": "AML, Glioma",
+    "targeted_therapy_(examples)": "Ivosidenib (IDH1), Enasidenib (IDH2)",
+    "mode_of_action": "Inhibit mutant IDH enzyme :  reduce oncometabolite 2-HG",
+    "status": "Approved (AML indications)",
+    "source": "FDA approval notes"
+  },
+  {
+    "mutation_/_fusion": "FGFR2 fusion",
+    "cancer_type": "Cholangiocarcinoma",
+    "targeted_therapy_(examples)": "Pemigatinib, Infigratinib",
+    "mode_of_action": "FGFR kinase inhibitors :  block FGFR fusion-driven signaling",
+    "status": "Approved (pemigatinib for FGFR2 fusions)",
+    "source": "Pemigatinib approval"
+  },
+  {
+    "mutation_/_fusion": "FGFR3 mutation / fusion",
+    "cancer_type": "Bladder cancer",
+    "targeted_therapy_(examples)": "Erdafitinib",
+    "mode_of_action": "FGFR inhibitor :  targets FGFR3 alterations",
+    "status": "Approved",
+    "source": "Erdafitinib label"
+  },
+  {
+    "mutation_/_fusion": "KIT exon 11 (KIT) / PDGFRA",
+    "cancer_type": "GIST",
+    "targeted_therapy_(examples)": "Imatinib, Avapritinib",
+    "mode_of_action": "Tyrosine kinase inhibitors :  target KIT/PDGFRA mutant kinases",
+    "status": "Approved (imatinib; avapritinib for PDGFRA exon 18)",
+    "source": "Imatinib / Avapritinib labels"
+  },
+  {
+    "mutation_/_fusion": "MSI-High / dMMR",
+    "cancer_type": "Pan-cancer",
+    "targeted_therapy_(examples)": "Pembrolizumab (Keytruda) and other PD-1/PD-L1 inhibitors",
+    "mode_of_action": "Immune checkpoint inhibition :  unleashes T-cell response against high neoantigen tumors",
+    "status": "Approved (tumor-agnostic)",
+    "source": "FDA tumor-agnostic pembrolizumab approvals"
+  },
+  {
+    "mutation_/_fusion": "ALK resistance (ROS1/other)",
+    "cancer_type": "NSCLC",
+    "targeted_therapy_(examples)": "Lorlatinib, Brigatinib (next-gen ALK TKIs)",
+    "mode_of_action": "Potent ALK inhibitors effective against resistance mutations",
+    "status": "Approved for some settings / in trials for others",
+    "source": "ALECENSA label / literature"
+  },
+  {
+    "mutation_/_fusion": "HER2 exon 20 insertion",
+    "cancer_type": "NSCLC",
+    "targeted_therapy_(examples)": "Poziotinib (in trials), Mobocertinib (for EGFR exon20)",
+    "mode_of_action": "Covalent EGFR/HER2 inhibitors or selective inhibitors depending on agent",
+    "status": "In trials / some accelerated approvals",
+    "source": "Recent trial reports"
+  },
+  {
+    "mutation_/_fusion": "KRAS non-G12C (e.g., G12D)",
+    "cancer_type": "Various",
+    "targeted_therapy_(examples)": "Multiple agents in development (e.g., siRNA, inhibitors)",
+    "mode_of_action": "Various mechanisms :  direct inhibitors or indirect pathway blockade",
+    "status": "In trials",
+    "source": "Clinical trial registries"
+  },
+  {
+    "mutation_/_fusion": "BCR-ABL1",
+    "cancer_type": "CML",
+    "targeted_therapy_(examples)": "Imatinib, Dasatinib, Nilotinib, Ponatinib",
+    "mode_of_action": "BCR-ABL tyrosine kinase inhibitors :  inhibit constitutively active ABL kinase",
+    "status": "Approved",
+    "source": "Imatinib label"
+  }
+]
