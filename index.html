@@ -1474,12 +1474,13 @@
   </footer>
 
 
- <script defer>
+ <!-- Scripts -->
+<script defer>
   const initApp = () => {
 
-    // ===============================
-    // Theme Toggle
-    // ===============================
+    /* ===============================
+       Theme Toggle
+    =============================== */
     const toggle = document.getElementById('themeToggle');
     const sun = document.getElementById('sunIcon');
     const moon = document.getElementById('moonIcon');
@@ -1491,9 +1492,9 @@
       moon.classList.toggle('hidden');
     });
 
-    // ===============================
-    // Mobile Menu
-    // ===============================
+    /* ===============================
+       Mobile Menu
+    =============================== */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1505,9 +1506,9 @@
       );
     });
 
-    // ===============================
-    // Panel Search (Disease Panels)
-    // ===============================
+    /* ===============================
+       Panel Search
+    =============================== */
     const panelInput = document.getElementById('panelSearch');
     const panelsContainer = document.getElementById('panelsContainer');
     const panels = panelsContainer?.querySelectorAll('.panel-item') || [];
@@ -1533,11 +1534,11 @@
       });
     });
 
-    // ===============================
-    // Targeted Therapy – AUTO LOAD
-    // ===============================
+    /* ===============================
+       Targeted Therapy – Load + Collapse
+    =============================== */
     fetch('targeted_therapy.json')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         const tableBody = document.getElementById('therapyTable');
         if (!tableBody) return;
@@ -1545,56 +1546,59 @@
         tableBody.innerHTML = '';
 
         data.forEach(row => {
-          const tr = document.createElement('tr');
 
-         const mainRow = document.createElement('tr');
-mainRow.classList.add('cursor-pointer', 'hover:bg-gray-50', 'dark:hover:bg-gray-700');
+          // Main (collapsed) row
+          const mainRow = document.createElement('tr');
+          mainRow.className =
+            'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
 
-mainRow.innerHTML = `
-  <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
-  <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
-  <td class="px-4 py-3 text-gray-500 italic">Click to view</td>
-  <td class="px-4 py-3 text-gray-500 italic">Details</td>
-  <td class="px-4 py-3">
-    <span class="px-2 py-1 text-xs rounded-full ${
-      (row["status"] || '').toLowerCase().includes('approved')
-        ? 'bg-green-100 text-green-700'
-        : 'bg-yellow-100 text-yellow-700'
-    }">
-      ${row["status"] || ''}
-    </span>
-  </td>
-`;
+          mainRow.innerHTML = `
+            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
+            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
+            <td class="px-4 py-3 italic text-gray-500">Click to view</td>
+            <td class="px-4 py-3 italic text-gray-500">Details</td>
+            <td class="px-4 py-3">
+              <span class="px-2 py-1 text-xs rounded-full ${
+                (row["status"] || '').toLowerCase().includes('approved')
+                  ? 'bg-green-100 text-green-700'
+                  : 'bg-yellow-100 text-yellow-700'
+              }">
+                ${row["status"] || ''}
+              </span>
+            </td>
+          `;
 
-const detailRow = document.createElement('tr');
-detailRow.classList.add('hidden', 'bg-gray-50', 'dark:bg-gray-800');
+          // Hidden detail row
+          const detailRow = document.createElement('tr');
+          detailRow.className = 'hidden bg-gray-50 dark:bg-gray-800';
 
-detailRow.innerHTML = `
-  <td colspan="5" class="px-6 py-4 text-sm">
-    <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"] || '—'}</div>
-    <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"] || '—'}</div>
-  </td>
-`;
+          detailRow.innerHTML = `
+            <td colspan="5" class="px-6 py-4 text-sm">
+              <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"] || '—'}</div>
+              <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"] || '—'}</div>
+            </td>
+          `;
 
-// Toggle logic
-mainRow.addEventListener('click', () => {
-  detailRow.classList.toggle('hidden');
-});
+          // Toggle expand/collapse
+          mainRow.addEventListener('click', () => {
+            detailRow.classList.toggle('hidden');
+          });
 
-tableBody.appendChild(mainRow);
-tableBody.appendChild(detailRow);
+          tableBody.appendChild(mainRow);
+          tableBody.appendChild(detailRow);
+        });
 
-
-        // ===============================
-        // Targeted Therapy Search
-        // ===============================
+        /* ===============================
+           Targeted Therapy Search
+        =============================== */
         const therapySearch = document.getElementById('therapySearch');
+
         therapySearch?.addEventListener('input', () => {
           const term = therapySearch.value.trim().toLowerCase();
           const rows = document.querySelectorAll('#therapyTable tr');
 
-          rows.forEach(row => {
-            row.style.display = row.textContent.toLowerCase().includes(term)
+          rows.forEach(r => {
+            r.style.display = r.textContent.toLowerCase().includes(term)
               ? ''
               : 'none';
           });
@@ -1602,9 +1606,9 @@ tableBody.appendChild(detailRow);
       })
       .catch(err => console.error('Targeted therapy load error:', err));
 
-    // ===============================
-    // One accordion open at a time
-    // ===============================
+    /* ===============================
+       Accordion (other sections)
+    =============================== */
     document.querySelectorAll('details').forEach(d => {
       d.addEventListener('toggle', () => {
         if (d.open) {
@@ -1614,9 +1618,9 @@ tableBody.appendChild(detailRow);
       });
     });
 
-    // ===============================
-    // Year
-    // ===============================
+    /* ===============================
+       Year
+    =============================== */
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   };
