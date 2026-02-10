@@ -1528,5 +1528,27 @@ fetch('targeted_therapy.json')
   })
   .catch(err => console.error('Targeted therapy load error:', err));
 </script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ===============================
+     THEME TOGGLE (FIXED)
+  =============================== */
+  const toggle = document.getElementById('themeToggle');
+  const sun = document.getElementById('sunIcon');
+  const moon = document.getElementById('moonIcon');
+
+  if (toggle && sun && moon) {
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.theme = isDark ? 'dark' : 'light';
+
+      sun.classList.toggle('hidden', isDark);
+      moon.classList.toggle('hidden', !isDark);
+    });
+  }
+
+});
+</script>
 </body> 
 </html>
