@@ -1484,99 +1484,49 @@
 
 <script>
 fetch('targeted_therapy.json')
-  .then(r => r.json())
+  .then(res => res.json())
   .then(data => {
 
     const tbody = document.getElementById('therapyTable');
-    const loadMoreBtn = document.getElementById('loadMoreTherapy');
+    const btn = document.getElementById('loadMoreTherapy');
 
-    let visibleCount = 5;
-    const STEP = 5;
+    const INITIAL_ROWS = 5;
+    let expanded = false; // false = 5 rows, true = all rows
 
     function render() {
       tbody.innerHTML = '';
 
-      data.slice(0, visibleCount).forEach(row => {
+      const rowsToShow = expanded ? data : data.slice(0, INITIAL_ROWS);
 
-        /* =========================
-           MAIN ROW (VISIBLE DATA)
-        ========================== */
-        const main = document.createElement('tr');
-        main.className = 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700';
+      rowsToShow.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-100 dark:hover:bg-gray-700';
 
-        main.innerHTML = `
-          <td class="px-4 py-3 font-medium">
-            <span class="arrow mr-2">▸</span>${row["mutation_/_fusion"]}
-          </td>
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"]}</td>
           <td class="px-4 py-3">${row["cancer_type"]}</td>
           <td class="px-4 py-3">${row["targeted_therapy_(examples)"]}</td>
           <td class="px-4 py-3">${row["mode_of_action"]}</td>
-          <td class="px-4 py-3">
-            <span class="px-2 py-1 text-xs rounded-full ${
-              row["status"].toLowerCase().includes('approved')
-                ? 'bg-green-100 text-green-700'
-                : 'bg-yellow-100 text-yellow-700'
-            }">
-              ${row["status"]}
-            </span>
-          </td>
+          <td class="px-4 py-3">${row["status"]}</td>
         `;
 
-        /* =========================
-           DETAIL ROW (OPTIONAL EXPAND)
-        ========================== */
-        const detail = document.createElement('tr');
-        detail.style.display = 'none';
-        detail.className = 'bg-gray-50 dark:bg-gray-800';
-
-        detail.innerHTML = `
-          <td colspan="5" class="px-8 py-4 text-sm">
-            <strong>Clinical Notes:</strong><br>
-            Therapy relevance depends on tumour type, line of therapy, biomarkers,
-            resistance mutations, and NCCN/ESMO guidance.
-          </td>
-        `;
-
-        /* =========================
-           ACCORDION TOGGLE
-        ========================== */
-        main.onclick = () => {
-          const open = detail.style.display === 'table-row';
-
-          document.querySelectorAll('#therapyTable tr[data-detail]')
-            ?.forEach(r => r.style.display = 'none');
-          document.querySelectorAll('.arrow')
-            ?.forEach(a => a.textContent = '▸');
-
-          if (!open) {
-            detail.style.display = 'table-row';
-            main.querySelector('.arrow').textContent = '▾';
-          } else {
-            detail.style.display = 'none';
-          }
-        };
-
-        detail.setAttribute('data-detail', 'true');
-
-        tbody.appendChild(main);
-        tbody.appendChild(detail);
+        tbody.appendChild(tr);
       });
 
-      /* =========================
-         LOAD MORE BUTTON
-      ========================== */
-      loadMoreBtn.style.display =
-        visibleCount >= data.length ? 'none' : 'inline-block';
+      // Button text toggle
+      btn.textContent = expanded ? 'See less' : 'Load more';
     }
 
+    // Initial render → 5 rows
     render();
 
-    loadMoreBtn.onclick = () => {
-      visibleCount += STEP;
+    // Toggle behavior
+    btn.addEventListener('click', () => {
+      expanded = !expanded;
       render();
-    };
+    });
   })
   .catch(err => console.error('Targeted therapy load error:', err));
 </script>
-</body>
+</body> 
 </html>
