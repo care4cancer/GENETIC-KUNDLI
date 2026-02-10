@@ -1474,8 +1474,7 @@
   </footer>
 
 
- <!-- Scripts -->
-<script defer>
+ <script defer>
   const initApp = () => {
 
     /* ===============================
@@ -1507,116 +1506,84 @@
     });
 
     /* ===============================
-       Panel Search
-    =============================== */
-    const panelInput = document.getElementById('panelSearch');
-    const panelsContainer = document.getElementById('panelsContainer');
-    const panels = panelsContainer?.querySelectorAll('.panel-item') || [];
-
-    panelInput?.addEventListener('input', () => {
-      const term = panelInput.value.trim().toLowerCase();
-
-      panels.forEach(panel => {
-        const panelId = panel.getAttribute('data-panel-id');
-        const template = document.getElementById(panelId + '-content');
-
-        let searchableText =
-          (panel.dataset.keywords || '') + ' ' + panel.textContent;
-
-        if (template?.content?.textContent) {
-          searchableText += ' ' + template.content.textContent;
-        }
-
-        panel.style.display =
-          term === '' || searchableText.toLowerCase().includes(term)
-            ? ''
-            : 'none';
-      });
-    });
-
-    /* ===============================
-       Targeted Therapy – Load + Collapse
+       Targeted Therapy – LOAD TABLE
     =============================== */
     fetch('targeted_therapy.json')
       .then(res => res.json())
       .then(data => {
-        const tableBody = document.getElementById('therapyTable');
-        if (!tableBody) return;
+        const tbody = document.getElementById('therapyTable');
+        if (!tbody) return;
 
-        tableBody.innerHTML = '';
+        tbody.innerHTML = '';
 
         data.forEach(row => {
 
-          // Main (collapsed) row
+          // MAIN ROW (VISIBLE)
           const mainRow = document.createElement('tr');
           mainRow.className =
             'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
 
+          // searchable text
+          mainRow.dataset.search =
+            `${row["mutation_/_fusion"]} ${row["cancer_type"]} ${row["targeted_therapy_(examples)"]}`.toLowerCase();
+
           mainRow.innerHTML = `
-            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
-            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
+            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"]}</td>
+            <td class="px-4 py-3">${row["cancer_type"]}</td>
             <td class="px-4 py-3 italic text-gray-500">Click to view</td>
             <td class="px-4 py-3 italic text-gray-500">Details</td>
             <td class="px-4 py-3">
               <span class="px-2 py-1 text-xs rounded-full ${
-                (row["status"] || '').toLowerCase().includes('approved')
+                row["status"].toLowerCase().includes('approved')
                   ? 'bg-green-100 text-green-700'
                   : 'bg-yellow-100 text-yellow-700'
               }">
-                ${row["status"] || ''}
+                ${row["status"]}
               </span>
             </td>
           `;
 
-          // Hidden detail row
+          // DETAIL ROW (HIDDEN)
           const detailRow = document.createElement('tr');
           detailRow.className = 'hidden bg-gray-50 dark:bg-gray-800';
 
           detailRow.innerHTML = `
             <td colspan="5" class="px-6 py-4 text-sm">
-              <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"] || '—'}</div>
-              <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"] || '—'}</div>
+              <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"]}</div>
+              <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"]}</div>
             </td>
           `;
 
-          // Toggle expand/collapse
+          // TOGGLE DETAILS
           mainRow.addEventListener('click', () => {
             detailRow.classList.toggle('hidden');
           });
 
-          tableBody.appendChild(mainRow);
-          tableBody.appendChild(detailRow);
+          tbody.appendChild(mainRow);
+          tbody.appendChild(detailRow);
         });
 
         /* ===============================
-           Targeted Therapy Search
+           SEARCH (SAFE & WORKING)
         =============================== */
-        const therapySearch = document.getElementById('therapySearch');
+        const searchInput = document.getElementById('therapySearch');
 
-        therapySearch?.addEventListener('input', () => {
-          const term = therapySearch.value.trim().toLowerCase();
-          const rows = document.querySelectorAll('#therapyTable tr');
+        searchInput?.addEventListener('input', () => {
+          const term = searchInput.value.trim().toLowerCase();
 
-          rows.forEach(r => {
-            r.style.display = r.textContent.toLowerCase().includes(term)
-              ? ''
-              : 'none';
+          const mainRows = document.querySelectorAll('#therapyTable tr[data-search]');
+
+          mainRows.forEach(mainRow => {
+            const detailRow = mainRow.nextElementSibling;
+            const match = term === '' || mainRow.dataset.search.includes(term);
+
+            mainRow.style.display = match ? '' : 'none';
+            detailRow.style.display = match ? '' : 'none';
+            detailRow.classList.add('hidden');
           });
         });
       })
-      .catch(err => console.error('Targeted therapy load error:', err));
-
-    /* ===============================
-       Accordion (other sections)
-    =============================== */
-    document.querySelectorAll('details').forEach(d => {
-      d.addEventListener('toggle', () => {
-        if (d.open) {
-          document.querySelectorAll('details')
-            .forEach(o => { if (o !== d) o.open = false; });
-        }
-      });
-    });
+      .catch(err => console.error(err));
 
     /* ===============================
        Year
