@@ -1209,6 +1209,14 @@
         placeholder="Search by gene, cancer type, or drug (e.g. EGFR, NSCLC, Osimertinib)"
         class="w-full max-w-xl px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500">
     </div>
+    
+    <div class="mt-6 text-center">
+  <button id="loadMoreTherapy"
+    class="px-6 py-2 rounded-xl bg-red-600 text-white font-semibold hover:bg-red-700 transition">
+    Load more
+  </button>
+</div>
+
 
     <!-- Table -->
     <div class="mt-10 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
@@ -1475,108 +1483,81 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+fetch('targeted_therapy.json')
+  .then(r => r.json())
+  .then(data => {
 
-  fetch('targeted_therapy.json')
-    .then(res => res.json())
-    .then(data => {
+    const tbody = document.getElementById('therapyTable');
+    const loadMoreBtn = document.getElementById('loadMoreTherapy');
 
-      const tbody = document.getElementById('therapyTable');
-      const searchInput = document.getElementById('therapySearch');
+    let visibleCount = 5;
+    const STEP = 5;
 
-      if (!tbody) return;
+    function render() {
       tbody.innerHTML = '';
 
-      data.forEach(row => {
+      data.slice(0, visibleCount).forEach(row => {
 
-        /* ===============================
-           MAIN ROW (VISIBLE)
-        =============================== */
-        const mainRow = document.createElement('tr');
-        mainRow.className =
-          'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
+        // MAIN ROW
+        const main = document.createElement('tr');
+        main.className = 'cursor-pointer hover:bg-gray-100';
 
-        mainRow.dataset.search =
-          `${row["mutation_/_fusion"] || ''} 
-           ${row["cancer_type"] || ''} 
-           ${row["targeted_therapy_(examples)"] || ''}`.toLowerCase();
-
-        mainRow.innerHTML = `
+        main.innerHTML = `
           <td class="px-4 py-3 font-medium">
-            ${row["mutation_/_fusion"] || ''}
+            <span class="arrow mr-2">▸</span>${row["mutation_/_fusion"]}
           </td>
-          <td class="px-4 py-3">
-            ${row["cancer_type"] || ''}
-          </td>
-          <td class="px-4 py-3 italic text-gray-500">
-            Click to view
-          </td>
-          <td class="px-4 py-3 italic text-gray-500">
-            Details
-          </td>
-          <td class="px-4 py-3">
-            <span class="px-2 py-1 text-xs rounded-full ${
-              (row["status"] || '').toLowerCase().includes('approved')
-                ? 'bg-green-100 text-green-700'
-                : 'bg-yellow-100 text-yellow-700'
-            }">
-              ${row["status"] || '—'}
-            </span>
+          <td class="px-4 py-3">${row["cancer_type"]}</td>
+          <td class="px-4 py-3">Click to view</td>
+          <td class="px-4 py-3">Details</td>
+          <td class="px-4 py-3">${row["status"]}</td>
+        `;
+
+        // DETAIL ROW (HIDDEN)
+        const detail = document.createElement('tr');
+        detail.className = 'detail';
+        detail.style.display = 'none';
+
+        detail.innerHTML = `
+          <td colspan="5" class="px-8 py-4 bg-gray-50 text-sm">
+            <strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"]}<br>
+            <strong>Mode of Action:</strong> ${row["mode_of_action"]}
           </td>
         `;
 
-        /* ===============================
-           DETAIL ROW (HIDDEN)
-        =============================== */
-        const detailRow = document.createElement('tr');
-        detailRow.className = 'hidden bg-gray-50 dark:bg-gray-800';
+        // TOGGLE (Accordion)
+        main.onclick = () => {
+          const open = detail.style.display === 'table-row';
 
-        detailRow.innerHTML = `
-          <td colspan="5" class="px-6 py-4 text-sm">
-            <div><strong>Targeted Therapy:</strong>
-              ${row["targeted_therapy_(examples)"] || '—'}
-            </div>
-            <div class="mt-2"><strong>Mode of Action:</strong>
-              ${row["mode_of_action"] || '—'}
-            </div>
-          </td>
-        `;
+          document.querySelectorAll('#therapyTable tr.detail')
+            .forEach(r => r.style.display = 'none');
+          document.querySelectorAll('.arrow')
+            .forEach(a => a.textContent = '▸');
 
-        /* ===============================
-           CLICK TO TOGGLE DETAILS
-        =============================== */
-        mainRow.addEventListener('click', () => {
-          detailRow.classList.toggle('hidden');
-        });
+          if (!open) {
+            detail.style.display = 'table-row';
+            main.querySelector('.arrow').textContent = '▾';
+          }
+        };
 
-        tbody.appendChild(mainRow);
-        tbody.appendChild(detailRow);
+        tbody.appendChild(main);
+        tbody.appendChild(detail);
       });
 
-      /* ===============================
-         SEARCH (COLLAPSED BY DEFAULT)
-      =============================== */
-      searchInput?.addEventListener('input', () => {
-        const term = searchInput.value.trim().toLowerCase();
-        const mainRows = tbody.querySelectorAll('tr[data-search]');
+      // Hide Load More if done
+      if (visibleCount >= data.length) {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
 
-        mainRows.forEach(mainRow => {
-          const detailRow = mainRow.nextElementSibling;
-          const match =
-            term === '' || mainRow.dataset.search.includes(term);
+    // INITIAL RENDER
+    render();
 
-          mainRow.style.display = match ? '' : 'none';
-          detailRow.style.display = match ? '' : 'none';
-          detailRow.classList.add('hidden');
-        });
-      });
-
-    })
-    .catch(err => {
-      console.error('Targeted therapy table error:', err);
-    });
-
-});
+    // LOAD MORE
+    loadMoreBtn.onclick = () => {
+      visibleCount += STEP;
+      render();
+    };
+  });
 </script>
-</body>
+</body> 
 </html>
