@@ -1474,7 +1474,7 @@
   </footer>
 
 
- <script defer>
+<script defer>
   const initApp = () => {
 
     /* ===============================
@@ -1506,6 +1506,21 @@
     });
 
     /* ===============================
+       Show / Hide Entire Therapy Table
+       (table wrapper must have id="therapyTableWrapper"
+        and button id="toggleTherapyTable")
+    =============================== */
+    const toggleBtn = document.getElementById('toggleTherapyTable');
+    const tableWrapper = document.getElementById('therapyTableWrapper');
+
+    toggleBtn?.addEventListener('click', () => {
+      tableWrapper.classList.toggle('hidden');
+      toggleBtn.textContent = tableWrapper.classList.contains('hidden')
+        ? 'View Targeted Therapy Table'
+        : 'Hide Targeted Therapy Table';
+    });
+
+    /* ===============================
        Targeted Therapy – LOAD TABLE
     =============================== */
     fetch('targeted_therapy.json')
@@ -1518,43 +1533,42 @@
 
         data.forEach(row => {
 
-          // MAIN ROW (VISIBLE)
+          /* ---------- Main row (collapsed) ---------- */
           const mainRow = document.createElement('tr');
-          mainRow.className =
-            'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
+          mainRow.className = 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700';
 
           // searchable text
           mainRow.dataset.search =
-            `${row["mutation_/_fusion"]} ${row["cancer_type"]} ${row["targeted_therapy_(examples)"]}`.toLowerCase();
+            `${row["mutation_/_fusion"] || ''} ${row["cancer_type"] || ''} ${row["targeted_therapy_(examples)"] || ''}`.toLowerCase();
 
           mainRow.innerHTML = `
-            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"]}</td>
-            <td class="px-4 py-3">${row["cancer_type"]}</td>
+            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
+            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
             <td class="px-4 py-3 italic text-gray-500">Click to view</td>
             <td class="px-4 py-3 italic text-gray-500">Details</td>
             <td class="px-4 py-3">
               <span class="px-2 py-1 text-xs rounded-full ${
-                row["status"].toLowerCase().includes('approved')
+                (row["status"] || '').toLowerCase().includes('approved')
                   ? 'bg-green-100 text-green-700'
                   : 'bg-yellow-100 text-yellow-700'
               }">
-                ${row["status"]}
+                ${row["status"] || '—'}
               </span>
             </td>
           `;
 
-          // DETAIL ROW (HIDDEN)
+          /* ---------- Detail row (hidden) ---------- */
           const detailRow = document.createElement('tr');
           detailRow.className = 'hidden bg-gray-50 dark:bg-gray-800';
 
           detailRow.innerHTML = `
             <td colspan="5" class="px-6 py-4 text-sm">
-              <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"]}</div>
-              <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"]}</div>
+              <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"] || '—'}</div>
+              <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"] || '—'}</div>
             </td>
           `;
 
-          // TOGGLE DETAILS
+          // toggle details
           mainRow.addEventListener('click', () => {
             detailRow.classList.toggle('hidden');
           });
@@ -1564,13 +1578,12 @@
         });
 
         /* ===============================
-           SEARCH (SAFE & WORKING)
+           SEARCH (works with collapsed rows)
         =============================== */
         const searchInput = document.getElementById('therapySearch');
 
         searchInput?.addEventListener('input', () => {
           const term = searchInput.value.trim().toLowerCase();
-
           const mainRows = document.querySelectorAll('#therapyTable tr[data-search]');
 
           mainRows.forEach(mainRow => {
@@ -1579,11 +1592,11 @@
 
             mainRow.style.display = match ? '' : 'none';
             detailRow.style.display = match ? '' : 'none';
-            detailRow.classList.add('hidden');
+            detailRow.classList.add('hidden'); // collapse on search
           });
         });
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error('Targeted therapy load error:', err));
 
     /* ===============================
        Year
