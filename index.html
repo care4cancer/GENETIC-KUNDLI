@@ -1474,11 +1474,12 @@
   </footer>
 
 
- <!-- Scripts -->
-<script defer>
+ <script defer>
   const initApp = () => {
 
+    // ===============================
     // Theme Toggle
+    // ===============================
     const toggle = document.getElementById('themeToggle');
     const sun = document.getElementById('sunIcon');
     const moon = document.getElementById('moonIcon');
@@ -1490,7 +1491,9 @@
       moon.classList.toggle('hidden');
     });
 
+    // ===============================
     // Mobile Menu
+    // ===============================
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1502,7 +1505,9 @@
       );
     });
 
+    // ===============================
     // Panel Search (Disease Panels)
+    // ===============================
     const panelInput = document.getElementById('panelSearch');
     const panelsContainer = document.getElementById('panelsContainer');
     const panels = panelsContainer?.querySelectorAll('.panel-item') || [];
@@ -1528,31 +1533,6 @@
       });
     });
 
-    // ✅ Targeted Therapy Search (NEW SECTION)
-    // Enable search AFTER table is populated
-const therapySearch = document.getElementById('therapySearch');
-
-therapySearch?.addEventListener('input', () => {
-  const term = therapySearch.value.trim().toLowerCase();
-  const rows = document.querySelectorAll('#therapyTable tr');
-
-  rows.forEach(row => {
-    const text = row.textContent.toLowerCase();
-    row.style.display = text.includes(term) ? '' : 'none';
-  });
-});
-
-
-    // One accordion open at a time
-    document.querySelectorAll('details').forEach(d => {
-      d.addEventListener('toggle', () => {
-        if (d.open) {
-          document
-            .querySelectorAll('details')
-            .forEach(o => { if (o !== d) o.open = false; });
-        }
-      });
-    });
     // ===============================
     // Targeted Therapy – AUTO LOAD
     // ===============================
@@ -1568,28 +1548,55 @@ therapySearch?.addEventListener('input', () => {
           const tr = document.createElement('tr');
 
           tr.innerHTML = `
-            <td class="px-4 py-3 font-medium">${row.mutation___fusion || row.mutation_fusion || ''}</td>
-            <td class="px-4 py-3">${row.cancer_type || ''}</td>
-            <td class="px-4 py-3">${row.targeted_therapy_examples || row.targeted_therapy || ''}</td>
-            <td class="px-4 py-3">${row.mode_of_action || ''}</td>
+            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
+            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
+            <td class="px-4 py-3">${row["targeted_therapy_(examples)"] || ''}</td>
+            <td class="px-4 py-3">${row["mode_of_action"] || ''}</td>
             <td class="px-4 py-3">
               <span class="px-2 py-1 text-xs rounded-full ${
-                (row.status || '').toLowerCase().includes('approved')
+                (row["status"] || '').toLowerCase().includes('approved')
                   ? 'bg-green-100 text-green-700'
                   : 'bg-yellow-100 text-yellow-700'
               }">
-                ${row.status || ''}
+                ${row["status"] || ''}
               </span>
             </td>
           `;
           tableBody.appendChild(tr);
         });
+
+        // ===============================
+        // Targeted Therapy Search
+        // ===============================
+        const therapySearch = document.getElementById('therapySearch');
+        therapySearch?.addEventListener('input', () => {
+          const term = therapySearch.value.trim().toLowerCase();
+          const rows = document.querySelectorAll('#therapyTable tr');
+
+          rows.forEach(row => {
+            row.style.display = row.textContent.toLowerCase().includes(term)
+              ? ''
+              : 'none';
+          });
+        });
       })
       .catch(err => console.error('Targeted therapy load error:', err));
 
+    // ===============================
+    // One accordion open at a time
+    // ===============================
+    document.querySelectorAll('details').forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          document.querySelectorAll('details')
+            .forEach(o => { if (o !== d) o.open = false; });
+        }
+      });
+    });
 
-
+    // ===============================
     // Year
+    // ===============================
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   };
