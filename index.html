@@ -1547,23 +1547,43 @@
         data.forEach(row => {
           const tr = document.createElement('tr');
 
-          tr.innerHTML = `
-            <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
-            <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
-            <td class="px-4 py-3">${row["targeted_therapy_(examples)"] || ''}</td>
-            <td class="px-4 py-3">${row["mode_of_action"] || ''}</td>
-            <td class="px-4 py-3">
-              <span class="px-2 py-1 text-xs rounded-full ${
-                (row["status"] || '').toLowerCase().includes('approved')
-                  ? 'bg-green-100 text-green-700'
-                  : 'bg-yellow-100 text-yellow-700'
-              }">
-                ${row["status"] || ''}
-              </span>
-            </td>
-          `;
-          tableBody.appendChild(tr);
-        });
+         const mainRow = document.createElement('tr');
+mainRow.classList.add('cursor-pointer', 'hover:bg-gray-50', 'dark:hover:bg-gray-700');
+
+mainRow.innerHTML = `
+  <td class="px-4 py-3 font-medium">${row["mutation_/_fusion"] || ''}</td>
+  <td class="px-4 py-3">${row["cancer_type"] || ''}</td>
+  <td class="px-4 py-3 text-gray-500 italic">Click to view</td>
+  <td class="px-4 py-3 text-gray-500 italic">Details</td>
+  <td class="px-4 py-3">
+    <span class="px-2 py-1 text-xs rounded-full ${
+      (row["status"] || '').toLowerCase().includes('approved')
+        ? 'bg-green-100 text-green-700'
+        : 'bg-yellow-100 text-yellow-700'
+    }">
+      ${row["status"] || ''}
+    </span>
+  </td>
+`;
+
+const detailRow = document.createElement('tr');
+detailRow.classList.add('hidden', 'bg-gray-50', 'dark:bg-gray-800');
+
+detailRow.innerHTML = `
+  <td colspan="5" class="px-6 py-4 text-sm">
+    <div><strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"] || '—'}</div>
+    <div class="mt-1"><strong>Mode of Action:</strong> ${row["mode_of_action"] || '—'}</div>
+  </td>
+`;
+
+// Toggle logic
+mainRow.addEventListener('click', () => {
+  detailRow.classList.toggle('hidden');
+});
+
+tableBody.appendChild(mainRow);
+tableBody.appendChild(detailRow);
+
 
         // ===============================
         // Targeted Therapy Search
