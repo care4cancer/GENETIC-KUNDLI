@@ -1498,66 +1498,85 @@ fetch('targeted_therapy.json')
 
       data.slice(0, visibleCount).forEach(row => {
 
-        // MAIN ROW
+        /* =========================
+           MAIN ROW (VISIBLE DATA)
+        ========================== */
         const main = document.createElement('tr');
-        main.className = 'cursor-pointer hover:bg-gray-100';
+        main.className = 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700';
 
         main.innerHTML = `
           <td class="px-4 py-3 font-medium">
             <span class="arrow mr-2">▸</span>${row["mutation_/_fusion"]}
           </td>
           <td class="px-4 py-3">${row["cancer_type"]}</td>
-          <td class="px-4 py-3">Click to view</td>
-          <td class="px-4 py-3">Details</td>
-          <td class="px-4 py-3">${row["status"]}</td>
-        `;
-
-        // DETAIL ROW (HIDDEN)
-        const detail = document.createElement('tr');
-        detail.className = 'detail';
-        detail.style.display = 'none';
-
-        detail.innerHTML = `
-          <td colspan="5" class="px-8 py-4 bg-gray-50 text-sm">
-            <strong>Targeted Therapy:</strong> ${row["targeted_therapy_(examples)"]}<br>
-            <strong>Mode of Action:</strong> ${row["mode_of_action"]}
+          <td class="px-4 py-3">${row["targeted_therapy_(examples)"]}</td>
+          <td class="px-4 py-3">${row["mode_of_action"]}</td>
+          <td class="px-4 py-3">
+            <span class="px-2 py-1 text-xs rounded-full ${
+              row["status"].toLowerCase().includes('approved')
+                ? 'bg-green-100 text-green-700'
+                : 'bg-yellow-100 text-yellow-700'
+            }">
+              ${row["status"]}
+            </span>
           </td>
         `;
 
-        // TOGGLE (Accordion)
+        /* =========================
+           DETAIL ROW (OPTIONAL EXPAND)
+        ========================== */
+        const detail = document.createElement('tr');
+        detail.style.display = 'none';
+        detail.className = 'bg-gray-50 dark:bg-gray-800';
+
+        detail.innerHTML = `
+          <td colspan="5" class="px-8 py-4 text-sm">
+            <strong>Clinical Notes:</strong><br>
+            Therapy relevance depends on tumour type, line of therapy, biomarkers,
+            resistance mutations, and NCCN/ESMO guidance.
+          </td>
+        `;
+
+        /* =========================
+           ACCORDION TOGGLE
+        ========================== */
         main.onclick = () => {
           const open = detail.style.display === 'table-row';
 
-          document.querySelectorAll('#therapyTable tr.detail')
-            .forEach(r => r.style.display = 'none');
+          document.querySelectorAll('#therapyTable tr[data-detail]')
+            ?.forEach(r => r.style.display = 'none');
           document.querySelectorAll('.arrow')
-            .forEach(a => a.textContent = '▸');
+            ?.forEach(a => a.textContent = '▸');
 
           if (!open) {
             detail.style.display = 'table-row';
             main.querySelector('.arrow').textContent = '▾';
+          } else {
+            detail.style.display = 'none';
           }
         };
+
+        detail.setAttribute('data-detail', 'true');
 
         tbody.appendChild(main);
         tbody.appendChild(detail);
       });
 
-      // Hide Load More if done
-      if (visibleCount >= data.length) {
-        loadMoreBtn.style.display = 'none';
-      }
+      /* =========================
+         LOAD MORE BUTTON
+      ========================== */
+      loadMoreBtn.style.display =
+        visibleCount >= data.length ? 'none' : 'inline-block';
     }
 
-    // INITIAL RENDER
     render();
 
-    // LOAD MORE
     loadMoreBtn.onclick = () => {
       visibleCount += STEP;
       render();
     };
-  });
+  })
+  .catch(err => console.error('Targeted therapy load error:', err));
 </script>
-</body> 
+</body>
 </html>
