@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -1188,6 +1189,56 @@
     });
 </script>
 
+
+<!-- TARGETED THERAPY SECTION -->
+<section id="targeted-therapy" class="py-24 bg-gray-50 dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <h2 class="text-3xl font-extrabold text-center text-gray-900 dark:text-white">
+      Targeted Therapy & Precision Oncology
+    </h2>
+
+    <p class="mt-4 text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+      Actionable mutation-to-drug mapping based on approved and investigational targeted therapies.
+      Designed for clinicians, researchers, and precision oncology programs.
+    </p>
+
+    <!-- Search -->
+    <div class="mt-8 flex justify-center">
+      <input id="therapySearch" type="text"
+        placeholder="Search by gene, cancer type, or drug (e.g. EGFR, NSCLC, Osimertinib)"
+        class="w-full max-w-xl px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+    </div>
+
+    <!-- Table -->
+    <div class="mt-10 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
+      <table class="min-w-full text-sm bg-white dark:bg-gray-800">
+        <thead class="bg-red-600 text-white">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold">Mutation / Fusion</th>
+            <th class="px-4 py-3 text-left font-semibold">Cancer Type</th>
+            <th class="px-4 py-3 text-left font-semibold">Targeted Therapy</th>
+            <th class="px-4 py-3 text-left font-semibold">Mode of Action</th>
+            <th class="px-4 py-3 text-left font-semibold">Status</th>
+          </tr>
+        </thead>
+        
+<tbody id="therapyTable"
+  class="divide-y divide-gray-200 dark:divide-gray-700 text-gray-700 dark:text-gray-300">
+  <!-- Rows will be auto-loaded -->
+</tbody>
+
+      </table>
+    </div>
+
+    <p class="mt-4 text-xs text-center text-gray-500 dark:text-gray-400">
+      ⚠️ Therapy relevance depends on tumour type, line of therapy, and clinical guidelines (NCCN/ESMO).
+    </p>
+
+  </div>
+</section>
+
+
   <!-- Pricing -->
   <section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-800">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1231,7 +1282,6 @@
   </section>
 
   <!-- Consent & Ethics -->
-  <!-- Consent, Privacy & Ethics – Enhanced with Background Colors -->
 <section id="ethics" class="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
     
@@ -1424,56 +1474,127 @@
   </footer>
 
 
-  <!-- Scripts -->
-  <script defer>
-    const initApp = () => {
-      // Theme Toggle
-      const toggle = document.getElementById('themeToggle');
-      const sun = document.getElementById('sunIcon');
-      const moon = document.getElementById('moonIcon');
-      toggle?.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-        localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        sun.classList.toggle('hidden');
-        moon.classList.toggle('hidden');
-      });
+ <!-- Scripts -->
+<script defer>
+  const initApp = () => {
 
-      // Mobile Menu
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      hamburger?.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        hamburger.setAttribute('aria-expanded', !mobileMenu.classList.contains('hidden'));
-      });
+    // Theme Toggle
+    const toggle = document.getElementById('themeToggle');
+    const sun = document.getElementById('sunIcon');
+    const moon = document.getElementById('moonIcon');
 
-      // Panel Search
-      const input = document.getElementById('panelSearch');
-      const container = document.getElementById('panelsContainer');
-      const panels = container?.querySelectorAll('details') || [];
-      input?.addEventListener('input', () => {
-        const term = input.value.trim().toLowerCase();
-        panels.forEach(p => {
-          const kw = (p.dataset.keywords || '').toLowerCase();
-          const txt = p.textContent.toLowerCase();
-          p.style.display = (term === '' || kw.includes(term) || txt.includes(term)) ? '' : 'none';
-          if (p.style.display === 'none') p.open = false;
+    toggle?.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      sun.classList.toggle('hidden');
+      moon.classList.toggle('hidden');
+    });
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      hamburger.setAttribute(
+        'aria-expanded',
+        !mobileMenu.classList.contains('hidden')
+      );
+    });
+
+    // Panel Search (Disease Panels)
+    const panelInput = document.getElementById('panelSearch');
+    const panelsContainer = document.getElementById('panelsContainer');
+    const panels = panelsContainer?.querySelectorAll('.panel-item') || [];
+
+    panelInput?.addEventListener('input', () => {
+      const term = panelInput.value.trim().toLowerCase();
+
+      panels.forEach(panel => {
+        const panelId = panel.getAttribute('data-panel-id');
+        const template = document.getElementById(panelId + '-content');
+
+        let searchableText =
+          (panel.dataset.keywords || '') + ' ' + panel.textContent;
+
+        if (template?.content?.textContent) {
+          searchableText += ' ' + template.content.textContent;
+        }
+
+        panel.style.display =
+          term === '' || searchableText.toLowerCase().includes(term)
+            ? ''
+            : 'none';
+      });
+    });
+
+    // ✅ Targeted Therapy Search (NEW SECTION)
+    // Enable search AFTER table is populated
+const therapySearch = document.getElementById('therapySearch');
+
+therapySearch?.addEventListener('input', () => {
+  const term = therapySearch.value.trim().toLowerCase();
+  const rows = document.querySelectorAll('#therapyTable tr');
+
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(term) ? '' : 'none';
+  });
+});
+
+
+    // One accordion open at a time
+    document.querySelectorAll('details').forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          document
+            .querySelectorAll('details')
+            .forEach(o => { if (o !== d) o.open = false; });
+        }
+      });
+    });
+    // ===============================
+    // Targeted Therapy – AUTO LOAD
+    // ===============================
+    fetch('targeted_therapy.json')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.getElementById('therapyTable');
+        if (!tableBody) return;
+
+        tableBody.innerHTML = '';
+
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+
+          tr.innerHTML = `
+            <td class="px-4 py-3 font-medium">${row.mutation___fusion || row.mutation_fusion || ''}</td>
+            <td class="px-4 py-3">${row.cancer_type || ''}</td>
+            <td class="px-4 py-3">${row.targeted_therapy_examples || row.targeted_therapy || ''}</td>
+            <td class="px-4 py-3">${row.mode_of_action || ''}</td>
+            <td class="px-4 py-3">
+              <span class="px-2 py-1 text-xs rounded-full ${
+                (row.status || '').toLowerCase().includes('approved')
+                  ? 'bg-green-100 text-green-700'
+                  : 'bg-yellow-100 text-yellow-700'
+              }">
+                ${row.status || ''}
+              </span>
+            </td>
+          `;
+          tableBody.appendChild(tr);
         });
-      });
+      })
+      .catch(err => console.error('Targeted therapy load error:', err));
 
-      // One accordion open at a time
-      document.querySelectorAll('details').forEach(d => {
-        d.addEventListener('toggle', () => {
-          if (d.open) {
-            document.querySelectorAll('details').forEach(o => { if (o !== d) o.open = false; });
-          }
-        });
-      });
 
-      // Year
-      const yearEl = document.getElementById('year');
-      if (yearEl) yearEl.textContent = new Date().getFullいたい
-    };
-    document.addEventListener('DOMContentLoaded', initApp);
-  </script>
+
+    // Year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  };
+
+  document.addEventListener('DOMContentLoaded', initApp);
+</script>
 </body>
 </html>
