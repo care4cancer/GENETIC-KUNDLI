@@ -69,32 +69,37 @@
 
   
  <!-- Tailwind CSS -->
-<link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#fef2f2', 100: '#fee2e2', 200: '#fecaca', 300: '#fca5a5',
+              400: '#f87171', 500: '#ef4444', 600: '#dc2626', 700: '#b91c1c',
+              800: '#991b1b', 900: '#7f1d1d'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 3px rgba(239,68,68,0.15), 0 10px 30px rgba(0,0,0,0.1)'
+          }
+        }
+      }
+    }
+  </script>
 
-  
   <!-- Custom Styles -->
   <style>
-.bg-grid{
-  background-image: radial-gradient(circle at 1px 1px, rgba(185,28,28,0.15) 1px, transparent 0);
-  background-size: 24px 24px;
-}
-
-.backdrop-blur-8{
-  backdrop-filter: blur(8px);
-}
-
-/* replaced @apply with valid CSS */
-.new-badge{
-  display:inline-flex;
-  align-items:center;
-  padding:2px 8px;
-  border-radius:9999px;
-  font-size:12px;
-  font-weight:500;
-  background:#dcfce7;
-  color:#166534;
-}
-</style>
+    .bg-grid {
+      background-image: radial-gradient(circle at 1px 1px, rgba(185,28,28,0.15) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .backdrop-blur-8 { backdrop-filter: blur(8px); }
+    .new-badge { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200; }
+  </style>
 
   <!-- Theme Persistence -->
   <script>
