@@ -1529,6 +1529,12 @@ width:100%;
     <div class="grid md:grid-cols-3 gap-8">
       
       <div>
+
+        <!-- Logo -->
+        <a href="/">
+          <img src="65.png" alt="Genetic Kundli Logo" class="h-16 w-auto mb-4">
+        </a>
+        
         <h3 class="text-white font-semibold tracking-wide mb-3">About Genetic Kundli</h3>
         <p class="text-sm leading-relaxed text-gray-100">
           Genetic Kundli uses advanced DNA testing to reveal your genetic risks for cancer, heart disease, diabetes, and more. Empowering you with personalized health insights and prevention strategies.
@@ -1538,10 +1544,10 @@ width:100%;
       <div>
         <h3 class="text-white font-semibold tracking-wide mb-3">Quick Links</h3>
         <ul class="space-y-2 text-sm text-gray-100">
-          <li><a href="#gk-intro" class="hover:text-brand-300 transition">About</a></li>
-          <li><a href="#how" class="hover:text-brand-300 transition">How it Works</a></li>
-          <li><a href="#pricing" class="hover:text-brand-300 transition">Pricing</a></li>
-          <li><a href="#contact" class="hover:text-brand-300 transition">Contact</a></li>
+          <li><a href="#gk-intro" class="hover:text-brand-300 transition-colors duration-200">About</a></li>
+          <li><a href="#how" class="hover:text-brand-300 transition-colors duration-200">How it Works</a></li>
+          <li><a href="#pricing" class="hover:text-brand-300 transition-colors duration-200">Pricing</a></li>
+          <li><a href="#contact" class="hover:text-brand-300 transition-colors duration-200">Contact</a></li>
         </ul>
       </div>
 
@@ -1553,7 +1559,7 @@ width:100%;
           </a>
         </p>
         <p class="text-sm mb-4">
-          <a href="https://genetickundli.in" class="text-brand-300 hover:text-brand-200">
+          <a href="https://genetickundli.in" target="_blank" rel="noopener" class="text-brand-300 hover:text-brand-200">
             genetickundli.in
           </a>
         </p>
@@ -1567,7 +1573,7 @@ width:100%;
 
     <!-- Bottom line aligned with header width -->
     <div class="mt-10 border-t border-brand-700 dark:border-brand-600 pt-6 text-center text-sm text-gray-100">
-      © <span id="year">2025</span> Genetic Kundli. All rights reserved.
+      © <span id="year"></span> Genetic Kundli. All rights reserved.
       <a href="#ethics" class="text-brand-300 hover:text-brand-200">Ethics & Privacy Policy</a>
     </div>
 
@@ -1575,6 +1581,9 @@ width:100%;
 
 </footer>
 
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
