@@ -168,7 +168,7 @@
           </div>
 
           <!-- Mobile Navigation -->
-          <nav id="mobile-menu" class="hidden md:hidden flex flex-col gap-0 text-base font-medium border-t border-gray-200 dark:border-gray-700">
+          <nav id="mobile-menu" class="hidden flex-col md:hidden text-base font-medium border-t border-gray-200 dark:border-gray-700">
             <a href="#gk-intro" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">About</a>
             <a href="#how" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">How it works</a>
             <a href="#panels" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Disease Panels</a>
@@ -1858,5 +1858,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+  
 </body> 
 </html>
