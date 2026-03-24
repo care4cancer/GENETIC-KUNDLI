@@ -211,6 +211,7 @@ class="relative pt-32 pb-20 overflow-hidden max-w-[1600px] mx-auto bg-cover bg-c
 
 
  <!-- About + Scientific Publications Section -->
+  
 
 <section id="research" class="py-24 bg-gradient-to-b from-red-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
 
@@ -232,6 +233,12 @@ is a personalized biological blueprint created using advanced DNA sequencing and
 </div>
 
 <!-- Scientific Publications Heading -->
+  <div class="text-center mb-10">
+  <button onclick="toggleEvidence()" 
+    class="px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition">
+    View Scientific Evidence
+  </button>
+</div>
 
 <div class="text-center mb-16">
 
@@ -247,8 +254,8 @@ Genetic Kundli is inspired by advances in genomics and precision medicine. Scien
 
 <!-- Cards -->
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
+<div id="evidenceSection" class="hidden grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+  
 <!-- Card -->
 
 <div class="bg-white dark:bg-gray-900 border border-red-100 dark:border-gray-700 rounded-2xl p-7 shadow-md hover:shadow-xl hover:-translate-y-1 transition">
@@ -1867,6 +1874,23 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('hidden');
   });
 </script>
+
+
+  <script>
+function toggleEvidence() {
+  const section = document.getElementById("evidenceSection");
+  const btn = event.target;
+
+  if (section.classList.contains("hidden")) {
+    section.classList.remove("hidden");
+    btn.innerText = "Hide Scientific Evidence";
+  } else {
+    section.classList.add("hidden");
+    btn.innerText = "View Scientific Evidence";
+  }
+}
+</script>
+  
   
 </body> 
 </html>
