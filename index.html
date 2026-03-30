@@ -119,6 +119,29 @@
     transform: translateY(0);
   }
 }
+/* DNA Journey Animation */
+.dna-step {
+  position: relative;
+}
+
+.dna-step::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 24px;
+  width: 14px;
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dna-step.active::before {
+  background: linear-gradient(to bottom, #ef4444, #ec4899);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(239,68,68,0.5);
+}
+    
   </style>
 
   <!-- Theme Persistence -->
@@ -221,9 +244,6 @@ class="relative pt-32 pb-20 overflow-hidden max-w-[1600px] mx-auto bg-cover bg-c
     </div>
   </section>
   
-  <div class="py-6 bg-white dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500">
-  Trusted by clinicians • Evidence-based genomics • Secure & private
-</div>
 
 <!-- About + Scientific Publications Section -->
   
@@ -555,9 +575,17 @@ width:100%;
 </div>
 
 <!-- Accordion container -->
-<div class="mt-8 space-y-4">
+<div class="mt-8 relative">
+  
+  <!-- DNA Vertical Line -->
+  <div class="absolute left-4 top-0 w-1 h-full bg-gray-200 dark:bg-gray-700">
+    <div id="dnaProgress" class="w-1 bg-gradient-to-b from-red-500 to-pink-500 h-0 transition-all duration-500"></div>
+  </div>
+
+  <div class="space-y-6 ml-12">
+    
  <!-- ==== STEP 1 ==== -->
-<details class="group rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+<details class="group dna-step rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
   <summary class="flex cursor-pointer items-center gap-4 p-6 font-semibold text-gray-900 dark:text-white hover:bg-gray-50/70 dark:hover:bg-gray-700/40 transition">
     <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-pink-500 text-sm font-bold text-white shadow-md">
       1
@@ -611,7 +639,7 @@ width:100%;
 </div>  </div>
 </details>
       <!-- ==== STEP 2 ==== -->
-<details class="group rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+<details class="group dna-step rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
   <summary class="flex cursor-pointer items-center gap-4 p-6 font-semibold text-gray-900 dark:text-white hover:bg-gray-50/70 dark:hover:bg-gray-700/40 transition">
     <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-pink-500 text-sm font-bold text-white shadow-md">
       2
@@ -771,7 +799,7 @@ width:100%;
 </details>
 
 <!-- ==== STEP 3 ==== -->
-<details class="group rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+<details class="group dna-step rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
   <summary class="flex cursor-pointer items-center gap-4 p-6 font-semibold text-gray-900 dark:text-white hover:bg-gray-50/70 dark:hover:bg-gray-700/40 transition">
     <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-pink-500 text-sm font-bold text-white shadow-md">
       3
@@ -962,7 +990,7 @@ width:100%;
 
   <!-- ==== STEP 4 ==== -->
   
- <details class="group rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+ <details class="group dna-step rounded-3xl border border-gray-200/60 dark:border-gray-700/60 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
   <summary class="flex cursor-pointer items-center gap-4 p-6 font-semibold text-gray-900 dark:text-white hover:bg-gray-50/70 dark:hover:bg-gray-700/40 transition">
     <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-pink-500 text-sm font-bold text-white shadow-md">
       4
@@ -1093,6 +1121,8 @@ width:100%;
     </div>
   </div>
 </div> 
+</div>
+</div>
 </div>
 </details>
 
@@ -1918,6 +1948,26 @@ function toggleEvidence() {
     btn.innerText = "View Scientific Evidence";
   }
 }
+</script>
+
+    <script>
+const steps = document.querySelectorAll(".dna-step");
+const progress = document.getElementById("dnaProgress");
+
+window.addEventListener("scroll", () => {
+  let totalHeight = document.querySelector("#how").offsetHeight;
+  let scrollY = window.scrollY - document.querySelector("#how").offsetTop;
+
+  let progressHeight = Math.max(0, Math.min(scrollY, totalHeight));
+  progress.style.height = progressHeight + "px";
+
+  steps.forEach(step => {
+    const rect = step.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.75) {
+      step.classList.add("active");
+    }
+  });
+});
 </script>
   
   
