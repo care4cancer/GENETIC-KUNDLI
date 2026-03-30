@@ -1955,15 +1955,18 @@ const steps = document.querySelectorAll(".dna-step");
 const progress = document.getElementById("dnaProgress");
 
 window.addEventListener("scroll", () => {
-  let totalHeight = document.querySelector("#how").offsetHeight;
-  let scrollY = window.scrollY - document.querySelector("#how").offsetTop;
+  const section = document.querySelector("#how");
+  const rect = section.getBoundingClientRect();
+
+  let scrollY = window.scrollY - section.offsetTop;
+  let totalHeight = section.offsetHeight;
 
   let progressHeight = Math.max(0, Math.min(scrollY, totalHeight));
   progress.style.height = progressHeight + "px";
 
   steps.forEach(step => {
-    const rect = step.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.75) {
+    const stepTop = step.getBoundingClientRect().top;
+    if (stepTop < window.innerHeight * 0.75) {
       step.classList.add("active");
     }
   });
