@@ -293,12 +293,12 @@ class="relative pt-32 pb-20 overflow-hidden max-w-[1600px] mx-auto bg-cover bg-c
         Genetic variations present from birth, shared across all cells and passed through generations.
       </p>
 
-      <!-- Points -->
-      <ul class="text-sm space-y-2 opacity-95">
-        <li>• Disease predisposition</li>
-        <li>• Family-linked risk</li>
-        <li>• Preventive screening planning</li>
-      </ul>
+      <button 
+class="inline-block mt-6 px-5 py-2 rounded-xl bg-white text-red-600 font-semibold text-sm shadow-md hover:shadow-lg hover:scale-105 transition"
+data-panel-id="panel-hereditary-cancer"
+onclick="openPanel(this)">
+  View Germline Panel
+</button>
 
       </div>
 
@@ -320,12 +320,12 @@ class="relative pt-32 pb-20 overflow-hidden max-w-[1600px] mx-auto bg-cover bg-c
         Genetic changes that develop during life, associated with diseases such as cancer and not inherited.
       </p>
 
-      <!-- Points -->
-      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
-        <li>• Tumor-specific mutations</li>
-        <li>• Targeted therapy insights</li>
-        <li>• Disease progression markers</li>
-      </ul>
+<button 
+    class="inline-block mt-6 px-5 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold text-sm shadow-md hover:shadow-lg hover:scale-105 transition"
+    data-panel-id="panel-oncology-solid"
+    onclick="openPanel(this)">
+    View Somatic Panel
+  </button>
 
       
     </div>
@@ -1184,7 +1184,11 @@ width:100%;
 </div>
 </details>
 
- <!-- DISEASE PANELS (Fixed ID) -->
+
+
+
+
+<!-- DISEASE PANELS (Fixed ID) -->
    <section id="panels" class="py-28 bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold tracking-tight text-center mb-4">Comprehensive <span class="font-semibold text-red-600 dark:text-red-400">Disease Panels</span></h2>
@@ -1202,13 +1206,253 @@ width:100%;
             </div>
         </div>
 
-        <div id="panelsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+<div id="panelsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+       <div class="col-span-1 md:col-span-2 mt-10 mb-4">
+  <div class="flex items-center gap-3">
+    
+    <div class="h-1 w-10 bg-gradient-to-r from-gray-400 to-gray-600 dark:from-gray-500 dark:to-gray-300 rounded-full"></div>
+    
+    <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200 tracking-wide">
+      Hereditary Disease Predisposition (1-7)
+    </h3>
+    
+  </div>
+</div>
+
+        <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="hereditary cancer breast ovarian lynch polyposis endocrine li-fraumeni acmg sf"
+                data-panel-id="panel-hereditary-cancer">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">1</span>
+                    Hereditary Cancer Predisposition
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-hereditary-cancer-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Germline risk assessment panels for inherited cancer syndromes. Includes <strong>ACMG SF v3.2 (81 genes)</strong>.</p>
+                    <p>Full intron coverage and secondary findings reporting.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Breast/Ovarian</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">BRCA1/2, PALB2, CHEK2, ATM, PTEN, TP53, RAD51C/D, BRIP1, <strong>ACMG SF v3.2</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Lynch Syndrome</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">MLH1, MSH2, MSH6, PMS2, EPCAM</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Polyposis</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">APC, MUTYH (biallelic), STK11, SMAD4, BMPR1A, POLE/POLD1</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Endocrine</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">RET (MEN2), MEN1, VHL, SDHx (SDHB, SDHC, SDHD)</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Li-Fraumeni</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">TP53 comprehensive, <strong>ACMG SF v3.2</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+         <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="diabetes hypertension t1d t2d mody prs"
+                data-panel-id="panel-diabetes-hyper">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">2</span>
+                    Diabetes & Hypertension Panels
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-diabetes-hyper-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Covers polygenic risk for T2D and rare monogenic forms; essential & monogenic hypertension.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">T1D</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">HLA-DRB1/DQB1, PTPN22, CTLA4</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">T2D</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">TCF7L2, FTO, KCNJ11, ABCC8, PPARG, <strong>PRS</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">MODY</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">GCK, HNF1A, HNF4A, HNF1B</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Neonatal</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">KCNJ11, ABCC8, INS</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Essential Hypertension</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">ACE, AGT, AGTR1, NOS3</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Liddle</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SCNN1A/B/G</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+         <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="cardiogenetics hcm dcm arvc flnc ttr dsg2"
+                data-panel-id="panel-cardiogenetics">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">3</span>
+                    Cardiogenetics
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-cardiogenetics-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Inherited cardiomyopathy, arrhythmia, and aortopathy. Guides ICD placement and family screening.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">HCM/DCM/ARVC</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">MYH7, MYBPC3, TTN, DSP, PKP2, LMNA, TNNI3, TNNT2, <strong>FLNC, TTR</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Channelopathies</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">KCNQ1, KCNH2, SCN5A (LQTS, Brugada)</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Aortopathy</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">FBN1 (Marfan), TGFBR1/2, SMAD3, ACTA2, <strong>DSG2, TMEM43</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="neurogenetics epilepsy neuromuscular ataxia kcns1 slc2a1 gaa"
+                data-panel-id="panel-neurogenetics">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">4</span>
+                    Neurogenetics
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-neurogenetics-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Epilepsy, neuromuscular, ataxia/leukodystrophy, and selected neurodegenerative diseases.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Epilepsy</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SCN1A, SCN2A, KCNQ2/3, CDKL5, PCDH19, STXBP1, <strong>KCNT1, SLC2A1, PRRT2</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Neuromuscular</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">DMD, SMN1/2 (CNV), RYR1, COL6A1-3, <strong>GAA repeat (FXN)</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Ataxia/Leukodystrophy</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">FXN (FRDA), ATXN1/2/3, ABCD1, EIF2B</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Neurodegeneration</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">APP, PSEN1/2, MAPT, GRN, LRRK2, GBA</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="reproductive prenatal carrier nipt acmg tier fmr1"
+                data-panel-id="panel-repro-prenatal">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">5</span>
+                    Reproductive & Prenatal
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-repro-prenatal-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Carrier screening, invasive prenatal diagnostics, and NIPT (screening only).</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Features</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Expanded Carrier</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">CFTR, HBB/HBA, SMN1, GJB2, PAH, G6PD (100–500 genes), <strong>FMR1 repeats</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Prenatal Diagnostic</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Aneuploidy + microdeletions (CMA), single-gene, <strong>22q11, 1p36</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">NIPT*</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Trisomy 21/18/13; sex chromosomes, <strong>microdeletion panel</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="rare disease exome genome re-analysis"
+                data-panel-id="panel-rare-disease">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">6</span>
+                    Rare Disease – Exome/Genome
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-rare-disease-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">For undiagnosed developmental delay, metabolic, and mitochondrial disorders.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Features</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Clinical Exome</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SNV/indel + CNV (trio), <strong>annual re-analysis</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Genome</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SVs, non-coding, mtDNA, <strong>regulatory variants</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Mitochondrial</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Full mtDNA + heteroplasmy</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
+                data-keywords="pgx cyp tpmt nudt15 cyp3a5"
+                data-panel-id="panel-pgx">
+                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">7</span>
+                    Pharmacogenomics (PGx)
+                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </div>
+            </div>
+            <template id="panel-pgx-content">
+                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Medication response & safety. CPIC-aligned reporting.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Gene</th><th class="px-3 py-2 text-left font-semibold">Clinical Use</th></tr></thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">CYP2D6/2C19/2C9, VKORC1</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Psych, PPI, anticoagulants</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">SLCO1B1</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Statin myopathy</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">DPYD, UGT1A1</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Oncology dosing</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">HLA-B*15:02/*57:01</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Carbamazepine, abacavir</td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white"><strong>TPMT, NUDT15</strong></td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Thiopurines <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white"><strong>CYP3A5</strong></td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Tacrolimus <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white"><strong>IFNL3/4</strong></td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Hepatitis C <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+
+
+
+
+          <div class="col-span-1 md:col-span-2 mt-10 mb-4">
+  <div class="flex items-center gap-3">
+    
+    <div class="h-1 w-10 bg-gradient-to-r from-gray-400 to-gray-600 dark:from-gray-500 dark:to-gray-300 rounded-full"></div>
+    
+    <h3 class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200 tracking-wide">
+      Somatic Disease Panels (A–C)
+    </h3>
+    
+  </div>
+</div>
+
+
+
+        
 
             <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
                  data-keywords="oncology solid tumor breast ovarian lung nsclc colorectal prostate melanoma glioma pan-cancer tmb msi her2 brca"
-                 data-panel-id="panel-oncology-solid">
+                data-panel-id="panel-oncology-solid">
                 <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">1</span>
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">A</span>
                     Oncology – Solid Tumour Panels
                     <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -1243,7 +1487,7 @@ width:100%;
                 data-keywords="oncology hematologic aml mds mpn cll all lymphoma cebpa bcor btk"
                 data-panel-id="panel-oncology-hema">
                 <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">2</span>
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">B</span>
                     Oncology – Hematologic
                     <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -1270,218 +1514,14 @@ width:100%;
             </template>
 
 
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="hereditary cancer breast ovarian lynch polyposis endocrine li-fraumeni acmg sf"
-                data-panel-id="panel-hereditary-cancer">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">3</span>
-                    Hereditary Cancer Predisposition
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-hereditary-cancer-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Germline risk assessment panels for inherited cancer syndromes. Includes <strong>ACMG SF v3.2 (81 genes)</strong>.</p>
-                    <p>Full intron coverage and secondary findings reporting.</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Breast/Ovarian</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">BRCA1/2, PALB2, CHEK2, ATM, PTEN, TP53, RAD51C/D, BRIP1, <strong>ACMG SF v3.2</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Lynch Syndrome</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">MLH1, MSH2, MSH6, PMS2, EPCAM</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Polyposis</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">APC, MUTYH (biallelic), STK11, SMAD4, BMPR1A, POLE/POLD1</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Endocrine</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">RET (MEN2), MEN1, VHL, SDHx (SDHB, SDHC, SDHD)</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Li-Fraumeni</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">TP53 comprehensive, <strong>ACMG SF v3.2</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-
-
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="diabetes hypertension t1d t2d mody prs"
-                data-panel-id="panel-diabetes-hyper">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">4</span>
-                    Diabetes & Hypertension Panels
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-diabetes-hyper-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Covers polygenic risk for T2D and rare monogenic forms; essential & monogenic hypertension.</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">T1D</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">HLA-DRB1/DQB1, PTPN22, CTLA4</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">T2D</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">TCF7L2, FTO, KCNJ11, ABCC8, PPARG, <strong>PRS</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">MODY</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">GCK, HNF1A, HNF4A, HNF1B</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Neonatal</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">KCNJ11, ABCC8, INS</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Essential Hypertension</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">ACE, AGT, AGTR1, NOS3</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Liddle</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SCNN1A/B/G</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-
-
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="cardiogenetics hcm dcm arvc flnc ttr dsg2"
-                data-panel-id="panel-cardiogenetics">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">5</span>
-                    Cardiogenetics
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-cardiogenetics-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Inherited cardiomyopathy, arrhythmia, and aortopathy. Guides ICD placement and family screening.</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">HCM/DCM/ARVC</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">MYH7, MYBPC3, TTN, DSP, PKP2, LMNA, TNNI3, TNNT2, <strong>FLNC, TTR</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Channelopathies</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">KCNQ1, KCNH2, SCN5A (LQTS, Brugada)</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Aortopathy</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">FBN1 (Marfan), TGFBR1/2, SMAD3, ACTA2, <strong>DSG2, TMEM43</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-
-
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="neurogenetics epilepsy neuromuscular ataxia kcns1 slc2a1 gaa"
-                data-panel-id="panel-neurogenetics">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">6</span>
-                    Neurogenetics
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-neurogenetics-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Epilepsy, neuromuscular, ataxia/leukodystrophy, and selected neurodegenerative diseases.</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Genes</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Epilepsy</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SCN1A, SCN2A, KCNQ2/3, CDKL5, PCDH19, STXBP1, <strong>KCNT1, SLC2A1, PRRT2</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Neuromuscular</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">DMD, SMN1/2 (CNV), RYR1, COL6A1-3, <strong>GAA repeat (FXN)</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Ataxia/Leukodystrophy</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">FXN (FRDA), ATXN1/2/3, ABCD1, EIF2B</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Neurodegeneration</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">APP, PSEN1/2, MAPT, GRN, LRRK2, GBA</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-
-
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="reproductive prenatal carrier nipt acmg tier fmr1"
-                data-panel-id="panel-repro-prenatal">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">7</span>
-                    Reproductive & Prenatal
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-repro-prenatal-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Carrier screening, invasive prenatal diagnostics, and NIPT (screening only).</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Features</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Expanded Carrier</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">CFTR, HBB/HBA, SMN1, GJB2, PAH, G6PD (100–500 genes), <strong>FMR1 repeats</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Prenatal Diagnostic</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Aneuploidy + microdeletions (CMA), single-gene, <strong>22q11, 1p36</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">NIPT*</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Trisomy 21/18/13; sex chromosomes, <strong>microdeletion panel</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-
-
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="rare disease exome genome re-analysis"
-                data-panel-id="panel-rare-disease">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">8</span>
-                    Rare Disease – Exome/Genome
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-rare-disease-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">For undiagnosed developmental delay, metabolic, and mitochondrial disorders.</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Panel</th><th class="px-3 py-2 text-left font-semibold">Key Features</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Clinical Exome</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SNV/indel + CNV (trio), <strong>annual re-analysis</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Genome</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">SVs, non-coding, mtDNA, <strong>regulatory variants</strong> <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">Mitochondrial</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Full mtDNA + heteroplasmy</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-
-
-            <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
-                data-keywords="pgx cyp tpmt nudt15 cyp3a5"
-                data-panel-id="panel-pgx">
-                <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">9</span>
-                    Pharmacogenomics (PGx)
-                    <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
-                </div>
-            </div>
-            <template id="panel-pgx-content">
-                <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
-                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">Medication response & safety. CPIC-aligned reporting.</p>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full text-sm border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                            <thead class="bg-red-600 text-white dark:bg-red-800"><tr><th class="px-3 py-2 text-left font-semibold">Gene</th><th class="px-3 py-2 text-left font-semibold">Clinical Use</th></tr></thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">CYP2D6/2C19/2C9, VKORC1</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Psych, PPI, anticoagulants</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">SLCO1B1</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Statin myopathy</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">DPYD, UGT1A1</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Oncology dosing</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white">HLA-B*15:02/*57:01</td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Carbamazepine, abacavir</td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white"><strong>TPMT, NUDT15</strong></td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Thiopurines <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white"><strong>CYP3A5</strong></td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Tacrolimus <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                                <tr class="bg-yellow-50 dark:bg-yellow-900/50"><td class="px-3 py-3 font-semibold text-gray-900 dark:text-white"><strong>IFNL3/4</strong></td><td class="px-3 py-3 text-gray-700 dark:text-gray-300">Hepatitis C <span class="inline-block px-2 py-0.5 ml-2 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100">NEW</span></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
+           
 
 
             <div class="panel-item rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 shadow-md overflow-hidden"
                 data-keywords="liquid biopsy mrd ctdna rna fusion"
                 data-panel-id="panel-liquid-biopsy">
                 <div class="modal-trigger flex cursor-pointer items-center gap-3 p-6 font-semibold transition hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">10</span>
+                    <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">C</span>
                     Liquid Biopsy & MRD (Oncology)
                     <svg class="ml-auto h-5 w-5 shrink-0 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -2005,6 +2045,32 @@ function toggleEvidence() {
     section.classList.add("hidden");
     btn.innerText = "View Scientific Evidence";
   }
+}
+</script>
+<script>
+function openPanel(el) {
+  const panelId = el.getAttribute("data-panel-id");
+  const template = document.getElementById(panelId + "-content");
+
+  if (!template) return;
+
+  // Create modal container (reuse your existing modal if present)
+  let modal = document.getElementById("globalModal");
+
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "globalModal";
+    modal.className = "fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4";
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-3xl w-full p-6 relative">
+      <button onclick="document.getElementById('globalModal').remove()" 
+        class="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl">×</button>
+      ${template.innerHTML}
+    </div>
+  `;
 }
 </script>
   
