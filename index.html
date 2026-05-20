@@ -138,6 +138,28 @@
   opacity: 0.7;
 }
 
+    .modal-body-scroll {
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  padding-right: 6px;
+}
+
+/* Scrollbar */
+.modal-body-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body-scroll::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.5);
+  border-radius: 999px;
+}
+
+.modal-body-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 
 
   </style>
@@ -1249,7 +1271,7 @@ width:100%;
 </div>
 
 <template id="panel-hereditary-cancer-content">
-    <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+    <div class="modal-body-scroll space-y-5 text-sm text-gray-600 dark:text-gray-400">
 
         <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
             Germline hereditary cancer predisposition testing for major inherited cancer syndromes with
@@ -1545,7 +1567,7 @@ width:100%;
 </div>
 
 <template id="panel-couple-screening-content">
-    <div class="space-y-5 text-sm text-gray-600 dark:text-gray-400">
+    <div class="modal-body-scroll space-y-5 text-sm text-gray-600 dark:text-gray-400">
         
         <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
             Genetic screening and reproductive risk assessment for couples planning marriage, pregnancy, or future family building.
