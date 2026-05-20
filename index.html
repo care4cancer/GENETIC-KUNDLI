@@ -1904,60 +1904,230 @@ width:100%;
 </script>
 
 
-<!-- TARGETED THERAPY SECTION -->
-<section id="targeted-therapy" class="py-24 bg-gray-50 dark:bg-gray-900">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<!-- ================= TARGETED THERAPY & PRECISION ONCOLOGY ================= -->
 
-    <h2 class="text-3xl font-bold tracking-tight text-center text-gray-900 dark:text-white">
-      Targeted Therapy & Precision Oncology
-    </h2>
+<section id="targeted-therapy"
+class="relative py-28 overflow-hidden bg-gradient-to-b from-white via-red-50/40 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
 
-    <p class="mt-4 text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-      Actionable mutation-to-drug mapping based on approved and investigational targeted therapies.
-      Designed for clinicians, researchers, and precision oncology programs.
-    </p>
-
-    <!-- Search -->
-    <div class="mt-8 flex justify-center">
-      <input id="therapySearch" type="text"
-        placeholder="Search by gene, cancer type, or drug (e.g. EGFR, NSCLC, Osimertinib)"
-        class="w-full max-w-xl px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500">
-    </div>
-    
-    <div class="mt-6 text-center">
-  <button id="loadMoreTherapy"
-    class="px-6 py-2 rounded-xl bg-red-600 text-white font-semibold hover:bg-red-700 transition">
-    Load more
-  </button>
+<!-- Background Glow -->
+<div class="absolute inset-0 pointer-events-none opacity-30">
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-500/20 rounded-full blur-3xl"></div>
 </div>
 
+<div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-    <!-- Table -->
-    <div class="mt-10 overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
-      <table class="min-w-full text-sm bg-white dark:bg-gray-800">
-        <thead class="bg-red-600 text-white">
-          <tr>
-            <th class="px-4 py-3 text-left font-semibold">Mutation / Fusion</th>
-            <th class="px-4 py-3 text-left font-semibold">Cancer Type</th>
-            <th class="px-4 py-3 text-left font-semibold">Targeted Therapy</th>
-            <th class="px-4 py-3 text-left font-semibold">Mode of Action</th>
-            <th class="px-4 py-3 text-left font-semibold">Status</th>
-          </tr>
-        </thead>
-        
-<tbody id="therapyTable"
-  class="divide-y divide-gray-200 dark:divide-gray-700 text-gray-700 dark:text-gray-300">
-  <!-- Rows will be auto-loaded -->
-</tbody>
+<!-- HEADER -->
+<div class="max-w-4xl mx-auto text-center">
 
-      </table>
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6">
+Precision Oncology
+</div>
+
+<h2 class="text-4xl md:text-5xl font-black tracking-tight text-gray-900 dark:text-white leading-tight">
+Targeted Therapy &
+<span class="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+Precision Oncology
+</span>
+</h2>
+
+<p class="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+Actionable mutation-to-drug mapping based on approved and investigational
+targeted therapies. Designed for clinicians, researchers, and molecular
+tumor boards.
+</p>
+
+<!-- STATS -->
+<div class="mt-8 flex flex-wrap justify-center gap-3">
+
+<span class="px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold">
+500+ Biomarkers
+</span>
+
+<span class="px-4 py-2 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-semibold">
+FDA Approved Therapies
+</span>
+
+<span class="px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-semibold">
+Tumor-Agnostic Markers
+</span>
+
+<span class="px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-sm font-semibold">
+Clinical Trial Insights
+</span>
+
+</div>
+</div>
+
+<!-- BIOMARKER CHIPS -->
+<div class="mt-12 flex flex-wrap justify-center gap-3">
+
+<span class="px-4 py-2 rounded-full border border-red-200 dark:border-red-800 bg-white/80 dark:bg-gray-800/80 text-red-600 dark:text-red-300 text-sm font-semibold shadow-sm">
+EGFR
+</span>
+
+<span class="px-4 py-2 rounded-full border border-pink-200 dark:border-pink-800 bg-white/80 dark:bg-gray-800/80 text-pink-600 dark:text-pink-300 text-sm font-semibold shadow-sm">
+ALK
+</span>
+
+<span class="px-4 py-2 rounded-full border border-indigo-200 dark:border-indigo-800 bg-white/80 dark:bg-gray-800/80 text-indigo-600 dark:text-indigo-300 text-sm font-semibold shadow-sm">
+ROS1
+</span>
+
+<span class="px-4 py-2 rounded-full border border-emerald-200 dark:border-emerald-800 bg-white/80 dark:bg-gray-800/80 text-emerald-600 dark:text-emerald-300 text-sm font-semibold shadow-sm">
+BRAF
+</span>
+
+<span class="px-4 py-2 rounded-full border border-cyan-200 dark:border-cyan-800 bg-white/80 dark:bg-gray-800/80 text-cyan-600 dark:text-cyan-300 text-sm font-semibold shadow-sm">
+RET
+</span>
+
+<span class="px-4 py-2 rounded-full border border-orange-200 dark:border-orange-800 bg-white/80 dark:bg-gray-800/80 text-orange-600 dark:text-orange-300 text-sm font-semibold shadow-sm">
+MSI-H
+</span>
+
+<span class="px-4 py-2 rounded-full border border-purple-200 dark:border-purple-800 bg-white/80 dark:bg-gray-800/80 text-purple-600 dark:text-purple-300 text-sm font-semibold shadow-sm">
+NTRK
+</span>
+
+</div>
+
+<!-- SEARCH -->
+<div class="mt-14 flex justify-center">
+  <div class="relative w-full max-w-2xl">
+
+    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+      <svg class="w-5 h-5 text-gray-400"
+           fill="none"
+           stroke="currentColor"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
     </div>
 
-    <p class="mt-4 text-xs text-center text-gray-500 dark:text-gray-400">
-      ⚠️ Therapy relevance depends on tumour type, line of therapy, and clinical guidelines (NCCN/ESMO).
-    </p>
+    <input
+      id="therapySearch"
+      type="text"
+      placeholder="Search biomarker, cancer type, or therapy..."
+      class="w-full pl-12 pr-5 py-4 rounded-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-700 dark:text-gray-200 placeholder:text-gray-400">
 
   </div>
+</div>
+
+<!-- TABLE CONTAINER -->
+<div class="mt-14 rounded-[32px] overflow-hidden border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-2xl">
+
+<!-- TABLE HEADER BAR -->
+<div class="flex items-center justify-between px-6 py-5 bg-gradient-to-r from-red-600 to-pink-500">
+
+<div>
+<h3 class="text-xl font-bold text-white">
+Actionable Genomic Alterations
+</h3>
+
+<p class="text-sm text-red-100 mt-1">
+Mutation-to-therapy mapping database
+</p>
+</div>
+
+<div class="hidden md:flex items-center gap-2">
+
+<span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold">
+Precision Medicine
+</span>
+
+<span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold">
+Molecular Oncology
+</span>
+
+</div>
+</div>
+
+<!-- TABLE -->
+<div class="overflow-x-auto">
+
+<table class="min-w-full text-sm">
+
+<thead class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+
+<tr>
+
+<th class="px-6 py-4 text-left font-bold uppercase tracking-wide text-xs">
+Mutation / Fusion
+</th>
+
+<th class="px-6 py-4 text-left font-bold uppercase tracking-wide text-xs">
+Cancer Type
+</th>
+
+<th class="px-6 py-4 text-left font-bold uppercase tracking-wide text-xs">
+Targeted Therapy
+</th>
+
+<th class="px-6 py-4 text-left font-bold uppercase tracking-wide text-xs">
+Mode of Action
+</th>
+
+<th class="px-6 py-4 text-left font-bold uppercase tracking-wide text-xs">
+Status
+</th>
+
+</tr>
+</thead>
+
+<tbody id="therapyTable"
+class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-700 dark:text-gray-300">
+
+<!-- AUTO LOADED ROWS -->
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- LOAD MORE -->
+<div class="mt-10 text-center">
+
+<button id="loadMoreTherapy"
+class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-pink-500 text-white font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+
+Load More Therapies
+
+<svg class="w-5 h-5 transition-transform group-hover:translate-y-1"
+     fill="none"
+     stroke="currentColor"
+     viewBox="0 0 24 24">
+  <path stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"/>
+</svg>
+
+</button>
+
+</div>
+
+<!-- FOOTNOTE -->
+<div class="mt-8 text-center">
+
+<p class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 text-sm text-yellow-800 dark:text-yellow-300">
+
+<span class="text-lg">⚠</span>
+
+Therapy relevance depends on tumor type, molecular context,
+line of therapy, resistance profile, and NCCN/ESMO guidelines.
+
+</p>
+
+</div>
+
+</div>
 </section>
 
   <!-- Consent & Ethics -->
