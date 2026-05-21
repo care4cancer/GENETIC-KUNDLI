@@ -173,69 +173,205 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased">
   <!-- Header -->
-  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mt-4 rounded-2xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-        <div class="flex items-center justify-between px-4 sm:px-6 py-3">
-          <!-- Logo -->
-          <a href="#top" class="flex items-center gap-3 group" aria-label="Genetic Kundli Home">
-            <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md group-hover:scale-110 transition-transform">
-              <img src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/LOGO.png" alt="Genetic Kundli Logo" class="h-10 w-10 object-cover rounded-xl" loading="lazy">
-            </div>
-            <div>
-              <p class="text-lg font-bold tracking-tight text-gray-800 dark:text-gray-200 group-hover:text-red-600 transition-colors">Genetic Kundli</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400 leading-none">A step towards personalized care</p>
-            </div>
-          </a>
+ <!-- HEADER -->
+<header id="siteHeader" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
 
-          <!-- Desktop Navigation -->
-          <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href="#research" class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">About</a>
-            <a href="#how" class="text-gray-600 dark:text-gray-300 hover:text-green-600 transition-colors">How it works</a>
-            <a href="#panels" class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">Disease Panels</a>
-            <a href="#ethics" class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">Consent & Ethics</a>
-            <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">Contact</a>
-          </nav>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-          <!-- Buttons -->
-          <div class="flex items-center gap-3">
-            <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">
-              Get Started
-            </a>
+    <div class="mt-4 rounded-2xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-[0_8px_30px_rgba(0,0,0,0.08)] overflow-hidden">
 
-            <!-- Theme Toggle Button -->
-            <button id="themeToggle" 
-              class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md 
-                     hover:scale-110 hover:rotate-6 transition-transform duration-300 p-0"
-              aria-label="Toggle theme">
-              <img id="sunIcon" src="SUN1.png" alt="Light Mode"
-       class="h-10 w-10 object-cover rounded-xl block transition-all duration-300" />
+      <!-- TOP BAR -->
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3">
 
-              <img id="moonIcon" src="MOON1.png" alt="Dark Mode"
-       class="h-10 w-10 object-cover rounded-xl hidden transition-all duration-300" />        
-            </button>
+        <!-- LOGO -->
+        <a href="#top"
+           class="flex items-center gap-3 group min-w-0"
+           aria-label="Genetic Kundli Home">
 
-            <!-- Hamburger Menu -->
-            <button id="hamburger" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-              </svg>
-            </button>
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md shrink-0">
+            <img
+              src="https://raw.githubusercontent.com/care4cancer/GENETIC-KUNDLI/refs/heads/main/LOGO.png"
+              alt="Genetic Kundli Logo"
+              class="h-10 w-10 object-cover rounded-xl"
+              loading="lazy">
           </div>
 
-          <!-- Mobile Navigation -->
-          <nav id="mobile-menu" class="hidden flex-col md:hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg mt-2 overflow-hidden">
-            <a href="#research" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">About</a>
-            <a href="#how" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">How it works</a>
-            <a href="#panels" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Disease Panels</a>
-            <a href="#ethics" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Consent & Ethics</a>
-            <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-red-600 transition-colors px-6 py-3 w-full text-left">Contact</a>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
+          <div class="hidden xs:block min-w-0">
+            <p class="text-base sm:text-lg font-bold tracking-tight text-gray-800 dark:text-gray-200 truncate">
+              Genetic Kundli
+            </p>
 
+            <p class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 leading-none truncate">
+              A step towards personalized care
+            </p>
+          </div>
+        </a>
+
+        <!-- DESKTOP NAV -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+          <a href="#research"
+             class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">
+             About
+          </a>
+
+          <a href="#how"
+             class="text-gray-600 dark:text-gray-300 hover:text-green-600 transition-colors">
+             How it works
+          </a>
+
+          <a href="#panels"
+             class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">
+             Disease Panels
+          </a>
+
+          <a href="#ethics"
+             class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">
+             Consent & Ethics
+          </a>
+
+          <a href="#contact"
+             class="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors">
+             Contact
+          </a>
+
+        </nav>
+
+        <!-- RIGHT SECTION -->
+        <div class="flex items-center gap-2 sm:gap-3">
+
+          <!-- CTA -->
+          <a href="#contact"
+             class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm font-semibold text-white hover:scale-105">
+            Get Started
+          </a>
+
+          <!-- THEME TOGGLE -->
+          <button id="themeToggle"
+            class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-pink-500 grid place-items-center shadow-md hover:scale-110 transition-transform duration-300"
+            aria-label="Toggle theme">
+
+            <img id="sunIcon"
+                 src="SUN1.png"
+                 alt="Light Mode"
+                 class="h-10 w-10 object-cover rounded-xl block transition-all duration-300" />
+
+            <img id="moonIcon"
+                 src="MOON1.png"
+                 alt="Dark Mode"
+                 class="h-10 w-10 object-cover rounded-xl hidden transition-all duration-300" />
+          </button>
+
+          <!-- MOBILE MENU BUTTON -->
+          <button id="hamburger"
+            class="md:hidden flex items-center justify-center h-10 w-10 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Toggle menu">
+
+            <svg class="w-5 h-5"
+                 fill="none"
+                 stroke="currentColor"
+                 viewBox="0 0 24 24">
+
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- MOBILE NAVIGATION -->
+      <nav id="mobile-menu"
+        class="hidden md:hidden w-full flex-col border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-b-2xl overflow-hidden animate-fadeIn">
+
+        <a href="#research"
+          class="px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-600 transition">
+          About
+        </a>
+
+        <a href="#how"
+          class="px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-600 transition">
+          How it works
+        </a>
+
+        <a href="#panels"
+          class="px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-600 transition">
+          Disease Panels
+        </a>
+
+        <a href="#ethics"
+          class="px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-600 transition">
+          Consent & Ethics
+        </a>
+
+        <a href="#contact"
+          class="px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-600 transition">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </div>
+
+</header>
+
+<!-- MOBILE NAV ANIMATION -->
+<style>
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease;
+}
+
+</style>
+
+<!-- MOBILE NAV SCRIPT -->
+<script>
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+hamburger.addEventListener('click', () => {
+
+  mobileMenu.classList.toggle('hidden');
+
+  const expanded =
+    hamburger.getAttribute('aria-expanded') === 'true';
+
+  hamburger.setAttribute('aria-expanded', !expanded);
+});
+
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+
+  link.addEventListener('click', () => {
+
+    mobileMenu.classList.add('hidden');
+
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+
+});
+
+</script>
   <!-- Hero -->
   <section id="top"
 class="relative pt-32 pb-20 overflow-hidden max-w-[1600px] mx-auto bg-cover bg-center" style="background-image: url('DNA_PNG.png');">
